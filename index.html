@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matematika 3 — priprema za kontrolni</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#64748b;--accent:#2563eb;--accent2:#0f766e;--good:#15803d;--bad:#b91c1c;--line:#dbe3ee}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:28px 18px;text-align:center}
+header h1{margin:0 0 6px;font-size:30px} header p{margin:0;opacity:.95}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:8px;justify-content:center}
+nav button{border:0;background:#eef2ff;color:#1e3a8a;padding:9px 13px;border-radius:9px;cursor:pointer;font-weight:700}
+nav button.active{background:#2563eb;color:white}
+main{max-width:1050px;margin:auto;padding:20px}
+section{display:none}.active-section{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px;margin:14px 0;box-shadow:0 3px 12px #0000000b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+h2{color:#1e3a8a;margin-top:5px} h3{margin-bottom:7px;color:#0f4c81}
+.formula{background:#eef6ff;border-left:4px solid #2563eb;padding:10px;margin:8px 0;font-weight:700}
+.tip{background:#ecfdf5;border-left:4px solid #0f766e;padding:10px}.warn{background:#fff7ed;border-left:4px solid #ea580c;padding:10px}
+.task{border-top:1px solid var(--line);padding:16px 0}.task:first-child{border-top:0}
+.level{font-size:12px;border-radius:20px;padding:4px 8px;background:#e0e7ff;color:#3730a3;font-weight:bold}
+input[type=text],input[type=number],select{padding:9px;border:1px solid #b8c4d6;border-radius:8px;width:min(100%,420px);font-size:16px}
+button.action{background:#2563eb;color:white;border:0;border-radius:9px;padding:10px 15px;font-weight:bold;cursor:pointer;margin:5px 4px 5px 0}
+button.secondary{background:#e2e8f0;color:#172033}
+.feedback{margin-top:8px;font-weight:700}.solution{display:none;background:#f8fafc;border:1px dashed #94a3b8;padding:12px;border-radius:10px;margin-top:10px}
+.score{font-size:22px;font-weight:800;color:#1e3a8a}.small{color:var(--muted);font-size:14px}
+table{border-collapse:collapse;width:100%;background:white}th,td{border:1px solid var(--line);padding:8px;text-align:center}th{background:#eef2ff}
+footer{text-align:center;color:var(--muted);padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>📐 МАТЕМАТИКА — 3. РАЗРЕД</h1>
+<p>Интерактивна припрема за контролни: права, диедар, многоуглови и призма</p>
+</header>
+<nav>
+<button class="active" onclick="show('ucenje',this)">📚 Учимо</button>
+<button onclick="show('formula',this)">🧠 Формуле</button>
+<button onclick="show('vezbanje',this)">🎯 Вежбање</button><button onclick="show('test1',this)">📝 Тест 1</button>
+<button onclick="show('test2',this)">📝 Тест 2</button>
+<button onclick="show('rez',this)">📊 Резултат</button>
+</nav>
+<main>
+
+<section id="ucenje" class="active-section">
+<div class="card">
+<h2>Како да користиш апликацију?</h2>
+<p>Прво прођи кроз лекције и формуле. Затим уради Тест 1. Код сваког задатка добићеш повратну информацију, а после предаје можеш да отвориш поступак решавања. Тест 2 користи за додатну проверу.</p>
+<div class="tip"><b>Савет:</b> На тесту прво напиши формулу, затим уврсти податке и тек онда израчунај.</div>
+</div>
+<div class="grid">
+<div class="card"><h3>1. Права — тачка, права и раван</h3>
+<ul><li>Кроз две различите тачке пролази једна права.</li><li>Права је одређена са две своје тачке.</li><li>Кроз три неколинеарне тачке пролази једна раван.</li><li>Права и раван могу бити: права лежи у равни, права сече раван или су паралелне.</li></ul>
+<div class="formula">Ако је права p паралелна правој q која лежи у равни α и p није у α, онда је p ∥ α.</div>
+</div>
+<div class="card"><h3>2. Диедар</h3>
+<p>Диедар је део простора ограничен са две полуравни које имају заједничку граничну праву — ивицу диедра.</p>
+<ul><li>Ивица диедра је заједничка права две полуравни.</li><li>Пресек диедра равни нормалном на ивицу даје <b>линеарни угао диедра</b>.</li><li>Мера диедра једнака је мери његовог линеарног угла.</li></ul>
+</div>
+<div class="card"><h3>3. Многоугао</h3>
+<div class="formula">Обим: O = a + b + c + ...</div>
+<div class="formula">Правилан n-тоугао: O = n·a</div>
+<p>Површина зависи од врсте многоугла. Код сложених фигура често је најлакше поделити фигуру на троуглове, правоугаонике или трапезе.</p>
+</div>
+<div class="card"><h3>4. Призма</h3>
+<div class="formula">V = B·H</div>
+<div class="formula">P = 2B + M</div>
+<div class="formula">M = O<sub>osn</sub>·H</div>
+<p><b>B</b> — површина основе, <b>O<sub>osn</sub></b> — обим основе, <b>H</b> — висина призме.</p>
+</div>
+<div class="card"><h3>5. Основа — ромб</h3>
+<div class="formula">B = a·h<sub>a</sub> &nbsp;&nbsp; или &nbsp;&nbsp; B = (d₁·d₂)/2</div>
+<div class="formula">O = 4a</div>
+<p>За призму: V = B·H, а P = 2B + O·H.</p>
+</div>
+<div class="card"><h3>6. Основа — трапез</h3>
+<div class="formula">B = ((a+c)·h)/2</div>
+<div class="formula">O = a+b+c+d</div>
+<p>За праву призму бочна површина је M = O·H.</p>
+</div>
+<div class="card"><h3>7. Основа — разнострани троугао</h3>
+<div class="formula">Херон: s = (a+b+c)/2</div>
+<div class="formula">B = √(s(s−a)(s−b)(s−c))</div>
+<p>Затим: V = B·H, P = 2B + (a+b+c)·H.</p>
+</div>
+</div>
+<div class="card"><h3>Мини-чек листа пред тест</h3>
+<ol><li>Препознај шта се тражи: O, B, M, P или V.</li><li>Запиши познате величине са јединицама.</li><li>Изабери формулу.</li><li>Провери да ли су све дужине у истој јединици.</li><li>Напиши резултат са јединицом мере.</li></ol></div>
+</section>
+
+<section id="formula">
+<div class="card"><h2>🧠 Формуле на једном месту</h2>
+<table><tr><th>Област</th><th>Формула</th></tr>
+<tr><td>Обим троугла</td><td>O = a + b + c</td></tr>
+<tr><td>Површина троугла</td><td>B = a·h<sub>a</sub>/2</td></tr>
+<tr><td>Површина трапеза</td><td>B = (a+c)·h/2</td></tr>
+<tr><td>Обим трапеза</td><td>O = a+b+c+d</td></tr>
+<tr><td>Обим ромба</td><td>O = 4a</td></tr>
+<tr><td>Површина ромба</td><td>B = a·h<sub>a</sub> = d₁d₂/2</td></tr>
+<tr><td>Херонова формула</td><td>s=(a+b+c)/2; B=√(s(s−a)(s−b)(s−c))</td></tr>
+<tr><td>Запремина призме</td><td>V = B·H</td></tr>
+<tr><td>Бочна површина праве призме</td><td>M = O<sub>osn</sub>·H</td></tr>
+<tr><td>Укупна површина призме</td><td>P = 2B + M</td></tr>
+</table></div>
+</section>
+
+<section id="vezbanje"><div class="card"><h2>🎯 Вежбање — 20 кратких питања</h2><p>Изабери одговор. Одмах добијаш повратну информацију и објашњење.</p><div id="practice"></div></div></section><section id="test1"><div class="card"><h2>📝 Тест 1 — 5 задатака</h2><p class="small">Основни → средњи → напредни ниво. Унеси бројчани резултат тамо где је понуђено.</p>
+<div id="t1"></div><button class="action" onclick="grade(1)">Провери тест 1</button><span id="s1" class="score"></span></div></section>
+
+<section id="test2"><div class="card"><h2>📝 Тест 2 — 5 задатака</h2><p class="small">Други сет задатака за самосталну проверу.</p>
+<div id="t2"></div><button class="action" onclick="grade(2)">Провери тест 2</button><span id="s2" class="score"></span></div></section>
+
+<section id="rez"><div class="card"><h2>📊 Резултат</h2><p id="summary">Уради тест да би се овде појавио резултат.</p>
+<div class="tip"><b>Тумачење:</b> 90–100%: веома добро усвојено; 75–89%: добро; 60–74%: потребно је још вежбања; испод 60%: понови лекције и решавај поступке поново.</div></div></section>
+</main>
+<footer>Интерактивни материјал за вежбање — наставник може мењати задатке и бодове у HTML фајлу.</footer>
+
+<script>
+const tests={
+1:[
+{q:"1. [Основни] Дате су тачке A и B. Колико различитих правих одређују?",opts:["1","2","3","Бесконачно"],a:0,sol:"Кроз две различите тачке пролази тачно једна права. Зато је одговор 1."},
+{q:"2. [Основни] Линеарни угао диедра има 68°. Колика је мера диедра?",opts:["34°","68°","112°","136°"],a:1,sol:"Мера диедра једнака је мери његовог линеарног угла. Зато је диедар 68°."},
+{q:"3. [Средњи] Трапез има основице 8 cm и 14 cm и висину 5 cm. Одреди површину.",input:true,ans:55,unit:"cm²",sol:"B=(a+c)·h/2=(8+14)·5/2=22·2,5=55 cm²."},
+{q:"4. [Средњи] Права призма има основу ромб са дијагоналама 12 cm и 16 cm, а висину 10 cm. Одреди запремину.",input:true,ans:960,unit:"cm³",sol:"B=d₁d₂/2=12·16/2=96 cm². V=B·H=96·10=960 cm³."},
+{q:"5. [Напредни] Основа праве призме је разнострани троугао страница 13 cm, 14 cm и 15 cm. Висина призме је 8 cm. Одреди укупну површину призме.",input:true,ans:732,unit:"cm²",sol:"s=(13+14+15)/2=21. B=√(21·8·7·6)=84 cm². O=42 cm. M=42·8=336 cm². P=2·84+336=504 cm². Напомена: тачан резултат је 504 cm²." ,override:504}
+],
+2:[
+{q:"1. [Основни] Кроз три неколинеарне тачке пролази:",opts:["ниједна раван","једна раван","две равни","бесконачно много равни"],a:1,sol:"Три неколинеарне тачке одређују једну и само једну раван."},
+{q:"2. [Основни] Ромб има страну 7 cm. Одреди његов обим.",input:true,ans:28,unit:"cm",sol:"O=4a=4·7=28 cm."},
+{q:"3. [Средњи] Ромб има дијагонале 10 cm и 24 cm. Одреди површину.",input:true,ans:120,unit:"cm²",sol:"B=d₁d₂/2=10·24/2=120 cm²."},
+{q:"4. [Средњи] Права призма има основу трапез са основицама 6 cm и 14 cm и висином 5 cm. Висина призме је 9 cm. Одреди запремину.",input:true,ans:450,unit:"cm³",sol:"B=(6+14)·5/2=50 cm². V=B·H=50·9=450 cm³."},
+{q:"5. [Напредни] Правa призма има основу троугао страница 5 cm, 12 cm и 13 cm, а висину 7 cm. Одреди укупну површину.",input:true,ans:330,unit:"cm²",sol:"s=15. B=√(15·10·3·2)=30 cm². O=30 cm. M=30·7=210 cm². P=2·30+210=270 cm². Напомена: тачан резултат је 270 cm².",override:270}
+]};
+
+function render(n){
+ const el=document.getElementById('t'+n);
+ el.innerHTML=tests[n].map((x,i)=>{
+  let body=x.opts?x.opts.map((o,j)=>`<label style="display:block;margin:6px 0"><input type="radio" name="t${n}_${i}" value="${j}"> ${o}</label>`).join('')
+  :`<input type="number" step="any" id="ans${n}_${i}" placeholder="Унеси резултат"> ${x.unit||''}`;
+  return `<div class="task"><span class="level">${i<2?'ОСНОВНИ':i<4?'СРЕДЊИ':'НАПРЕДНИ'}</span><p><b>${x.q}</b></p>${body}<div id="fb${n}_${i}" class="feedback"></div><button class="action secondary" onclick="toggleSol(${n},${i})">Погледај поступак</button><div id="sol${n}_${i}" class="solution">${x.sol}</div></div>`;
+ }).join('');
+}
+function grade(n){
+ let correct=0;
+ tests[n].forEach((x,i)=>{
+  let ok=false;
+  if(x.opts){let v=document.querySelector(`input[name="t${n}_${i}"]:checked`); ok=v && Number(v.value)===x.a}
+  else {let v=Number(document.getElementById(`ans${n}_${i}`).value); ok=Math.abs(v-(x.override??x.ans))<0.001}
+  document.getElementById(`fb${n}_${i}`).innerHTML=ok?'✅ Тачно!':'❌ Није тачно. Отвори поступак и покушај поново.';
+  document.getElementById(`fb${n}_${i}`).style.color=ok?'#15803d':'#b91c1c';
+  if(ok)correct++;
+ });
+ let pct=correct*20;
+ document.getElementById('s'+n).textContent=`  ${correct}/5 (${pct}%)`;
+ localStorage.setItem('test'+n,correct);
+ updateSummary();
+}
+function toggleSol(n,i){let e=document.getElementById(`sol${n}_${i}`);e.style.display=e.style.display==='block'?'none':'block'}
+function updateSummary(){
+ let a=localStorage.getItem('test1'),b=localStorage.getItem('test2');
+ let s=[];
+ if(a!==null)s.push('Тест 1: '+a+'/5 ('+(a*20)+'%)');
+ if(b!==null)s.push('Тест 2: '+b+'/5 ('+(b*20)+'%)');
+ document.getElementById('summary').textContent=s.length?s.join(' • '):'Уради тест да би се овде појавио резултат.';
+}
+function show(id,btn){
+ document.querySelectorAll('main section').forEach(s=>s.classList.remove('active-section'));
+ document.getElementById(id).classList.add('active-section');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const practice=[
+["Кроз две различите тачке пролази колико правих?",["једна","две","три","ниједна"],0,"Кроз две различите тачке пролази тачно једна права."],
+["Три неколинеарне тачке одређују:",["једну раван","две равни","једну праву","ниједну раван"],0,"Три неколинеарне тачке одређују једну и само једну раван."],
+["Ако права има две заједничке тачке са равни, она:",["лежи у равни","је нормална на раван","је паралелна равни","не припада простору"],0,"Права са две различите заједничке тачке са равни лежи у тој равни."],
+["Мера диедра једнака је мери:",["његовог линеарног угла","правог угла","спољашњег угла","пуног угла"],0,"Мера диедра једнака је мери његовог линеарног угла."],
+["Ако је линеарни угао диедра 45°, диедар је:",["45°","90°","135°","180°"],0,"Мера диедра и линеарног угла је иста."],
+["Обим троугла страница 5, 7 и 9 је:",["21","20","19","22"],0,"O=5+7+9=21."],
+["Површина троугла са a=10 и h=6 је:",["30","60","16","36"],0,"B=a·h/2=10·6/2=30."],
+["Површина трапеза са основицама 8 и 12 и висином 5 је:",["50","40","100","25"],0,"B=(8+12)·5/2=50."],
+["Ромб странице 6 cm има обим:",["24 cm","12 cm","36 cm","18 cm"],0,"O=4a=24 cm."],
+["Ромб са дијагоналама 8 cm и 10 cm има површину:",["40 cm²","80 cm²","18 cm²","36 cm²"],0,"B=d₁d₂/2=8·10/2=40 cm²."],
+["Призма има запремину V једнаку:",["B·H","2B+M","O·H","B/H"],0,"V=B·H."],
+["Бочна површина праве призме је:",["O·H","B·H","2B+H","O+B"],0,"M=O_osn·H."],
+["Укупна површина призме је:",["2B+M","B·H","O·H","2M+B"],0,"P=2B+M."],
+["Основа призме је ромб дијагонала 6 и 10. B је:",["30","60","16","8"],0,"B=6·10/2=30."],
+["Трапез има основице 5 и 9, висину 4. Површина је:",["28","14","36","18"],0,"B=(5+9)·4/2=28."],
+["Троугао страница 3,4,5 има површину:",["6","12","7,5","10"],0,"B=3·4/2=6."],
+["За троугао 13,14,15 полупериметар је:",["21","42","20","15"],0,"s=(13+14+15)/2=21."],
+["За призму са B=50 cm² и H=8 cm, V је:",["400 cm³","58 cm³","250 cm³","800 cm³"],0,"V=B·H=50·8=400 cm³."],
+["Ако је O_osn=30 cm и H=7 cm, бочна површина је:",["210 cm²","37 cm²","420 cm²","23 cm²"],0,"M=O·H=30·7=210 cm²."],
+["Ако су B=40 cm² и M=120 cm², укупна површина је:",["200 cm²","160 cm²","120 cm²","80 cm²"],0,"P=2·40+120=200 cm²."]
+];
+function renderPractice(){document.getElementById('practice').innerHTML=practice.map((x,i)=>`<div class="task"><b>${i+1}. ${x[0]}</b>${x[1].map((o,j)=>`<label style="display:block;margin:6px"><input type="radio" name="p${i}" onclick="practiceCheck(${i},${j})"> ${o}</label>`).join('')}<div id="pf${i}" class="feedback"></div></div>`).join('')}
+function practiceCheck(i,j){const x=practice[i],e=document.getElementById('pf'+i);e.innerHTML=j===x[2]?'✅ Тачно! ':'❌ Нетачно. ';e.innerHTML+=x[3];e.style.color=j===x[2]?'#15803d':'#b91c1c'}
+renderPractice();
+render(1);render(2);updateSummary();
+</script>
+</body></html>
