@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вежбање – 3. разред математике</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.55}
+header{background:#173b67;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0 0 8px;font-size:25px}
+header p{margin:0;font-size:15px}
+main{max-width:900px;margin:auto;padding:16px}
+.card{background:white;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+h2{color:#173b67;font-size:21px}
+h3{color:#244d7d}
+.task{border:2px solid #d8e2ef;border-radius:14px;padding:16px;margin:14px 0}
+.task strong.title{display:block;font-size:18px;margin-bottom:8px}
+input[type=number]{width:150px;padding:10px;border:1px solid #aebdce;border-radius:8px;font-size:16px}
+button{border:0;border-radius:9px;padding:11px 16px;font-size:15px;cursor:pointer;background:#173b67;color:white;margin:5px 4px 5px 0}
+button.secondary{background:#6b7d92}
+.result{font-weight:bold;margin-top:8px}
+.solution{display:none;background:#f0f6ff;border-left:5px solid #173b67;padding:14px;margin-top:10px;border-radius:8px}
+.formula{background:#fff8dc;padding:10px;border-radius:8px;margin:8px 0;font-family:Arial,sans-serif}
+.badge{display:inline-block;background:#e7eef8;padding:5px 9px;border-radius:15px;font-size:13px;margin-bottom:8px}
+.score{font-size:19px;font-weight:bold;padding:12px;background:#eef8ee;border-radius:10px;margin:10px 0}
+nav{position:sticky;top:0;background:white;padding:10px;border-bottom:1px solid #ddd;z-index:5}
+nav a{display:inline-block;margin:3px 5px;color:#173b67;font-weight:bold;text-decoration:none}
+.small{font-size:14px;color:#596579}
+details{margin-top:10px}
+summary{cursor:pointer;font-weight:bold;color:#173b67}
+footer{text-align:center;padding:25px;color:#667}
+</style>
+</head>
+<body>
+<header>
+<h1>Математика – 3. разред средње школе</h1>
+<p>Вежбање: диедар, косинусна теорема и призме</p>
+</header>
+
+<nav>
+<a href="#uputstvo">Упутство</a>
+<a href="#test1">Тест 1</a>
+<a href="#test2">Тест 2</a>
+<a href="https://kolevbiljana382-ship-it.github.io/matematika-3-razred/">Основна апликација</a>
+</nav>
+
+<main>
+<section id="uputstvo" class="card">
+<h2>Како се ради</h2>
+<p>Сваки тест има 5 задатака. Код прва два задатка примењује се косинусна теорема у троуглу који настаје у одговарајућој равни.</p>
+<p>Код призми треба користити:</p>
+<div class="formula">P = 2B + M &nbsp;&nbsp; и &nbsp;&nbsp; V = B · H</div>
+<p>где је B површина основе, M омотач, а H висина призме.</p>
+<p class="small">За сваки задатак прво покушај самостално, а затим можеш отворити поступак решавања.</p>
+</section>
+
+<section id="test1" class="card">
+<h2>Тест за вежбање 1</h2>
+<p><span class="badge">5 задатака · 50 бодова</span></p>
+
+<div class="task">
+<strong class="title">1. Две праве које се секу – косинусна теорема</strong>
+<p>Праве p и q секу се у тачки O под углом од 60°. На правој p је тачка A, а на правој q тачка B. Тачке A и B налазе се на истој страни тачке O. Ако је OA = 5 cm, а OB = 8 cm, одреди растојање AB.</p>
+<p>Унеси резултат у cm:</p>
+<input id="t1a" type="number" step="0.01"><br>
+<button onclick="check('t1a',7,'r1a')">Провери</button>
+<button class="secondary" onclick="show('s1a')">Погледај поступак</button>
+<div id="r1a" class="result"></div>
+<div id="s1a" class="solution">
+<b>Решење:</b><br>
+У троуглу AOB познате су две странице и угао између њих:<br>
+OA = 5 cm, OB = 8 cm, ∠AOB = 60°.<br>
+Применимо косинусну теорему:<br>
+AB² = OA² + OB² − 2·OA·OB·cos 60°<br>
+AB² = 5² + 8² − 2·5·8·1/2<br>
+AB² = 25 + 64 − 40 = 49<br>
+AB = 7 cm.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">2. Диедар – тачке чије су пројекције иста тачка</strong>
+<p>Тачке A и B налазе се на различитим странама једног диедра. Њихове ортогоналне пројекције на ивицу диедра су иста тачка O. Дат је угао диедра 60°. Ако је OA = 5 cm, а OB = 8 cm, одреди растојање AB.</p>
+<input id="t1b" type="number" step="0.01"><br>
+<button onclick="check('t1b',7,'r1b')">Провери</button>
+<button class="secondary" onclick="show('s1b')">Погледај поступак</button>
+<div id="r1b" class="result"></div>
+<div id="s1b" class="solution">
+<b>Решење:</b><br>
+Пошто су OA и OB ортогонални на ивицу диедра, угао AOB у равни нормалној на ивицу једнак је углу диедра: ∠AOB = 60°.<br>
+Добијамо троугао AOB у коме су познате две странице и захтевани угао:<br>
+AB² = OA² + OB² − 2·OA·OB·cos 60°<br>
+AB² = 25 + 64 − 40 = 49<br>
+AB = 7 cm.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">3. Права призма – основа је ромб</strong>
+<p>Права призма има основу у облику ромба. Страница ромба је 6 cm, а висина ромба на ту страницу је 4 cm. Висина призме је 10 cm. Израчунати површину основе, укупну површину и запремину призме.</p>
+<p>Унеси редом: B, P и V.</p>
+<input id="t1c1" type="number" step="0.01" placeholder="B">
+<input id="t1c2" type="number" step="0.01" placeholder="P">
+<input id="t1c3" type="number" step="0.01" placeholder="V"><br>
+<button onclick="check3(['t1c1','t1c2','t1c3'],[24,288,240],'r1c')">Провери</button>
+<button class="secondary" onclick="show('s1c')">Погледај поступак</button>
+<div id="r1c" class="result"></div>
+<div id="s1c" class="solution">
+<b>Решење:</b><br>
+Површина ромба: B = a·h = 6·4 = 24 cm².<br>
+Обим ромба: O = 4a = 24 cm.<br>
+Омотач призме: M = O·H = 24·10 = 240 cm².<br>
+Укупна површина: P = 2B + M = 2·24 + 240 = 288 cm².<br>
+Запремина: V = B·H = 24·10 = 240 cm³.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">4. Права призма – основа је разностранични троугао</strong>
+<p>Основа праве призме је троугао са страницама 13 cm, 14 cm и 15 cm. Висина призме је 10 cm. Израчунати површину основе, укупну површину и запремину призме. Примени Херонову формулу.</p>
+<p>Унеси редом: B, P и V.</p>
+<input id="t1d1" type="number" step="0.01" placeholder="B">
+<input id="t1d2" type="number" step="0.01" placeholder="P">
+<input id="t1d3" type="number" step="0.01" placeholder="V"><br>
+<button onclick="check3(['t1d1','t1d2','t1d3'],[84,588,840],'r1d')">Провери</button>
+<button class="secondary" onclick="show('s1d')">Погледај поступак</button>
+<div id="r1d" class="result"></div>
+<div id="s1d" class="solution">
+<b>Решење:</b><br>
+Полуобим: s = (13+14+15)/2 = 21 cm.<br>
+Херонова формула: B = √[s(s−a)(s−b)(s−c)].<br>
+B = √(21·8·7·6) = √7056 = 84 cm².<br>
+Обим основе: O = 13+14+15 = 42 cm.<br>
+Омотач: M = O·H = 42·10 = 420 cm².<br>
+Укупна површина: P = 2·84 + 420 = 588 cm².<br>
+Запремина: V = 84·10 = 840 cm³.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">5. Права призма – основа је трапез</strong>
+<p>Основа праве призме је трапез чије су паралелне странице 14 cm и 8 cm, а краци по 5 cm. Висина призме је 10 cm. Израчунати површину основе, укупну површину и запремину призме.</p>
+<p>Унеси редом: B, P и V.</p>
+<input id="t1e1" type="number" step="0.01" placeholder="B">
+<input id="t1e2" type="number" step="0.01" placeholder="P">
+<input id="t1e3" type="number" step="0.01" placeholder="V"><br>
+<button onclick="check3(['t1e1','t1e2','t1e3'],[44,408,440],'r1e')">Провери</button>
+<button class="secondary" onclick="show('s1e')">Погледај поступак</button>
+<div id="r1e" class="result"></div>
+<div id="s1e" class="solution">
+<b>Решење:</b><br>
+Пошто су краци једнаки, разлика основица је 14−8=6 cm, па је половина разлике 3 cm.<br>
+Висина трапеза је h = √(5²−3²) = √16 = 4 cm.<br>
+Површина основе: B = (14+8)·4/2 = 44 cm².<br>
+Обим основе: O = 14+8+5+5 = 32 cm.<br>
+Омотач: M = O·H = 32·10 = 320 cm².<br>
+Укупна површина: P = 2·44 + 320 = 408 cm².<br>
+Запремина: V = 44·10 = 440 cm³.
+</div>
+</div>
+<div class="score" id="score1">Резултат теста 1: 0 / 50 бодова</div>
+</section>
+
+<section id="test2" class="card">
+<h2>Тест за вежбање 2</h2>
+<p><span class="badge">5 нових задатака · 50 бодова</span></p>
+
+<div class="task">
+<strong class="title">1. Две праве које се секу – косинусна теорема</strong>
+<p>Праве p и q секу се у тачки O под углом од 60°. На правој p је тачка C, а на правој q тачка D. Тачке C и D су на истој страни тачке O. Ако је OC = 7 cm, а OD = 9 cm, одреди растојање CD.</p>
+<input id="t2a" type="number" step="0.01"><br>
+<button onclick="check('t2a',Math.sqrt(67),'r2a')">Провери</button>
+<button class="secondary" onclick="show('s2a')">Погледај поступак</button>
+<div id="r2a" class="result"></div>
+<div id="s2a" class="solution">
+<b>Решење:</b><br>
+CD² = 7² + 9² − 2·7·9·cos 60°<br>
+CD² = 49 + 81 − 63 = 67<br>
+CD = √67 cm ≈ 8,19 cm.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">2. Диедар – косинусна теорема</strong>
+<p>Тачке C и D су на различитим странама диедра, а њихове ортогоналне пројекције на ивицу диедра су иста тачка O. Угао диедра је 90°. Ако је OC = 9 cm, а OD = 12 cm, одреди CD.</p>
+<input id="t2b" type="number" step="0.01"><br>
+<button onclick="check('t2b',15,'r2b')">Провери</button>
+<button class="secondary" onclick="show('s2b')">Погледај поступак</button>
+<div id="r2b" class="result"></div>
+<div id="s2b" class="solution">
+<b>Решење:</b><br>
+У равни нормалној на ивицу диедра добија се троугао COD са ∠COD = 90°.<br>
+CD² = 9² + 12² − 2·9·12·cos 90°<br>
+CD² = 81 + 144 = 225<br>
+CD = 15 cm.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">3. Права призма – основа је ромб</strong>
+<p>Основа праве призме је ромб странице 10 cm и висине на ту страницу 6 cm. Висина призме је 8 cm. Израчунати површину основе, укупну површину и запремину призме.</p>
+<p>Унеси редом: B, P и V.</p>
+<input id="t2c1" type="number" step="0.01" placeholder="B">
+<input id="t2c2" type="number" step="0.01" placeholder="P">
+<input id="t2c3" type="number" step="0.01" placeholder="V"><br>
+<button onclick="check3(['t2c1','t2c2','t2c3'],[60,440,480],'r2c')">Провери</button>
+<button class="secondary" onclick="show('s2c')">Погледај поступак</button>
+<div id="r2c" class="result"></div>
+<div id="s2c" class="solution">
+<b>Решење:</b><br>
+B = a·h = 10·6 = 60 cm².<br>
+O = 4·10 = 40 cm.<br>
+M = 40·8 = 320 cm².<br>
+P = 2·60 + 320 = 440 cm².<br>
+V = 60·8 = 480 cm³.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">4. Права призма – разностранични троугао</strong>
+<p>Основа праве призме је троугао са страницама 5 cm, 12 cm и 13 cm. Висина призме је 7 cm. Израчунати површину основе, укупну површину и запремину призме.</p>
+<p>Унеси редом: B, P и V.</p>
+<input id="t2d1" type="number" step="0.01" placeholder="B">
+<input id="t2d2" type="number" step="0.01" placeholder="P">
+<input id="t2d3" type="number" step="0.01" placeholder="V"><br>
+<button onclick="check3(['t2d1','t2d2','t2d3'],[30,312,210],'r2d')">Провери</button>
+<button class="secondary" onclick="show('s2d')">Погледај поступак</button>
+<div id="r2d" class="result"></div>
+<div id="s2d" class="solution">
+<b>Решење:</b><br>
+Полуобим: s = (5+12+13)/2 = 15 cm.<br>
+B = √(15·10·3·2) = √900 = 30 cm².<br>
+O = 5+12+13 = 30 cm.<br>
+M = 30·7 = 210 cm².<br>
+P = 2·30 + 210 = 270 cm².<br>
+V = 30·7 = 210 cm³.
+</div>
+</div>
+
+<div class="task">
+<strong class="title">5. Права призма – трапез</strong>
+<p>Основа праве призме је трапез са паралелним страницама 16 cm и 10 cm, а крацима 5 cm и 5 cm. Висина призме је 12 cm. Израчунати површину основе, укупну површину и запремину призме.</p>
+<p>Унеси редом: B, P и V.</p>
+<input id="t2e1" type="number" step="0.01" placeholder="B">
+<input id="t2e2" type="number" step="0.01" placeholder="P">
+<input id="t2e3" type="number" step="0.01" placeholder="V"><br>
+<button onclick="check3(['t2e1','t2e2','t2e3'],[52,536,624],'r2e')">Провери</button>
+<button class="secondary" onclick="show('s2e')">Погледај поступак</button>
+<div id="r2e" class="result"></div>
+<div id="s2e" class="solution">
+<b>Решење:</b><br>
+Разлика основица је 16−10=6 cm, па је половина разлике 3 cm.<br>
+Висина трапеза: h = √(5²−3²) = 4 cm.<br>
+B = (16+10)·4/2 = 52 cm².<br>
+O = 16+10+5+5 = 36 cm.<br>
+M = 36·12 = 432 cm².<br>
+P = 2·52 + 432 = 536 cm².<br>
+V = 52·12 = 624 cm³.
+</div>
+</div>
+<div class="score" id="score2">Резултат теста 2: 0 / 50 бодова</div>
+</section>
+</main>
+
+<footer>Материјал за вежбање – 3. разред средње школе</footer>
+
+<script>
+let scores={};
+function norm(v){return Math.round(v*100)/100}
+function check(id,ans,res){
+ const x=parseFloat(document.getElementById(id).value);
+ const ok=!isNaN(x)&&Math.abs(x-ans)<0.02;
+ document.getElementById(res).textContent=ok?'✓ Тачно!':'✗ Није тачно. Покушај поново или погледај поступак.';
+ document.getElementById(res).style.color=ok?'green':'#b00020';
+ const test=id.startsWith('t1')?1:2;
+ const key=id;
+ scores[key]=ok?10:0;
+ update(test);
+}
+function check3(ids,answers,res){
+ let okAll=true;
+ ids.forEach((id,i)=>{
+  const x=parseFloat(document.getElementById(id).value);
+  const ok=!isNaN(x)&&Math.abs(x-answers[i])<0.02;
+  scores[id]=ok? (10/3):0;
+  if(!ok) okAll=false;
+ });
+ const test=ids[0].startsWith('t1')?1:2;
+ document.getElementById(res).textContent=okAll?'✓ Сви резултати су тачни!':'✗ Бар један резултат није тачан. Провери поступак.';
+ document.getElementById(res).style.color=okAll?'green':'#b00020';
+ update(test);
+}
+function update(test){
+ let prefix='t'+test;
+ let total=0;
+ Object.keys(scores).forEach(k=>{if(k.startsWith(prefix))total+=scores[k]});
+ total=Math.round(total);
+ document.getElementById('score'+test).textContent='Резултат теста '+test+': '+total+' / 50 бодова';
+}
+function show(id){
+ const e=document.getElementById(id);
+ e.style.display=e.style.display==='block'?'none':'block';
+}
+</script>
+</body>
+</html>
