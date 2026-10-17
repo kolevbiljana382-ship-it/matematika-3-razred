@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Математика — 3. разред средње школе</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Arial, sans-serif; line-height:1.6; color:#172033; background:#f4f6fa; }
+header { background:#fff; padding:24px 18px; border-bottom:1px solid #d9dfeb; }
+main { max-width:900px; margin:0 auto; padding:18px; }
+h1 { margin:0 0 8px; font-size:1.8rem; }
+h2 { font-size:1.35rem; margin:0 0 14px; }
+h3 { font-size:1.05rem; margin:0 0 8px; color:#263f76; }
+p { margin:8px 0; }
+.note { color:#46536a; }
+.controls { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+button { border:0; border-radius:8px; padding:10px 14px; font-size:1rem; cursor:pointer; background:#244b8f; color:white; }
+button.secondary { background:#e4eaf5; color:#172033; }
+.topic { background:white; border:1px solid #dce2ed; border-radius:12px; padding:18px; margin:18px 0; }
+.task { border-top:1px solid #e5e9f1; padding:15px 0; }
+.task:first-of-type { border-top:0; }
+.question { white-space:normal; }
+details { margin-top:10px; border-radius:8px; background:#f0f4fb; padding:10px 12px; }
+summary { cursor:pointer; color:#244b8f; font-weight:bold; }
+.solution { padding-top:8px; }
+footer { text-align:center; color:#5b6576; padding:18px; font-size:.9rem; }
+@media print { body { background:white; } header { border:0; padding:0; } main { padding:0; } .controls { display:none; } .topic { break-inside:avoid; border:1px solid #bbb; } details { background:white; } details:not([open]) > .solution { display:block; } summary { display:none; } }
+</style>
+</head>
+<body>
+<header><main>
+<h1>Математика — 3. разред средње школе</h1>
+<p class="note">Припрема за писмени задатак: призма, пирамида и зарубљена пирамида; по 5 задатака са решењима. Ознаке: H — висина тела; h — висина бочне стране; B — површина веће основе зарубљене пирамиде; B₁ — површина мање основе.</p>
+<div class="controls">
+<button onclick="toggleAll(true)">Прикажи сва решења</button>
+<button class="secondary" onclick="toggleAll(false)">Сакриј сва решења</button>
+<button class="secondary" onclick="window.print()">Штампај / сачувај као PDF</button>
+</div>
+</main></header>
+<main>
+<section class="topic"><h2>Призма — површина и запремина</h2>
+<article class="task"><h3>Задатак 1</h3><p class="question">Права призма има квадратну основу странице 4 cm и висину 10 cm. Израчунај површину и запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина основе је B=4²=16 cm², а обим основе O=4·4=16 cm. Бочна површина је M=O·H=16·10=160 cm². Укупна површина P=2B+M=32+160=192 cm². Запремина V=B·H=16·10=160 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 2</h3><p class="question">Основа праве призме је правоугаоник 3 cm × 8 cm, а висина призме је 5 cm. Одреди P и V.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>B=3·8=24 cm²; обим основе O=2(3+8)=22 cm. M=O·H=22·5=110 cm². P=2B+M=48+110=158 cm². V=B·H=24·5=120 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 3</h3><p class="question">Правилна троугаона призма има основу једнакостранични троугао странице 6 cm и висину 9 cm. Израчунај запремину и укупну површину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина једнакостраничног троугла је B=(a²√3)/4=(36√3)/4=9√3 cm². Обим основе O=18 cm. Бочна површина M=18·9=162 cm². Укупна површина P=2·9√3+162=162+18√3 cm². Запремина V=9√3·9=81√3 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 4</h3><p class="question">Основа призме је троугао са страницама 13 cm, 14 cm и 15 cm, а висина призме је 8 cm. Одреди запремину и укупну површину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Полуобим троугла је s=(13+14+15)/2=21 cm. По Хероновој формули B=√(21·8·7·6)=√7056=84 cm². Обим основе O=42 cm. M=42·8=336 cm². P=2·84+336=504 cm². V=84·8=672 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 5</h3><p class="question">Основа праве призме је трапез са паралелним страницама 5 cm и 11 cm и висином трапеза 4 cm. Краци су 5 cm и 5 cm. Висина призме је 7 cm. Одреди P и V.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина трапеза B=(5+11)·4/2=32 cm². Обим основе O=5+11+5+5=26 cm. Бочна површина M=26·7=182 cm². Укупна површина P=2·32+182=246 cm². Запремина V=32·7=224 cm³.</p></div></details></article>
+</section>
+<section class="topic"><h2>Пирамида — површина и запремина</h2>
+<article class="task"><h3>Задатак 6</h3><p class="question">Правилна четворострана пирамида има квадратну основу странице 6 cm и висину 4 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина основе је B=6²=36 cm². Запремина пирамиде је V=(1/3)BH=(1/3)·36·4=48 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 7</h3><p class="question">Правилна четворострана пирамида има основу странице 10 cm и апотему 13 cm. Израчунај укупну површину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина основе B=10²=100 cm². Бочне стране су 4 једнака троугла. Површина једне стране је (1/2)·10·13=65 cm², па је бочна површина M=4·65=260 cm². Укупна површина P=B+M=360 cm².</p></div></details></article>
+<article class="task"><h3>Задатак 8</h3><p class="question">Пирамида има површину основе 45 cm² и висину 12 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Формула је V=(1/3)BH. Заменом: V=(1/3)·45·12=15·12=180 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 9</h3><p class="question">Правилна троугаона пирамида има основу једнакостранични троугао странице 6 cm и висину пирамиде 8 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина основе B=(a²√3)/4=(36√3)/4=9√3 cm². Запремина V=(1/3)BH=(1/3)·9√3·8=24√3 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 10</h3><p class="question">Пирамида има правоугаону основу 8 cm × 5 cm и висину 9 cm. Одреди запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина основе B=8·5=40 cm². Запремина V=(1/3)·40·9=120 cm³.</p></div></details></article>
+</section>
+<section class="topic"><h2>Зарубљена пирамида — површина и запремина</h2>
+<article class="task"><h3>Задатак 11</h3><p class="question">Правилна зарубљена четворострана пирамида има квадратне основе страница 10 cm и 4 cm, а висину 4 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Већа основа има површину B=10²=100 cm², а мања B₁=4²=16 cm². Висина зарубљене пирамиде је H=4 cm. Формула је V=(H/3)(B+B₁+√(BB₁)). Дакле, V=(4/3)(100+16+√1600)=(4/3)(100+16+40)=(4/3)·156=208 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 12</h3><p class="question">Зарубљена пирамида има површине основа 49 cm² и 9 cm², а висину 6 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Користимо V=(H/3)(B+B₁+√(BB₁)), где је H=6 cm, B=49 cm² већа основа, а B₁=9 cm² мања основа. Добијамо V=(6/3)(49+9+√441)=2(49+9+21)=2·79=158 cm³.</p></div></details></article>
+<article class="task"><h3>Задатак 13</h3><p class="question">Правилна зарубљена четворострана пирамида има странице основа 8 cm и 4 cm, а апотему 5 cm. Израчунај бочну површину и укупну површину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Обими основа су O₁=4·8=32 cm и O₂=4·4=16 cm. Висина бочне стране је h=5 cm. Бочна површина зарубљене пирамиде је M=(O+O₁)·h/2=(32+16)·5/2=120 cm². Површине основа су 64 cm² и 16 cm², па је P=120+64+16=200 cm².</p></div></details></article>
+<article class="task"><h3>Задатак 14</h3><p class="question">Зарубљена пирамида има површине основа 36 cm² и 16 cm², а висину 9 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>V=(H/3)(B+B₁+√(BB₁))=(9/3)(36+16+√576)=3(36+16+24)=3·76=228 cm³, где је H=9 cm, B=36 cm² већа основа, а B₁=16 cm² мања основа.</p></div></details></article>
+<article class="task"><h3>Задатак 15</h3><p class="question">Правилна зарубљена четворострана пирамида има странице основа 12 cm и 6 cm, а висину 4 cm. Израчунај запремину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Већа основа је B=12²=144 cm², а мања B₁=6²=36 cm². За H=4 cm важи V=(H/3)(B+B₁+√(BB₁))=(4/3)(144+36+√(144·36))=(4/3)(180+72)=(4/3)·252=336 cm³.</p></div></details></article>
+</section>
+</main>
+<footer>Интерактивна припрема за писмени задатак • 15 задатака</footer>
+<script>
+function toggleAll(open) { document.querySelectorAll('details').forEach(d => d.open = open); }
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Изабрана поглавља математике — 3. разред</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Arial, sans-serif; line-height:1.6; color:#172033; background:#f4f6fa; }
+header { background:#fff; padding:24px 18px; border-bottom:1px solid #d9dfeb; }
+main { max-width:900px; margin:0 auto; padding:18px; }
+h1 { margin:0 0 8px; font-size:1.8rem; }
+h2 { font-size:1.35rem; margin:0 0 14px; }
+h3 { font-size:1.05rem; margin:0 0 8px; color:#263f76; }
+p { margin:8px 0; }
+.note { color:#46536a; }
+.controls { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+button { border:0; border-radius:8px; padding:10px 14px; font-size:1rem; cursor:pointer; background:#244b8f; color:white; }
+button.secondary { background:#e4eaf5; color:#172033; }
+.topic { background:white; border:1px solid #dce2ed; border-radius:12px; padding:18px; margin:18px 0; }
+.task { border-top:1px solid #e5e9f1; padding:15px 0; }
+.task:first-of-type { border-top:0; }
+.question { white-space:normal; }
+details { margin-top:10px; border-radius:8px; background:#f0f4fb; padding:10px 12px; }
+summary { cursor:pointer; color:#244b8f; font-weight:bold; }
+.solution { padding-top:8px; }
+footer { text-align:center; color:#5b6576; padding:18px; font-size:.9rem; }
+@media print { body { background:white; } header { border:0; padding:0; } main { padding:0; } .controls { display:none; } .topic { break-inside:avoid; border:1px solid #bbb; } details { background:white; } details:not([open]) > .solution { display:block; } summary { display:none; } }
+</style>
+</head>
+<body>
+<header><main>
+<h1>Изабрана поглавља математике — 3. разред</h1>
+<p class="note">Припрема за писмени задатак: скупови и Венови дијаграми, квантификатори и логика, композиција, инверзна функција и бијекција.</p>
+<div class="controls">
+<button onclick="toggleAll(true)">Прикажи сва решења</button>
+<button class="secondary" onclick="toggleAll(false)">Сакриј сва решења</button>
+<button class="secondary" onclick="window.print()">Штампај / сачувај као PDF</button>
+</div>
+</main></header>
+<main>
+<section class="topic"><h2>Операције са скуповима и Венови дијаграми</h2>
+<article class="task"><h3>Задатак 1</h3><p class="question">Нека је A={1,2,3,5,7}, B={2,4,5,6}. Одреди A∪B и A∩B.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Унија садржи све различите елементе оба скупа: A∪B={1,2,3,4,5,6,7}. Пресек садржи само заједничке елементе: A∩B={2,5}.</p></div></details></article>
+<article class="task"><h3>Задатак 2</h3><p class="question">Нека је U={1,2,3,4,5,6,7,8}, A={2,4,6,8}. Одреди комплемент скупа A у односу на U.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Комплемент A чине елементи универзалног скупа U који нису у A. Зато је Aᶜ={1,3,5,7}.</p></div></details></article>
+<article class="task"><h3>Задатак 3</h3><p class="question">У групи од 30 ученика, 18 учи енглески, 12 француски, а 5 оба језика. Колико учи бар један језик и колико не учи ниједан од ова два?</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Број оних који уче бар један језик је 18+12−5=25. Број оних који не уче ниједан је 30−25=5.</p></div></details></article>
+<article class="task"><h3>Задатак 4</h3><p class="question">Ако је |A|=20, |B|=17 и |A∩B|=8, израчунај |A∪B|.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Формула за два коначна скупа је |A∪B|=|A|+|B|−|A∩B|. Зато је |A∪B|=20+17−8=29.</p></div></details></article>
+<article class="task"><h3>Задатак 5</h3><p class="question">Нека је A={a,b,c,d}, B={c,d,e}. Одреди A\B и B\A, па објасни разлику.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>A\B су елементи који припадају A, а не припадају B: {a,b}. B\A су елементи који припадају B, а не припадају A: {e}. Разлика скупова није комутативна, па се редослед скупова не може заменити.</p></div></details></article>
+</section>
+<section class="topic"><h2>Квантификатори и логика</h2>
+<article class="task"><h3>Задатак 6</h3><p class="question">Напиши негацију исказа: „За сваки реалан број x важи x²≥0.“</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Негација универзалног исказа добија се заменом „за сваки“ са „постоји“ и негирањем услова. Негација је: „Постоји реалан број x за који је x²&lt;0.“ Такав реалан број не постоји, па је почетни исказ истинит.</p></div></details></article>
+<article class="task"><h3>Задатак 7</h3><p class="question">Напиши негацију исказа: „Постоји цео број n такав да је n²=16.“</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Негација егзистенцијалног исказа „постоји“ гласи „за сваки“, уз негацију услова: „За сваки цео број n важи n²≠16.“ Овај исказ је неистинит, јер n=4 и n=−4 имају квадрат 16.</p></div></details></article>
+<article class="task"><h3>Задатак 8</h3><p class="question">Одреди истинитост импликације p⇒q ако су p и q оба неистинити.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Импликација је неистинита само у случају p истинито и q неистинито. Овде је p неистинито, па је p⇒q истинито.</p></div></details></article>
+<article class="task"><h3>Задатак 9</h3><p class="question">Докажи контрапозицијом: ако је n² паран број за цео број n, онда је n паран.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Контрапозиција гласи: ако је n непаран, онда је n² непаран. Нека је n=2k+1 за неки цео k. Тада је n²=(2k+1)²=4k²+4k+1=2(2k²+2k)+1, што је непаран број. Контрапозиција је доказана, па важи и почетна тврдња.</p></div></details></article>
+<article class="task"><h3>Задатак 10</h3><p class="question">Одреди истинитосну вредност исказа „Постоји реалан број x такав да је x²+1=0.“</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>За сваки реалан x важи x²≥0, па је x²+1≥1. Зато x²+1 не може бити 0 ни за један реалан број. Исказ је неистинит.</p></div></details></article>
+</section>
+<section class="topic"><h2>Композиција, инверзна функција и бијекција</h2>
+<article class="task"><h3>Задатак 11</h3><p class="question">Дате су f(x)=2x+1 и g(x)=x−3. Одреди (f∘g)(x) и (g∘f)(x).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>(f∘g)(x)=f(x−3)=2(x−3)+1=2x−5. (g∘f)(x)=g(2x+1)=(2x+1)−3=2x−2. Пошто се резултати разликују, композиција није комутативна.</p></div></details></article>
+<article class="task"><h3>Задатак 12</h3><p class="question">Одреди инверзну функцију f(x)=5x−10.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Поставимо y=5x−10. Заменимо x и y: x=5y−10. Тада је 5y=x+10, па y=(x+10)/5. Дакле, f⁻¹(x)=(x+10)/5.</p></div></details></article>
+<article class="task"><h3>Задатак 13</h3><p class="question">Одреди инверзну функцију f(x)=(2x+3)/5.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Пишемо y=(2x+3)/5. Множимо са 5: 5y=2x+3. Одузмемо 3 и поделимо са 2: x=(5y−3)/2. Заменом y са x добијамо f⁻¹(x)=(5x−3)/2.</p></div></details></article>
+<article class="task"><h3>Задатак 14</h3><p class="question">Провери да ли је функција f:ℝ→ℝ, f(x)=3x−2 бијекција.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Инјективност: ако f(x₁)=f(x₂), онда 3x₁−2=3x₂−2, па 3x₁=3x₂ и x₁=x₂. Сурјективност: за произвољно y∈ℝ решавамо y=3x−2, па је x=(y+2)/3∈ℝ. Дакле, сваки y има оригинал, па је функција бијекција.</p></div></details></article>
+<article class="task"><h3>Задатак 15</h3><p class="question">Да ли је f:ℝ→ℝ, f(x)=x² бијекција? Образложи.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Није инјективна јер f(2)=4 и f(−2)=4, а 2≠−2. Није ни сурјективна на ℝ, јер негативни бројеви нису вредности функције x². Према томе, f није бијекција.</p></div></details></article>
+</section>
+</main>
+<footer>Интерактивна припрема за писмени задатак • 15 задатака</footer>
+<script>
+function toggleAll(open) { document.querySelectorAll('details').forEach(d => d.open = open); }
+</script>
+</body>
+</html>

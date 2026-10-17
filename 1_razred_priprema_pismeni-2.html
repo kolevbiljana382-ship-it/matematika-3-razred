@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Математика — 1. разред средње школе</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Arial, sans-serif; line-height:1.6; color:#172033; background:#f4f6fa; }
+header { background:#fff; padding:24px 18px; border-bottom:1px solid #d9dfeb; }
+main { max-width:900px; margin:0 auto; padding:18px; }
+h1 { margin:0 0 8px; font-size:1.8rem; }
+h2 { font-size:1.35rem; margin:0 0 14px; }
+h3 { font-size:1.05rem; margin:0 0 8px; color:#263f76; }
+p { margin:8px 0; }
+.note { color:#46536a; }
+.controls { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+button { border:0; border-radius:8px; padding:10px 14px; font-size:1rem; cursor:pointer; background:#244b8f; color:white; }
+button.secondary { background:#e4eaf5; color:#172033; }
+.topic { background:white; border:1px solid #dce2ed; border-radius:12px; padding:18px; margin:18px 0; }
+.task { border-top:1px solid #e5e9f1; padding:15px 0; }
+.task:first-of-type { border-top:0; }
+.question { white-space:normal; }
+details { margin-top:10px; border-radius:8px; background:#f0f4fb; padding:10px 12px; }
+summary { cursor:pointer; color:#244b8f; font-weight:bold; }
+.solution { padding-top:8px; }
+footer { text-align:center; color:#5b6576; padding:18px; font-size:.9rem; }
+@media print { body { background:white; } header { border:0; padding:0; } main { padding:0; } .controls { display:none; } .topic { break-inside:avoid; border:1px solid #bbb; } details { background:white; } details:not([open]) > .solution { display:block; } summary { display:none; } }
+</style>
+</head>
+<body>
+<header><main>
+<h1>Математика — 1. разред средње школе</h1>
+<p class="note">Припрема за писмени задатак: 7 тематских целина, по 5 задатака са детаљним решењима.</p>
+<div class="controls">
+<button onclick="toggleAll(true)">Прикажи сва решења</button>
+<button class="secondary" onclick="toggleAll(false)">Сакриј сва решења</button>
+<button class="secondary" onclick="window.print()">Штампај / сачувај као PDF</button>
+</div>
+</main></header>
+<main>
+<section class="topic"><h2>Логика и скупови</h2>
+<article class="task"><h3>Задатак 1</h3><p class="question">Нека су p: „Број 12 је дељив са 3“ и q: „Број 12 је прост“. Одреди истинитосну вредност исказа p ∧ q, p ∨ q и ¬q.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>p је истинит, јер је 12 = 3·4. q је неистинит, јер 12 има делиоце 2 и 3. Зато је p ∧ q неистинит (оба морају бити истинита), p ∨ q истинит (бар један је истинит), а ¬q истинит (негација неистинитог исказа је истинита).</p></div></details></article>
+<article class="task"><h3>Задатак 2</h3><p class="question">Ако је A={1,2,3,4,5}, B={2,4,6}, одреди A∪B, A∩B, A\B и B\A.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Унија садржи елементе који су у бар једном скупу: A∪B={1,2,3,4,5,6}. Пресек садржи заједничке елементе: A∩B={2,4}. Разлика A\B садржи елементе A који нису у B: {1,3,5}. Разлика B\A је {6}.</p></div></details></article>
+<article class="task"><h3>Задатак 3</h3><p class="question">У одељењу је 18 ученика који воле математику, 12 који воле физику, а 7 воле оба предмета. Колико ученика воли бар један од та два предмета?</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Користимо формулу |M∪F|=|M|+|F|−|M∩F|. Дакле, 18+12−7=23 ученика. Оних 7 који воле оба предмета не смеју се бројати два пута.</p></div></details></article>
+<article class="task"><h3>Задатак 4</h3><p class="question">Напиши негацију исказа: „Сви ученици су урадили домаћи задатак.“</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Исказ има облик „за сваког ученика важи да је урадио домаћи“. Негација исказа са речју „сви“ гласи „постоји бар један који не…“. Зато је негација: „Постоји бар један ученик који није урадио домаћи задатак.“</p></div></details></article>
+<article class="task"><h3>Задатак 5</h3><p class="question">Одреди истинитосну вредност импликације p⇒q ако је p неистинит, а q истинит. Објасни.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Импликација p⇒q неистинита је само када је p истинит, а q неистинит. У свим осталим случајевима је истинита. Пошто је p неистинит, импликација је истинита.</p></div></details></article>
+</section>
+<section class="topic"><h2>Композиција и инверзна функција</h2>
+<article class="task"><h3>Задатак 6</h3><p class="question">Дате су f(x)=2x−3 и g(x)=x²+1. Одреди (g∘f)(x).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>(g∘f)(x)=g(f(x)). Уместо x у функцији g убацујемо f(x)=2x−3: g(2x−3)=(2x−3)²+1=4x²−12x+9+1=4x²−12x+10.</p></div></details></article>
+<article class="task"><h3>Задатак 7</h3><p class="question">За f(x)=3x+6 одреди инверзну функцију f⁻¹(x).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Пишемо y=3x+6. Заменимо улоге x и y: x=3y+6. Решавамо по y: 3y=x−6, па је y=(x−6)/3=x/3−2. Дакле, f⁻¹(x)=x/3−2.</p></div></details></article>
+<article class="task"><h3>Задатак 8</h3><p class="question">Одреди инверзну функцију f(x)=(x−1)/(x+2), уз услов x≠−2.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Нека је y=(x−1)/(x+2). Множимо: y(x+2)=x−1, па yx+2y=x−1. Пребацимо чланове са x: x(y−1)=−1−2y. Зато је x=(−1−2y)/(y−1)=(1+2y)/(1−y). Заменом y са x добијамо f⁻¹(x)=(1+2x)/(1−x), x≠1.</p></div></details></article>
+<article class="task"><h3>Задатак 9</h3><p class="question">Ако је f(x)=x² за x≥0, одреди f⁻¹(x).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Имамо y=x² и услов x≥0. Заменимо x и y: x=y². Одатле y=±√x, али пошто је оригинални домен x≥0, инверзна функција мора имати ненегативне вредности, па узимамо y=√x. Дакле, f⁻¹(x)=√x за x≥0.</p></div></details></article>
+<article class="task"><h3>Задатак 10</h3><p class="question">Дате су f(x)=x+4 и g(x)=2x. Израчунај (f∘g)(3) и (g∘f)(3). Да ли су композиције једнаке у овој вредности?</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>(f∘g)(3)=f(g(3))=f(6)=10. Са друге стране, (g∘f)(3)=g(f(3))=g(7)=14. Резултати нису једнаки, па композиција функција уопште није комутативна.</p></div></details></article>
+</section>
+<section class="topic"><h2>Операције са реалним бројевима</h2>
+<article class="task"><h3>Задатак 11</h3><p class="question">Израчунај: −7+3·(5−9).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Прво заграда: 5−9=−4. Затим множење: 3·(−4)=−12. На крају сабирање: −7+(−12)=−19.</p></div></details></article>
+<article class="task"><h3>Задатак 12</h3><p class="question">Израчунај: 3/4−5/6+1/3.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Заједнички именилац је 12. Добијамо 9/12−10/12+4/12=(9−10+4)/12=3/12=1/4.</p></div></details></article>
+<article class="task"><h3>Задатак 13</h3><p class="question">Поједностави: √50−2√8+√18.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Разлажемо корене: √50=5√2, √8=2√2, √18=3√2. Зато је 5√2−2·2√2+3√2=(5−4+3)√2=4√2.</p></div></details></article>
+<article class="task"><h3>Задатак 14</h3><p class="question">Израчунај: (2/3):(4/9).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Дељење разломака заменимо множењем реципрочним разломком: (2/3)·(9/4)=18/12=3/2.</p></div></details></article>
+<article class="task"><h3>Задатак 15</h3><p class="question">Поједностави израз: 2(3x−4)−3(x+1).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Отварамо заграде: 6x−8−3x−3. Саберемо сличне чланове: (6x−3x)+(−8−3)=3x−11.</p></div></details></article>
+</section>
+<section class="topic"><h2>НЗД и НЗС</h2>
+<article class="task"><h3>Задатак 16</h3><p class="question">Одреди НЗД(24,36).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Разложимо бројеве на просте чиниоце: 24=2³·3, 36=2²·3². НЗД је производ заједничких простих чинилаца са мањим степенима: 2²·3=4·3=12.</p></div></details></article>
+<article class="task"><h3>Задатак 17</h3><p class="question">Одреди НЗС(18,30).</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>18=2·3², а 30=2·3·5. НЗС узима све просте чиниоце са највећим степенима: 2·3²·5=90.</p></div></details></article>
+<article class="task"><h3>Задатак 18</h3><p class="question">Одреди НЗД и НЗС бројева 42 и 56.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>42=2·3·7, 56=2³·7. НЗД=2·7=14. НЗС=2³·3·7=168.</p></div></details></article>
+<article class="task"><h3>Задатак 19</h3><p class="question">Три звона звоне на сваких 12, 15 и 20 минута. Ако су зазвонила истовремено у 8.00, када ће поново зазвонити истовремено?</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Тражимо НЗС(12,15,20). Разлагања: 12=2²·3, 15=3·5, 20=2²·5. НЗС=2²·3·5=60 минута. Поново ће зазвонити у 9.00.</p></div></details></article>
+<article class="task"><h3>Задатак 20</h3><p class="question">Дужине трака су 48 cm и 60 cm. Треба их исећи на најдуже једнаке делове без остатка. Колика је дужина једног дела?</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Тражимо највећи заједнички делилац бројева 48 и 60. 48=2⁴·3, 60=2²·3·5, па је НЗД=2²·3=12. Сваки део може бити дугачак 12 cm.</p></div></details></article>
+</section>
+<section class="topic"><h2>Апсолутна вредност</h2>
+<article class="task"><h3>Задатак 21</h3><p class="question">Израчунај |−13|−|5−9|.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>|−13|=13. Унутар друге апсолутне вредности 5−9=−4, па је |−4|=4. Резултат је 13−4=9.</p></div></details></article>
+<article class="task"><h3>Задатак 22</h3><p class="question">Реши једначину |x−3|=5.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Ако је |A|=5, онда је A=5 или A=−5. Дакле, x−3=5 даје x=8, а x−3=−5 даје x=−2. Решења су x∈{−2,8}.</p></div></details></article>
+<article class="task"><h3>Задатак 23</h3><p class="question">Реши неједначину |x|&lt;4.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Апсолутна вредност |x|&lt;4 значи да је растојање броја x од нуле мање од 4. Зато важи −4&lt;x&lt;4.</p></div></details></article>
+<article class="task"><h3>Задатак 24</h3><p class="question">Израчунај растојање бројева −7 и 2 на бројевној правој.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Растојање је апсолутна вредност разлике: |−7−2|=|−9|=9.</p></div></details></article>
+<article class="task"><h3>Задатак 25</h3><p class="question">Реши |2x+1|=7.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Разматрамо два случаја: 2x+1=7 ⇒ 2x=6 ⇒ x=3; или 2x+1=−7 ⇒ 2x=−8 ⇒ x=−4. Решења су −4 и 3.</p></div></details></article>
+</section>
+<section class="topic"><h2>Заокруживање и грешке приближних вредности</h2>
+<article class="task"><h3>Задатак 26</h3><p class="question">Заокружи број 18,746 на две децимале.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Гледамо трећу децималу: у броју 18,746 то је 6. Пошто је 6≥5, другу децималу повећавамо за 1. Резултат је 18,75.</p></div></details></article>
+<article class="task"><h3>Задатак 27</h3><p class="question">Број 7,284 заокружи на десетине и на стотине.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>На десетине гледамо цифру јединица 7, па 7,284 заокружујемо на 10. На стотине гледамо цифру десетина 8, па је резултат такође 10.</p></div></details></article>
+<article class="task"><h3>Задатак 28</h3><p class="question">Тачна вредност је 50, а приближна 49,2. Одреди апсолутну грешку.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Апсолутна грешка је |тачна−приближна|. Дакле, Δ=|50−49,2|=0,8.</p></div></details></article>
+<article class="task"><h3>Задатак 29</h3><p class="question">Тачна вредност је 80, а приближна 78. Одреди релативну грешку и изрази је у процентима.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Апсолутна грешка је |80−78|=2. Релативна грешка је 2/80=0,025. У процентима: 0,025·100%=2,5%.</p></div></details></article>
+<article class="task"><h3>Задатак 30</h3><p class="question">Дужина је измерена као 12,4 cm, а апсолутна грешка мерења не прелази 0,1 cm. Наведи интервал у коме се налази тачна дужина.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Ако је измерена вредност 12,4 cm, а грешка највише 0,1 cm, тачна дужина је између 12,4−0,1 и 12,4+0,1. Зато важи 12,3 cm≤L≤12,5 cm.</p></div></details></article>
+</section>
+<section class="topic"><h2>Операције са приближним вредностима</h2>
+<article class="task"><h3>Задатак 31</h3><p class="question">Израчунај приближно 12,6+3,27 ако су бројеви дати на стотине и десетине како су записани.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Сабирамо записане приближне вредности: 12,60+3,27=15,87. Ако се резултат пријављује на две децимале, пишемо 15,87; стварна грешка зависи од тачности улазних вредности.</p></div></details></article>
+<article class="task"><h3>Задатак 32</h3><p class="question">Израчунај приближно 8,4·2,3.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Множимо записане вредности: 8,4·2,3=8,4·(2+0,3)=16,8+2,52=19,32. Резултат је приближно 19,32.</p></div></details></article>
+<article class="task"><h3>Задатак 33</h3><p class="question">Израчунај приближно 15,8:2.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>15,8:2=7,9. Пошто је дељење са тачно познатим бројем 2, записани резултат је 7,9.</p></div></details></article>
+<article class="task"><h3>Задатак 34</h3><p class="question">Правоугаоник има приближне странице a≈4,2 cm и b≈3,1 cm. Израчунај приближну површину.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>Површина је P=a·b. Заменом приближних вредности: P≈4,2·3,1=13,02 cm². Пошто су странице приближне, и добијена површина је приближна.</p></div></details></article>
+<article class="task"><h3>Задатак 35</h3><p class="question">Приближне вредности су a≈9,8 и b≈2,1. Израчунај приближно a−b и заокружи резултат на једну децималу.</p><details><summary>Прикажи детаљно решење</summary><div class="solution"><p>a−b≈9,8−2,1=7,7. Резултат већ има једну децималу, па је коначно 7,7.</p></div></details></article>
+</section>
+</main>
+<footer>Интерактивна припрема за писмени задатак • 35 задатака</footer>
+<script>
+function toggleAll(open) { document.querySelectorAll('details').forEach(d => d.open = open); }
+</script>
+</body>
+</html>
