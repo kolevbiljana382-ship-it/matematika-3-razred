@@ -281,39 +281,5 @@ footer {
         <!-- Задатак 5 -->
         <div style="margin-bottom: 20px;">
             <p><span class="level">Ниво 3:</span> Права паралелна основици $AB$ троугла $ABC$ пресеца странице $AC$ и $BC$ у тачкама $M$ и $N$. Ако је $AC=12$ cm, $AB=18$ cm и $MN=6$ cm, израчунај дужину дужи $AM$ (у cm).</p>
-            <input type="text" id="t1_q5" class="input-ans" placeholder="Унесите број">
-            <button class="btn btn-check" onclick="checkAnswer('t1_q5', '8')">Провери</button>
-            <button class="btn" onclick="toggleSolution('sol_t1_q5')">Прикажи поступак</button>
-            <span id="t1_q5_feedback" class="feedback"></span>
-            <div id="sol_t1_q5" class="solution">
-                <strong>Поступак:</strong> Троуглови $\Delta MNC$ и $\Delta ABC$ су слични јер је $MN || AB$. Из сличности важи $\frac{MN}{AB} = \frac{CM}{AC} \Rightarrow \frac{6}{18} = \frac{CM}{12} \Rightarrow \frac{1}{3} = \frac{CM}{12} \Rightarrow CM = 4$ cm. Дужина $AM = AC - CM = 12 - 4 = 8$ cm.
-            </div>
-        </div>
-    </div>
-
-    <div class="box">
-        <h2>4. Тест 2 за самопроверу</h2>
-        
-        <!-- Задатак 1 -->
-        <div style="margin-bottom: 20px; border-bottom: 1px dashed #ccc; padding-bottom: 15px;">
-            <p><span class="level">Ниво 1:</span> Квадрат странице $a=4$ cm сличан је квадрату странице $a'=12$ cm. Колико пута је површина већег квадрата већа од површине мањег квадрата?</p>
-            <input type="text" id="t2_q1" class="input-ans" placeholder="Унесите број">
-            <button class="btn btn-check" onclick="checkAnswer('t2_q1', '9')">Провери</button>
-            <button class="btn" onclick="toggleSolution('sol_t2_q1')">Прикажи поступак</button>
-            <span id="t2_q1_feedback" class="feedback"></span>
-            <div id="sol_t2_q1" class="solution">
-                <strong>Поступак:</strong> Коефицијент сличности је $k = \frac{12}{4} = 3$. Однос површина је $k^2 = 3^2 = 9$. Дакле, већа је 9 пута.
-            </div>
-        </div>
-
-        <!-- Задатак 2 -->
-        <div style="margin-bottom: 20px; border-bottom: 1px dashed #ccc; padding-bottom: 15px;">
-            <p><span class="level">Ниво 1:</span> Две одговарајуће странице сличних троуглова су $b=5$ cm и $b'=15$ cm. Ако је висина мањег троугла $h_b=3$ cm, колико износи одговарајућа висина $h_b'$ већег троугла (у cm)?</p>
-            <input type="text" id="t2_q2" class="input-ans" placeholder="Унесите број">
-            <button class="btn btn-check" onclick="checkAnswer('t2_q2', '9')">Провери</button>
-            <button class="btn" onclick="toggleSolution('sol_t2_q2')">Прикажи поступак</button>
-            <span id="t2_q2_feedback" class="feedback"></span>
-            <div id="sol_t2_q2" class="solution">
-
 </body>
 </html>
