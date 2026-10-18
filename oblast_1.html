@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математика 1 - Пропорционалност</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        header { background: #2c3e50; color: #fff; padding: 20px 0; text-align: center; margin-bottom: 30px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { color: #2c3e50; }
+        .nav-links { margin-bottom: 20px; }
+        .nav-links a { color: #3498db; text-decoration: none; font-weight: bold; }
+        .card { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .formula { background: #eef2f3; border-left: 5px solid #00b4d8; padding: 10px 15px; font-family: 'Courier New', Courier, monospace; margin: 10px 0; font-size: 1.1em; }
+        .task { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .task:last-child { border-bottom: none; }
+        .btn { background: #3498db; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9em; margin-top: 10px; }
+        .btn:hover { background: #2980b9; }
+        .btn-check { background: #2ecc71; }
+        .btn-check:hover { background: #27ae60; }
+        .solution { display: none; background: #f9f9f9; border-left: 5px solid #2ecc71; padding: 15px; margin-top: 15px; border-radius: 4px; }
+        .feedback { font-weight: bold; margin-top: 10px; }
+        .correct { color: #2ecc71; }
+        .incorrect { color: #e74c3c; }
+        input[type="text"] { padding: 8px; width: 200px; border: 1px solid #ccc; border-radius: 4px; font-family: sans-serif; }
+        .level-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; color: white; font-weight: bold; margin-bottom: 10px; }
+        .level-1 { background: #2ecc71; }
+        .level-2 { background: #f39c12; }
+        .level-3 { background: #e74c3c; }
+    </style>
+    <script>
+        function checkAnswer(id, correctVal) {
+            var inputVal = document.getElementById('input-' + id).value.trim();
+            var feedback = document.getElementById('feedback-' + id);
+            if (inputVal === correctVal) {
+                feedback.innerHTML = "✅ Тачно!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "❌ Нетачно. Покушајте поново или погледајте поступак.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+        function toggleSolution(id) {
+            var sol = document.getElementById('sol-' + id);
+            if (sol.style.display === "none" || sol.style.display === "") {
+                sol.style.display = "block";
+            } else {
+                sol.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Пропорционалност</h1>
+            <p>1. разред средње школе - Математика</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">← Назад на почетну страну</a>
+        </div>
+        
+        <div class="card">
+            <h2>📘 Теоријски преглед и материјали</h2>
+            <p>Пропорционалност описује међусобну зависност две величине. Размера је количник две истоврсне величине. Директна пропорционалност значи да повећањем једне величине, друга расте исти број пута ($y = kx$). Обрнута значи да повећањем једне, друга опада ($y = k/x$).</p>
+        </div>
+
+        <div class="card">
+            <h2>📐 Важне формуле</h2>
+            
+<div class="formula">Размера: a : b = k</div>
+<div class="formula">Пропорција: a : b = c : d &rArr; a &middot; d = b &middot; c</div>
+<div class="formula">Проценат: P = (G &middot; p) / 100</div>
+
+        </div>
+
+        <div class="card">
+            <h2>📝 Поступно решени задаци за вежбање</h2>
+            
+        <div class="task">
+            <span class="level-badge level-1 gold">Ниво 1</span>
+            <p><strong>Задатак 1:</strong> Ако је размера $a : b = 3 : 4$ и $a = 12$, нађи $b$.</p>
+            <button class="btn" onclick="toggleSolution('solved-0')">Прикажи решење</button>
+            <div id="sol-solved-0" class="solution">
+                <p><strong>Поступак:</strong></p>
+                <p>$12 : b = 3 : 4 \Rightarrow 3b = 48 \Rightarrow b = 16$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2 gold">Ниво 2</span>
+            <p><strong>Задатак 2:</strong> Цена књиге је повећана са 800 динара на 960 динара. Колики је проценат поскупљења?</p>
+            <button class="btn" onclick="toggleSolution('solved-1')">Прикажи решење</button>
+            <div id="sol-solved-1" class="solution">
+                <p><strong>Поступак:</strong></p>
+                <p>Разлика је $960 - 800 = 160$. Проценат рачунамо као $p = (160 / 800) \cdot 100 = 0.2 \cdot 100 = 20\%$.</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+            <h2>🏁 Тест 1 за самопроверу (5 задатака)</h2>
+            
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 1:</strong> Реши пропорцију $x : 5 = 12 : 3$.</p>
+            <input type="text" id="input-test-1-0" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-0', '20')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-0')">Прикажи поступак</button>
+            <div id="feedback-test-1-0" class="feedback"></div>
+            <div id="sol-test-1-0" class="solution">
+                <p><strong>Тачан одговор:</strong> 20</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$3x = 60 \Rightarrow x = 20$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 2:</strong> Израчунај 15% од броја 200.</p>
+            <input type="text" id="input-test-1-1" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-1', '30')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-1')">Прикажи поступак</button>
+            <div id="feedback-test-1-1" class="feedback"></div>
+            <div id="sol-test-1-1" class="solution">
+                <p><strong>Тачан одговор:</strong> 30</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$P = (200 \cdot 15) / 100 = 30$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 3:</strong> Три радника заврше посао за 8 дана. За колико дана ће исти посао завршити 4 радника?</p>
+            <input type="text" id="input-test-1-2" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-2', '6')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-2')">Прикажи поступак</button>
+            <div id="feedback-test-1-2" class="feedback"></div>
+            <div id="sol-test-1-2" class="solution">
+                <p><strong>Тачан одговор:</strong> 6</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Обрнута пропорционалност: $3 : 4 = x : 8 \Rightarrow 4x = 24 \Rightarrow x = 6$ дана.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 4:</strong> Ако 5kg јабука кошта 400 динара, колико кошта 7kg јабука?</p>
+            <input type="text" id="input-test-1-3" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-3', '560')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-3')">Прикажи поступак</button>
+            <div id="feedback-test-1-3" class="feedback"></div>
+            <div id="sol-test-1-3" class="solution">
+                <p><strong>Тачан одговор:</strong> 560</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Директна пропорционалност: $5 : 7 = 400 : x \Rightarrow 5x = 2800 \Rightarrow x = 560$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-3">Ниво 3</span>
+            <p><strong>Задатак 5:</strong> Цена артикла је смањена за 10%, а затим је нова цена смањена за још 20%. Колики је укупни проценат снижења?</p>
+            <input type="text" id="input-test-1-4" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-4', '28')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-4')">Прикажи поступак</button>
+            <div id="feedback-test-1-4" class="feedback"></div>
+            <div id="sol-test-1-4" class="solution">
+                <p><strong>Тачан одговор:</strong> 28</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Почетна цена $G$. Након првог снижења: $0.9G$. Након другог: $0.9G \cdot 0.8 = 0.72G$. Укупно снижење је $100\% - 72\% = 28\%$.</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+            <h2>🏁 Тест 2 за самопроверу (5 задатака)</h2>
+            
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 1:</strong> Нађи $x$ ако је $2 : 3 = 8 : x$.</p>
+            <input type="text" id="input-test-2-0" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-0', '12')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-0')">Прикажи поступак</button>
+            <div id="feedback-test-2-0" class="feedback"></div>
+            <div id="sol-test-2-0" class="solution">
+                <p><strong>Тачан одговор:</strong> 12</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$2x = 24 \Rightarrow x = 12$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 2:</strong> Који број износи 20% од 150?</p>
+            <input type="text" id="input-test-2-1" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-1', '30')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-1')">Прикажи поступак</button>
+            <div id="feedback-test-2-1" class="feedback"></div>
+            <div id="sol-test-2-1" class="solution">
+                <p><strong>Тачан одговор:</strong> 30</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$150 \cdot 0.2 = 30$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 3:</strong> Ауто пређе 240km за 3 сата. Колико пређе за 5 сати при истој брзини?</p>
+            <input type="text" id="input-test-2-2" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-2', '400')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-2')">Прикажи поступак</button>
+            <div id="feedback-test-2-2" class="feedback"></div>
+            <div id="sol-test-2-2" class="solution">
+                <p><strong>Тачан одговор:</strong> 400</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$3 : 5 = 240 : x \Rightarrow 3x = 1200 \Rightarrow x = 400$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 4:</strong> Ако 6 цеви напуни базен за 10 сати, за колико сати ће га напунити 5 цеви?</p>
+            <input type="text" id="input-test-2-3" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-3', '12')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-3')">Прикажи поступак</button>
+            <div id="feedback-test-2-3" class="feedback"></div>
+            <div id="sol-test-2-3" class="solution">
+                <p><strong>Тачан одговор:</strong> 12</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Обрнута пропорционалност: $6 : 5 = x : 10 \Rightarrow 5x = 60 \Rightarrow x = 12$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-3">Ниво 3</span>
+            <p><strong>Задатак 5:</strong> Са 20% зараде производ је продат за 1200 динара. Колика је набавна цена?</p>
+            <input type="text" id="input-test-2-4" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-4', '1000')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-4')">Прикажи поступак</button>
+            <div id="feedback-test-2-4" class="feedback"></div>
+            <div id="sol-test-2-4" class="solution">
+                <p><strong>Тачан одговор:</strong> 1000</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$1.2 \cdot G = 1200 \Rightarrow G = 1200 / 1.2 = 1000$.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

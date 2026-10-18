@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математика 1 - Рационални алгебарски изрази</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        header { background: #2c3e50; color: #fff; padding: 20px 0; text-align: center; margin-bottom: 30px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { color: #2c3e50; }
+        .nav-links { margin-bottom: 20px; }
+        .nav-links a { color: #3498db; text-decoration: none; font-weight: bold; }
+        .card { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .formula { background: #eef2f3; border-left: 5px solid #00b4d8; padding: 10px 15px; font-family: 'Courier New', Courier, monospace; margin: 10px 0; font-size: 1.1em; }
+        .task { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .task:last-child { border-bottom: none; }
+        .btn { background: #3498db; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9em; margin-top: 10px; }
+        .btn:hover { background: #2980b9; }
+        .btn-check { background: #2ecc71; }
+        .btn-check:hover { background: #27ae60; }
+        .solution { display: none; background: #f9f9f9; border-left: 5px solid #2ecc71; padding: 15px; margin-top: 15px; border-radius: 4px; }
+        .feedback { font-weight: bold; margin-top: 10px; }
+        .correct { color: #2ecc71; }
+        .incorrect { color: #e74c3c; }
+        input[type="text"] { padding: 8px; width: 200px; border: 1px solid #ccc; border-radius: 4px; font-family: sans-serif; }
+        .level-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; color: white; font-weight: bold; margin-bottom: 10px; }
+        .level-1 { background: #2ecc71; }
+        .level-2 { background: #f39c12; }
+        .level-3 { background: #e74c3c; }
+    </style>
+    <script>
+        function checkAnswer(id, correctVal) {
+            var inputVal = document.getElementById('input-' + id).value.trim();
+            var feedback = document.getElementById('feedback-' + id);
+            if (inputVal === correctVal) {
+                feedback.innerHTML = "✅ Тачно!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "❌ Нетачно. Покушајте поново или погледајте поступак.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+        function toggleSolution(id) {
+            var sol = document.getElementById('sol-' + id);
+            if (sol.style.display === "none" || sol.style.display === "") {
+                sol.style.display = "block";
+            } else {
+                sol.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Рационални алгебарски изрази</h1>
+            <p>1. разред средње школе - Математика</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">← Назад на почетну страну</a>
+        </div>
+        
+        <div class="card">
+            <h2>📘 Теоријски преглед и материјали</h2>
+            <p>Рационални алгебарски изрази су количници два полинома. Најважније је одредити услове дефинисаности (именилац не сме бити нула) и раставити полиноме на чиниоце ради скраћивања.</p>
+        </div>
+
+        <div class="card">
+            <h2>📐 Важне формуле</h2>
+            
+<div class="formula">Квадрат бинома: (a &plusmn; b)&sup2; = a&sup2; &plusmn; 2ab + b&sup2;</div>
+<div class="formula">Разлика квадрата: a&sup2; - b&sup2; = (a - b)(a + b)</div>
+
+        </div>
+
+        <div class="card">
+            <h2>📝 Поступно решени задаци за вежбање</h2>
+            
+        <div class="task">
+            <span class="level-badge level-1 gold">Ниво 1</span>
+            <p><strong>Задатак 1:</strong> Растави на чиниоце $x^2 - 9$.</p>
+            <button class="btn" onclick="toggleSolution('solved-0')">Прикажи решење</button>
+            <div id="sol-solved-0" class="solution">
+                <p><strong>Поступак:</strong></p>
+                <p>Користећи разлику квадрата: $x^2 - 3^2 = (x - 3)(x + 3)$.</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+            <h2>🏁 Тест 1 за самопроверу (5 задатака)</h2>
+            
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 1:</strong> Израчунај вредност израза $(x+2)^2$ за $x=3$.</p>
+            <input type="text" id="input-test-1-0" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-0', '25')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-0')">Прикажи поступак</button>
+            <div id="feedback-test-1-0" class="feedback"></div>
+            <div id="sol-test-1-0" class="solution">
+                <p><strong>Тачан одговор:</strong> 25</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$(3+2)^2 = 5^2 = 25$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 2:</strong> За коју вредност $x$ израз $5/(x-2)$ није дефинисан?</p>
+            <input type="text" id="input-test-1-1" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-1', '2')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-1')">Прикажи поступак</button>
+            <div id="feedback-test-1-1" class="feedback"></div>
+            <div id="sol-test-1-1" class="solution">
+                <p><strong>Тачан одговор:</strong> 2</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Именилац не сме бити 0. $x-2 = 0 \Rightarrow x = 2$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 3:</strong> Скрати израз $(x^2 - 1)/(x - 1)$ и израчунај његову вредност за $x=5$.</p>
+            <input type="text" id="input-test-1-2" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-2', '6')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-2')">Прикажи поступак</button>
+            <div id="feedback-test-1-2" class="feedback"></div>
+            <div id="sol-test-1-2" class="solution">
+                <p><strong>Тачан одговор:</strong> 6</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$(x-1)(x+1)/(x-1) = x+1$. За $x=5$, то је $5+1=6$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 4:</strong> Нађи степен монома $3x^2y^3$.</p>
+            <input type="text" id="input-test-1-3" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-3', '5')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-3')">Прикажи поступак</button>
+            <div id="feedback-test-1-3" class="feedback"></div>
+            <div id="sol-test-1-3" class="solution">
+                <p><strong>Тачан одговор:</strong> 5</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Степен је збир изложилаца: $2 + 3 = 5$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-3">Ниво 3</span>
+            <p><strong>Задатак 5:</strong> Након скраћивања израза $(x^2 - 4x + 4)/(x - 2)$, шта се добија као вредност за $x=10$?</p>
+            <input type="text" id="input-test-1-4" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-1-4', '8')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-1-4')">Прикажи поступак</button>
+            <div id="feedback-test-1-4" class="feedback"></div>
+            <div id="sol-test-1-4" class="solution">
+                <p><strong>Тачан одговор:</strong> 8</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$(x-2)^2 / (x-2) = x-2$. За $x=10$, решење је $10-2=8$.</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+            <h2>🏁 Тест 2 за самопроверу (5 задатака)</h2>
+            
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 1:</strong> Израчунај вредност израза $(x+2)^2$ за $x=3$.</p>
+            <input type="text" id="input-test-2-0" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-0', '25')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-0')">Прикажи поступак</button>
+            <div id="feedback-test-2-0" class="feedback"></div>
+            <div id="sol-test-2-0" class="solution">
+                <p><strong>Тачан одговор:</strong> 25</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$(3+2)^2 = 5^2 = 25$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-1">Ниво 1</span>
+            <p><strong>Задатак 2:</strong> За коју вредност $x$ израз $5/(x-2)$ није дефинисан?</p>
+            <input type="text" id="input-test-2-1" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-1', '2')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-1')">Прикажи поступак</button>
+            <div id="feedback-test-2-1" class="feedback"></div>
+            <div id="sol-test-2-1" class="solution">
+                <p><strong>Тачан одговор:</strong> 2</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Именилац не сме бити 0. $x-2 = 0 \Rightarrow x = 2$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 3:</strong> Скрати израз $(x^2 - 1)/(x - 1)$ и израчунај његову вредност за $x=5$.</p>
+            <input type="text" id="input-test-2-2" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-2', '6')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-2')">Прикажи поступак</button>
+            <div id="feedback-test-2-2" class="feedback"></div>
+            <div id="sol-test-2-2" class="solution">
+                <p><strong>Тачан одговор:</strong> 6</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$(x-1)(x+1)/(x-1) = x+1$. За $x=5$, то је $5+1=6$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-2">Ниво 2</span>
+            <p><strong>Задатак 4:</strong> Нађи степен монома $3x^2y^3$.</p>
+            <input type="text" id="input-test-2-3" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-3', '5')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-3')">Прикажи поступак</button>
+            <div id="feedback-test-2-3" class="feedback"></div>
+            <div id="sol-test-2-3" class="solution">
+                <p><strong>Тачан одговор:</strong> 5</p>
+                <p><strong>Поступак:</strong></p>
+                <p>Степен је збир изложилаца: $2 + 3 = 5$.</p>
+            </div>
+        </div>
+        <div class="task">
+            <span class="level-badge level-3">Ниво 3</span>
+            <p><strong>Задатак 5:</strong> Након скраћивања израза $(x^2 - 4x + 4)/(x - 2)$, шта се добија као вредност за $x=10$?</p>
+            <input type="text" id="input-test-2-4" placeholder="Унесите решење">
+            <button class="btn btn-check" onclick="checkAnswer('test-2-4', '8')">Провери</button>
+            <button class="btn" onclick="toggleSolution('test-2-4')">Прикажи поступак</button>
+            <div id="feedback-test-2-4" class="feedback"></div>
+            <div id="sol-test-2-4" class="solution">
+                <p><strong>Тачан одговор:</strong> 8</p>
+                <p><strong>Поступак:</strong></p>
+                <p>$(x-2)^2 / (x-2) = x-2$. За $x=10$, решење је $10-2=8$.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
