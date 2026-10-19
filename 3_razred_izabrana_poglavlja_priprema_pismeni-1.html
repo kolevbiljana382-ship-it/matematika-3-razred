@@ -66,5 +66,467 @@ footer { text-align:center; color:#5b6576; padding:18px; font-size:.9rem; }
 <script>
 function toggleAll(open) { document.querySelectorAll('details').forEach(d => d.open = open); }
 </script>
+  
+<!-- DODATAK: PRIPREMA IZ RELACIJA, III RAZRED -->
+<style>
+#relacije-priprema {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #202b3c;
+  background: #f5f8fc;
+  border-radius: 14px;
+  line-height: 1.65;
+}
+#relacije-priprema h2 {
+  color: #173b70;
+  text-align: center;
+}
+#relacije-priprema .uvod {
+  background: #e5efff;
+  padding: 14px;
+  border-radius: 10px;
+}
+#relacije-priprema .rel-zadatak {
+  background: white;
+  border: 1px solid #d6dfed;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px 0;
+}
+#relacije-priprema h3 {
+  color: #174d8c;
+  margin-top: 0;
+}
+#relacije-priprema .nivo {
+  color: #5b6473;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+#relacije-priprema details {
+  margin-top: 12px;
+  border-top: 1px solid #d6dfed;
+  padding-top: 10px;
+}
+#relacije-priprema summary {
+  color: #14532d;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 0;
+}
+#relacije-priprema .resenje {
+  background: #f0fdf4;
+  border-left: 4px solid #26945b;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+#relacije-priprema .formula {
+  font-weight: bold;
+  color: #173b70;
+}
+#relacije-priprema .rel-dugmad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+#relacije-priprema button {
+  background: #174d8c;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 15px;
+}
+#relacije-priprema button:hover {
+  background: #0e3565;
+}
+#relacije-priprema .zakljucak {
+  background: #fff7df;
+  padding: 12px;
+  border-radius: 8px;
+}
+@media(max-width:600px) {
+  #relacije-priprema {
+    padding: 12px;
+    margin: 12px auto;
+  }
+  #relacije-priprema .rel-zadatak {
+    padding: 12px;
+  }
+}
+</style>
+
+<section id="relacije-priprema">
+  <h2>Припрема за писмени задатак</h2>
+  <h2>Релације – III разред</h2>
+
+  <div class="uvod">
+    <strong>Области:</strong> особине релација, релације еквиваленције,
+    класе еквиваленције и релације парцијалног поретка.
+    <br>
+    <strong>Упутство:</strong> прво самостално реши задатак, а затим
+    отвори „Прикажи детаљно решење“ и провери поступак.
+  </div>
+
+  <div class="rel-dugmad">
+    <button type="button" onclick="relacijePrikazi(true)">
+      Прикажи сва решења
+    </button>
+    <button type="button" onclick="relacijePrikazi(false)">
+      Сакриј сва решења
+    </button>
+  </div>
+
+  <!-- ZADATAK 1 -->
+  <article class="rel-zadatak">
+    <div class="nivo">Задатак 1 · Средњи ниво · 5 бодова</div>
+    <h3>Испитивање особина релације</h3>
+
+    На скупу A = {1, 2, 3} дата је релација
+
+    <p class="formula">
+      R = {(1,1), (1,2), (2,1), (2,2), (3,3)}.
+    </p>
+
+    Испитати да ли је релација рефлексивна, симетрична,
+    антисиметрична и транзитивна. Да ли је релација еквиваленције?
+    Одредити класе еквиваленције ако постоје.
+
+    <details>
+      <summary>Прикажи детаљно решење</summary>
+      <div class="resenje">
+        <p><strong>1. Рефлексивност</strong></p>
+        Релација је рефлексивна ако садржи пар (a,a) за сваки
+        елемент a из скупа A.
+
+        Пошто су (1,1), (2,2) и (3,3) у релацији, релација је
+        <strong>рефлексивна</strong>.
+
+        <p><strong>2. Симетричност</strong></p>
+        Ако је (a,b) у релацији, мора и (b,a) бити у релацији.
+
+        Парови (1,2) и (2,1) су оба присутни. Дијагонални парови
+        су симетрични сами себи. Зато је релација
+        <strong>симетрична</strong>.
+
+        <p><strong>3. Антисиметричност</strong></p>
+        Антисиметричност захтева да из aRb и bRa следи a = b.
+
+        Али важи 1R2 и 2R1, док је 1 различито од 2.
+        Зато релација <strong>није антисиметрична</strong>.
+
+        <p><strong>4. Транзитивност</strong></p>
+        Елементи 1 и 2 су међусобно повезани у оба смера, а
+        елемент 3 је повезан сам са собом. Сваки пут када постоје
+        парови (a,b) и (b,c), у датом скупу парова постоји и (a,c).
+
+        Зато је релација <strong>транзитивна</strong>.
+
+        <p><strong>5. Закључак и класе</strong></p>
+        Релација је рефлексивна, симетрична и транзитивна, па је
+        релација еквиваленције.
+
+        Елементи 1 и 2 припадају истој класи, док је 3 сам у својој класи:
+
+        <p class="formula">[1] = [2] = {1, 2}</p>
+        <p class="formula">[3] = {3}</p>
+
+        Количнички скуп је:
+        <p class="formula">A/R = {{1, 2}, {3}}.</p>
+      </div>
+    </details>
+  </article>
+
+  <!-- ZADATAK 2 -->
+  <article class="rel-zadatak">
+    <div class="nivo">Задатак 2 · Средњи ниво · 5 бодова</div>
+    <h3>Релација дељивости и парцијални поредак</h3>
+
+    На скупу A = {1, 2, 3, 6} дефинисана је релација:
+
+    <p class="formula">aRb ако и само ако a дели b.</p>
+
+    а) Записати све уређене парове релације.
+    б) Испитати рефлексивност, антисиметричност и транзитивност.
+    в) Да ли је ово линеарни поредак?
+
+    <details>
+      <summary>Прикажи детаљно решење</summary>
+      <div class="resenje">
+        <p><strong>а) Уређени парови</strong></p>
+        Број 1 дели сваки елемент скупа. Број 2 дели 2 и 6.
+        Број 3 дели 3 и 6. Број 6 дели само 6.
+
+        Зато је:
+
+        <p class="formula">
+          R = {(1,1), (1,2), (1,3), (1,6), (2,2),
+          (2,6), (3,3), (3,6), (6,6)}.
+        </p>
+
+        <p><strong>б) Особине релације</strong></p>
+
+        <strong>Рефлексивност:</strong> сваки број дели самог себе,
+        па је aRa за сваки a из A. Релација је рефлексивна.
+
+        <br><br>
+
+        <strong>Антисиметричност:</strong> ако a дели b и b дели a,
+        за позитивне целе бројеве следи a = b. Релација је
+        антисиметрична.
+
+        <br><br>
+
+        <strong>Транзитивност:</strong> ако a дели b, а b дели c,
+        онда a дели c. Релација је транзитивна.
+
+        <p><strong>в) Линеарни поредак?</strong></p>
+        Линеарни поредак захтева да се свака два елемента могу
+        упоредити. Међутим, 2 не дели 3, а ни 3 не дели 2.
+
+        Зато ова релација није линеарни поредак, већ
+        <strong>парцијални поредак</strong>.
+      </div>
+    </details>
+  </article>
+
+  <!-- ZADATAK 3 -->
+  <article class="rel-zadatak">
+    <div class="nivo">Задатак 3 · Средњи ниво · 5 бодова</div>
+    <h3>Релација конгруенције</h3>
+
+    На скупу целих бројева Z дефинисана је релација:
+
+    <p class="formula">
+      aRb ако и само ако је a − b дељиво са 3.
+    </p>
+
+    а) Доказати да је R релација еквиваленције.
+    б) Одредити класе еквиваленције [0], [1] и [2].
+    в) Колико елемената има количнички скуп Z/R?
+
+    <details>
+      <summary>Прикажи детаљно решење</summary>
+      <div class="resenje">
+        <p><strong>а) Рефлексивност</strong></p>
+        За сваки цео број a важи:
+
+        <p class="formula">a − a = 0 = 3 · 0.</p>
+
+        Нула је дељива са 3, па је aRa. Релација је рефлексивна.
+
+        <p><strong>Симетричност</strong></p>
+        Ако је aRb, онда је a − b = 3k за неки цео број k.
+
+        Тада је:
+
+        <p class="formula">b − a = −(a − b) = −3k = 3(−k).</p>
+
+        Пошто је −k цео број, b − a је дељиво са 3.
+        Релација је симетрична.
+
+        <p><strong>Транзитивност</strong></p>
+        Ако је a − b = 3k и b − c = 3m, онда:
+
+        <p class="formula">
+          a − c = (a − b) + (b − c) = 3k + 3m = 3(k + m).
+        </p>
+
+        Пошто је k + m цео број, a − c је дељиво са 3.
+        Релација је транзитивна.
+
+        Дакле, R је релација еквиваленције.
+
+        <p><strong>б) Класе еквиваленције</strong></p>
+        Сваки цео број при дељењу са 3 има остатак 0, 1 или 2.
+
+        <p class="formula">
+          [0] = {..., −6, −3, 0, 3, 6, 9, ...}
+        </p>
+        <p class="formula">
+          [1] = {..., −5, −2, 1, 4, 7, 10, ...}
+        </p>
+        <p class="formula">
+          [2] = {..., −4, −1, 2, 5, 8, 11, ...}
+        </p>
+
+        <p><strong>в) Количнички скуп</strong></p>
+        Постоје тачно три различите класе:
+
+        <p class="formula">Z/R = {[0], [1], [2]}.</p>
+
+        Количнички скуп има <strong>3 елемента</strong>.
+      </div>
+    </details>
+  </article>
+
+  <!-- ZADATAK 4 -->
+  <article class="rel-zadatak">
+    <div class="nivo">Задатак 4 · Напредни ниво · 6 бодова</div>
+    <h3>Провера особина релације на коначном скупу</h3>
+
+    На скупу A = {a, b, c} дата је релација:
+
+    <p class="formula">
+      R = {(a,a), (b,b), (c,c), (a,b), (b,c)}.
+    </p>
+
+    Испитати да ли је релација рефлексивна, симетрична,
+    антисиметрична и транзитивна. Да ли је релација еквиваленције
+    или парцијалног поретка?
+
+    <details>
+      <summary>Прикажи детаљно решење</summary>
+      <div class="resenje">
+        <p><strong>1. Рефлексивност</strong></p>
+        Сви дијагонални парови су присутни:
+        (a,a), (b,b), (c,c). Зато је релација рефлексивна.
+
+        <p><strong>2. Симетричност</strong></p>
+        Пар (a,b) је у релацији, али (b,a) није.
+        Зато релација није симетрична.
+
+        <p><strong>3. Антисиметричност</strong></p>
+        Не постоје различити елементи x и y за које су истовремено
+        (x,y) и (y,x) у релацији. Зато је релација антисиметрична.
+
+        <p><strong>4. Транзитивност</strong></p>
+        У релацији имамо:
+
+        <p class="formula">aRb и bRc.</p>
+
+        Ако би релација била транзитивна, морало би да важи aRc,
+        односно пар (a,c) морао би бити у релацији.
+
+        Међутим, (a,c) није у датом скупу парова.
+        Зато релација није транзитивна.
+
+        <p><strong>5. Закључак</strong></p>
+        Релација није еквиваленција јер није симетрична и није
+        транзитивна.
+
+        Такође није парцијални поредак, јер није транзитивна,
+        иако јесте рефлексивна и антисиметрична.
+      </div>
+    </details>
+  </article>
+
+  <!-- ZADATAK 5 -->
+  <article class="rel-zadatak">
+    <div class="nivo">Задатак 5 · Напредни ниво · 6 бодова</div>
+    <h3>Релација на скупу реалних бројева</h3>
+
+    На скупу реалних бројева R дефинисана је релација:
+
+    <p class="formula">
+      xRy ако и само ако је x − y рационалан број.
+    </p>
+
+    а) Доказати да је R релација еквиваленције.
+    б) Одредити класу еквиваленције броја 0.
+    в) Описати класу еквиваленције произвољног реалног броја a.
+    г) Одредити да ли су бројеви √2 и √2 + 3 у релацији.
+
+    <details>
+      <summary>Прикажи детаљно решење</summary>
+      <div class="resenje">
+        <p><strong>а) Рефлексивност</strong></p>
+        За сваки реалан број x:
+
+        <p class="formula">x − x = 0.</p>
+
+        Број 0 је рационалан, па важи xRx. Релација је рефлексивна.
+
+        <p><strong>Симетричност</strong></p>
+        Ако важи xRy, онда је x − y рационалан број.
+
+        Тада је и:
+
+        <p class="formula">y − x = −(x − y).</p>
+
+        Негативан број рационалног броја такође је рационалан.
+        Зато важи yRx. Релација је симетрична.
+
+        <p><strong>Транзитивност</strong></p>
+        Ако је xRy и yRz, онда су x − y и y − z рационални бројеви.
+
+        Њихов збир је:
+
+        <p class="formula">
+          (x − y) + (y − z) = x − z.
+        </p>
+
+        Збир два рационална броја је рационалан, па важи xRz.
+        Релација је транзитивна.
+
+        Дакле, R је релација еквиваленције.
+
+        <p><strong>б) Класа броја 0</strong></p>
+        По дефиницији:
+
+        <p class="formula">
+          [0] = {x ∈ R : x − 0 ∈ Q}.
+        </p>
+
+        То су сви рационални бројеви:
+
+        <p class="formula">[0] = Q.</p>
+
+        <p><strong>в) Класа произвољног броја a</strong></p>
+        Број x припада класи [a] ако је x − a рационалан.
+
+        То значи да се x може записати као a + q, где је q рационалан:
+
+        <p class="formula">[a] = {a + q : q ∈ Q} = a + Q.</p>
+
+        Дакле, класа садржи све реалне бројеве који се од a разликују
+        за рационалан број.
+
+        <p><strong>г) Провера бројева</strong></p>
+        Посматрамо x = √2 и y = √2 + 3.
+
+        <p class="formula">
+          x − y = √2 − (√2 + 3) = −3.
+        </p>
+
+        Број −3 је рационалан, па важи:
+
+        <p class="formula">√2 R (√2 + 3).</p>
+
+        Зато су ова два броја у релацији.
+      </div>
+    </details>
+  </article>
+
+  <div class="zakljucak">
+    <strong>Подсетник за писмени:</strong>
+    <ul>
+      <li>Рефлексивност: сваки елемент је у релацији са самим собом.</li>
+      <li>Симетричност: из aRb следи bRa.</li>
+      <li>Антисиметричност: из aRb и bRa следи a = b.</li>
+      <li>Транзитивност: из aRb и bRc следи aRc.</li>
+      <li>Еквиваленција: рефлексивна, симетрична и транзитивна.</li>
+      <li>Парцијални поредак: рефлексиван, антисиметричан и транзитиван.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+function relacijePrikazi(prikazi) {
+  const odeljci = document.querySelectorAll(
+    '#relacije-priprema details'
+  );
+  odeljci.forEach(function(odeljak) {
+    odeljak.open = prikazi;
+  });
+}
+</script>
+<!-- KRAJ DODATKA -->
+
 </body>
 </html>
