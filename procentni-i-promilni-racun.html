@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procentni i promilni račun - 1. razred</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .login-box {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 450px;
+            margin: 3rem auto;
+        }
+
+        .login-box input {
+            width: 85%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: #e2e8f0;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .formula-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .task-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            background: #fafafa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-easy { background: #dcfce7; color: #166534; }
+        .badge-medium { background: #fef9c3; color: #854d0e; }
+        .badge-hard { background: #fee2e2; color: #991b1b; }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        input[type="number"], input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #94a3b8;
+            border-radius: 5px;
+            width: 140px;
+            font-size: 1rem;
+        }
+
+        button.btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.55rem 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        button.btn-step {
+            background: #64748b;
+            color: white;
+            border: none;
+            padding: 0.55rem 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .feedback {
+            margin-top: 0.75rem;
+            font-weight: bold;
+        }
+
+        .correct { color: var(--secondary); }
+        .incorrect { color: var(--danger); }
+
+        .solution-box {
+            display: none;
+            margin-top: 0.75rem;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 6px;
+            border-left: 3px solid #64748b;
+            font-size: 0.95rem;
+        }
+
+        .student-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Procentni i promilni račun</h1>
+    <p>Interaktivni materijal za 1. razred srednje škole</p>
+</header>
+
+<div id="login-screen" class="login-box">
+    <h2>Dobrodošli!</h2>
+    <p>Unesite svoje podatke pre početka rada kako bi nastavnik imao uvid u vaše vežbanje.</p>
+    <input type="text" id="student-name" placeholder="Ime i prezime" required>
+    <input type="text" id="student-class" placeholder="Odeljenje (npr. I-2)" required>
+    <br><br>
+    <button class="btn-primary" onclick="startLearning()">Započni učenje</button>
+</div>
+
+<div id="main-app" class="container" style="display: none;">
+    <div class="student-bar">
+        <span>Učenik: <strong id="display-name"></strong> (<span id="display-class"></span>)</span>
+        <span>Rešeno zadataka: <strong id="solved-count">0</strong></span>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'ukratko')">📖 Ukratko</button>
+        <button class="tab-btn" onclick="openTab(event, 'vezbaj')">✏️ Vežbaj (10 zadataka)</button>
+        <button class="tab-btn" onclick="openTab(event, 'test1')">📝 Test 1 (Procenti)</button>
+        <button class="tab-btn" onclick="openTab(event, 'test2')">📝 Test 2 (Promili i mešovito)</button>
+    </div>
+
+    <div id="ukratko" class="tab-content active">
+        <h2>Osnovni pojmovi i formule</h2>
+        
+        <h3>1. Procentni račun (%)</h3>
+        <p><strong>Procenat</strong> (lat. <em>pro centum</em> – od sto) predstavlja stoti deo neke veličine.</p>
+        <div class="formula-box">
+            <p><strong>1% = 1/100 = 0,01</strong></p>
+            <p>Osnovna proporcija procentnog računa: <strong>G : P = 100 : p</strong></p>
+            <ul>
+                <li><strong>G</strong> – glavnica (osnovna veličina, ono što predstavlja 100%)</li>
+                <li><strong>p</strong> – procentna stopa (broj procenata)</li>
+                <li><strong>P</strong> – procentni iznos (deo glavnice koji odgovara procentnoj stopi)</li>
+            </ul>
+            <p>Izvedene formule:</p>
+            <ul>
+                <li>Procentni iznos: <strong>P = (G · p) / 100</strong></li>
+                <li>Glavnica: <strong>G = (P · 100) / p</strong></li>
+                <li>Procentna stopa: <strong>p = (P · 100) / G</strong></li>
+            </ul>
+        </div>
+
+        <h3>2. Promilni račun (‰)</h3>
+        <p><strong>Promil</strong> (lat. <em>pro mille</em> – od hiljadu) predstavlja hiljaditi deo neke veličine. Koristi se kod malih udela (npr. salinitet mora, alkohol u krvi, kamate, porezi).</p>
+        <div class="formula-box">
+            <p><strong>1‰ = 1/1000 = 0,001</strong> (Važi i: <strong>1% = 10‰</strong>)</p>
+            <p>Osnovna proporcija promilnog računa: <strong>G : P = 1000 : p</strong></p>
+            <ul>
+                <li>Promilni iznos: <strong>P = (G · p) / 1000</strong></li>
+                <li>Glavnica: <strong>G = (P · 1000) / p</strong></li>
+                <li>Promilna stopa: <strong>p = (P · 1000) / G</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="vezbaj" class="tab-content">
+        <h2>Zadaci za vežbanje</h2>
+        <p>Reši zadatke u svesci, upiši konačan broj (za decimale koristi tačku, npr. <code>12.5</code>) i klikni na <strong>Proveri</strong>.</p>
+        <div id="vezbaj-container"></div>
+    </div>
+
+    <div id="test1" class="tab-content">
+        <h2>Test 1: Procentni račun</h2>
+        <p>Proveri svoje znanje na 5 zadataka iz procentnog računa.</p>
+        <div id="test1-container"></div>
+        <button class="btn-primary" style="margin-top: 1rem; background: var(--secondary);" onclick="submitTestResult('Test 1')">Pošalji rezultate testa nastavniku</button>
+        <p id="test1-status" style="font-weight: bold; color: var(--primary);"></p>
+    </div>
+
+    <div id="test2" class="tab-content">
+        <h2>Test 2: Promilni i mešoviti račun</h2>
+        <p>Proveri svoje znanje na 5 zadataka iz promilnog računa i primene.</p>
+        <div id="test2-container"></div>
+        <button class="btn-primary" style="margin-top: 1rem; background: var(--secondary);" onclick="submitTestResult('Test 2')">Pošalji rezultate testa nastavniku</button>
+        <p id="test2-status" style="font-weight: bold; color: var(--primary);"></p>
+    </div>
+</div>
+
+<script>
+    const FORMSPREE_URL = ""; 
+
+    let studentName = "";
+    let studentClass = "";
+    let solvedSet = new Set();
+
+    const tasksData = {
+        vezbaj: [
+            { id: 'v1', diff: 'Lakši (Procenti)', q: 'Izračunaj 15% od broja 240.', ans: 36, step: 'G = 240, p = 15%. <br>P = (240 · 15) / 100 = 3600 / 100 = 36.' },
+            { id: 'v2', diff: 'Lakši (Procenti)', q: 'Koji broj je 25% od nekog broja ako iznosi 45? (Nađi glavnicu G)', ans: 180, step: 'P = 45, p = 25%. <br>G = (45 · 100) / 25 = 45 · 4 = 180.' },
+            { id: 'v3', diff: 'Srednji (Procenti)', q: 'Jakna je koštala 8000 dinara, a zatim je snižena za 20%. Kolika je nova cena jakne?', ans: 6400, step: 'Sniženje je 20% od 8000 = (8000 · 20) / 100 = 1600 din. <br>Nova cena = 8000 - 1600 = 6400 dinara.' },
+            { id: 'v4', diff: 'Srednji (Procenti)', q: 'U odeljenju od 30 učenika, 18 učenika su devojčice. Koliko procenata učenika čine dečaci?', ans: 40, step: 'Broj dečaka je 30 - 18 = 12. <br>p = (12 · 100) / 30 = 1200 / 30 = 40%.' },
+            { id: 'v5', diff: 'Teži (Procenti)', q: 'Cena proizvoda je prvo povećana za 10%, a zatim nova cena snižena za 10%. Ako je početna cena bila 1000 din, kolika je konačna cena?', ans: 990, step: 'Posle poskupljenja od 10%: 1000 + 100 = 1100 din. <br>Posle sniženja od 10% na novu cenu: 10% od 1100 je 110 din. <br>Konačna cena: 1100 - 110 = 990 dinara.' },
+            { id: 'v6', diff: 'Lakši (Promili)', q: 'Izračunaj 4‰ od broja 5000.', ans: 20, step: 'G = 5000, p = 4‰. <br>P = (5000 · 4) / 1000 = 20000 / 1000 = 20.' },
+            { id: 'v7', diff: 'Lakši (Promili)', q: 'Koliko promila iznosi broj 14 u odnosu na broj 2000?', ans: 7, step: 'G = 2000, P = 14. <br>p = (14 · 1000) / 2000 = 14000 / 2000 = 7‰.' },
+            { id: 'v8', diff: 'Srednji (Promili)', q: 'Salinitet morske vode je 35‰. Koliko grama soli se nalazi u 4 kg (4000 g) te morske vode?', ans: 140, step: 'G = 4000 g, p = 35‰. <br>P = (4000 · 35) / 1000 = 4 · 35 = 140 grama soli.' },
+            { id: 'v9', diff: 'Srednji (Promili)', q: 'Prilikom transporta robe težine 12000 kg došlo je do kvara (kala) od 2.5‰. Koliko kilograma robe je oštećeno?', ans: 30, step: 'G = 12000, p = 2.5‰. <br>P = (12000 · 2.5) / 1000 = 12 · 2.5 = 30 kg.' },
+            { id: 'v10', diff: 'Teži (Promili)', q: 'Koliko litara morske vode saliniteta 28‰ treba ispariti da bi se dobilo 700 grama soli? (1 litar vode ≈ 1000 g)', ans: 25, step: 'P = 700 g, p = 28‰. <br>G = (700 · 1000) / 28 = 700000 / 28 = 25000 g. <br>Pošto 1 litar ima 1000 g, to je 25000 / 1000 = 25 litara.' }
+        ],
+        test1: [
+            { id: 't1_1', q: 'Koliko iznosi 35% od 400?', ans: 140, step: 'P = (400 · 35) / 100 = 4 · 35 = 140.' },
+            { id: 't1_2', q: 'Ako 12% nekog broja iznosi 48, koji je to broj?', ans: 400, step: 'G = (48 · 100) / 12 = 4 · 100 = 400.' },
+            { id: 't1_3', q: 'Patike koštaju 9000 dinara. Na akciji su snižene za 15%. Koliko dinara iznosi popust?', ans: 1350, step: 'Popust P = (9000 · 15) / 100 = 90 · 15 = 1350 dinara.' },
+            { id: 't1_4', q: 'Od 250 posađenih sadnica primilo se 235. Koliki procenat sadnica se NIJE primio?', ans: 6, step: 'Nije se primilo: 250 - 235 = 15 sadnica. <br>p = (15 · 100) / 250 = 1500 / 250 = 6%.' },
+            { id: 't1_5', q: 'Plata radnika od 60000 dinara povećana je za 8%. Kolika je nova plata?', ans: 64800, step: 'Povećanje: (60000 · 8) / 100 = 4800 din. <br>Nova plata: 60000 + 4800 = 64800 dinara.' }
+        ],
+        test2: [
+            { id: 't2_1', q: 'Izračunaj 8‰ od 2500.', ans: 20, step: 'P = (2500 · 8) / 1000 = 20000 / 1000 = 20.' },
+            { id: 't2_2', q: 'Pretvori 3.5% u promile (upiši samo broj).', ans: 35, step: 'Pošto je 1% = 10‰, onda je 3.5% = 3.5 · 10 = 35‰.' },
+            { id: 't2_3', q: 'Banka obračunava godišnju proviziju od 5‰ na iznos od 140000 dinara. Kolika je provizija?', ans: 700, step: 'P = (140000 · 5) / 1000 = 140 · 5 = 700 dinara.' },
+            { id: 't2_4', q: 'U 8000 g rastvora nalazi se 32 g čiste supstance. Kolika je koncentracija u promilima?', ans: 4, step: 'p = (32 · 1000) / 8000 = 32 / 8 = 4‰.' },
+            { id: 't2_5', q: 'Glavnica iznosi 50000 dinara. Kolika je razlika između 2% i 15‰ od te glavnice?', ans: 250, step: '2% = 20‰. Razlika je 20‰ - 15‰ = 5‰. <br>5‰ od 50000 je (50000 · 5) / 1000 = 250 dinara.' }
+        ]
+    };
+
+    function startLearning() {
+        const nameInput = document.getElementById('student-name').value.trim();
+        const classInput = document.getElementById('student-class').value.trim();
+
+        if (!nameInput || !classInput) {
+            alert("Molimo unesite ime, prezime i odeljenje.");
+            return;
+        }
+
+        studentName = nameInput;
+        studentClass = classInput;
+
+        document.getElementById('display-name').textContent = studentName;
+        document.getElementById('display-class').textContent = studentClass;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-app').style.display = 'block';
+
+        renderTasks('vezbaj', 'vezbaj-container');
+        renderTasks('test1', 'test1-container');
+        renderTasks('test2', 'test2-container');
+
+        sendAnalytics("Pristupio materijalu", "Učenik je otvorio stranicu i započeo rad.");
+    }
+
+    function renderTasks(category, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+
+        tasksData[category].forEach((task, index) => {
+            let badgeHtml = "";
+            if (task.diff) {
+                let badgeClass = task.diff.includes('Lakši') ? 'badge-easy' : (task.diff.includes('Srednji') ? 'badge-medium' : 'badge-hard');
+                badgeHtml = `<span class="badge ${badgeClass}">${task.diff}</span><br>`;
+            }
+
+            const html = `
+                <div class="task-card">
+                    ${badgeHtml}
+                    <strong>Zadatak ${index + 1}:</strong> ${task.q}
+                    <div class="input-group">
+                        <input type="number" step="any" id="input_${task.id}" placeholder="Vaš odgovor...">
+                        <button class="btn-primary" onclick="checkAnswer('${task.id}', ${task.ans})">Proveri</button>
+                        <button class="btn-step" id="btn_step_${task.id}" onclick="toggleStep('${task.id}')">Pogledaj postupak</button>
+                    </div>
+                    <div class="feedback" id="feed_${task.id}"></div>
+                    <div class="solution-box" id="step_${task.id}">
+                        <strong>Postupak rešenja:</strong><br>${task.step}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+    }
+
+    function checkAnswer(taskId, correctAns) {
+        const inputVal = parseFloat(document.getElementById(`input_${taskId}`).value.replace(',', '.'));
+        const feedbackEl = document.getElementById(`feed_${taskId}`);
+        const stepBtn = document.getElementById(`btn_step_${taskId}`);
+
+        if (isNaN(inputVal)) {
+            feedbackEl.innerHTML = '<span class="incorrect">Unesite broj pre provere!</span>';
+            return;
+        }
+
+        stepBtn.style.display = 'inline-block';
+
+        if (Math.abs(inputVal - correctAns) < 0.01) {
+            feedbackEl.innerHTML = '<span class="correct">✅ Tačno! Odličan posao.</span>';
+            solvedSet.add(taskId);
+            document.getElementById('solved-count').textContent = solvedSet.size;
+        } else {
+            feedbackEl.innerHTML = `<span class="incorrect">❌ Netačno. Pokušaj ponovo ili pogledaj postupak.</span>`;
+        }
+    }
+
+    function toggleStep(taskId) {
+        const stepBox = document.getElementById(`step_${taskId}`);
+        stepBox.style.display = stepBox.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function openTab(evt, tabName) {
+        const contents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < contents.length; i++) {
+            contents[i].classList.remove("active");
+        }
+        const buttons = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    function submitTestResult(testName) {
+        let correctCount = 0;
+        tasksData[testName === 'Test 1' ? 'test1' : 'test2'].forEach(t => {
+            if (solvedSet.has(t.id)) correctCount++;
+        });
+
+        const details = `Završio ${testName}. Tačno rešeno: ${correctCount}/5 zadataka. Ukupno rešenih zadataka na stranici: ${solvedSet.size}.`;
+        sendAnalytics(`Završen ${testName}`, details);
+
+        const statusId = testName === 'Test 1' ? 'test1-status' : 'test2-status';
+        document.getElementById(statusId).textContent = `Rezultat (${correctCount}/5) je uspešno zabeležen!`;
+    }
+
+    function sendAnalytics(akcija, detalji) {
+        if (!FORMSPREE_URL) {
+            console.log("Formspree URL nije podešen. Podaci:", { studentName, studentClass, akcija, detalji });
+            return;
+        }
+
+        fetch(FORMSPREE_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({
+                Ucenik: studentName,
+                Odeljenje: studentClass,
+                Akcija: akcija,
+                Detalji: detalji,
+                Vreme: new Date().toLocaleString('sr-RS')
+            })
+        }).catch(err => console.error("Greška pri slanju:", err));
+    }
+</script>
+
+</body>
+</html>
