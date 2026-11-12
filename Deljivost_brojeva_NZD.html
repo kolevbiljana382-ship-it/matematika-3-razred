@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="sr-Cyrl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дељивост у скупу целих бројева и НЗД</title>
+<style>
+:root{--ink:#202b3c;--muted:#5d6b7c;--blue:#2457a6;--pale:#eef4ff;--line:#d9e1ec;--green:#176b43;--red:#a52c35;--gold:#8b5b00}
+*{box-sizing:border-box}body{margin:0;background:#f4f6fa;color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#183b70,#2c66b2);color:white;padding:34px 20px}
+.hero{max-width:1050px;margin:auto}h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.2;margin:0 0 10px}header p{margin:0;color:#e8efff}
+main{max-width:1050px;margin:24px auto;padding:0 16px 50px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:white;border-radius:10px;padding:11px 17px;font-weight:700;cursor:pointer;color:var(--ink)}
+.tab[aria-selected=true]{background:var(--blue);color:white;border-color:var(--blue)}
+.panel{display:none}.panel.active{display:block}
+.card{background:white;border:1px solid var(--line);border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 3px 12px #23344d0a}
+h2{margin:0 0 12px;font-size:1.45rem}h3{margin:16px 0 8px;font-size:1.12rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.rule{background:#f8faff;border:1px solid var(--line);border-radius:10px;padding:13px}
+.rule strong{color:var(--blue)}
+.formula{font-family:ui-monospace,Consolas,monospace;background:#f0f3f8;padding:2px 6px;border-radius:5px;white-space:normal}
+.task{border:1px solid var(--line);border-radius:12px;padding:15px;margin:12px 0;background:#fff}
+.task-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+.level{font-size:.78rem;font-weight:700;border-radius:20px;padding:2px 9px;background:#edf2fa;color:#365174}
+label{display:block;font-weight:650;margin:10px 0 5px}
+input[type=text],input[type=number]{width:min(100%,320px);padding:10px 11px;border:1px solid #aebbd0;border-radius:8px;font:inherit}
+button.action{border:0;border-radius:8px;background:var(--blue);color:white;padding:9px 14px;font-weight:700;cursor:pointer;margin:8px 6px 0 0}
+button.secondary{background:#e8eef8;color:#24436f}
+button:focus,input:focus,.tab:focus{outline:3px solid #9ec4ff;outline-offset:2px}
+.feedback{font-weight:700;margin-top:8px}.correct{color:var(--green)}.incorrect{color:var(--red)}
+.solution{display:none;background:#f5f8fc;border-left:4px solid #6b8fc2;padding:12px 15px;margin-top:10px;border-radius:0 8px 8px 0}
+.solution.open{display:block}.solution p{margin:5px 0}
+.small{font-size:.92rem;color:var(--muted)}
+.testintro{background:#fff8e8;border:1px solid #f0dfb8;padding:12px 14px;border-radius:10px}
+footer{color:var(--muted);text-align:center;font-size:.9rem;padding:20px}
+
+.login-overlay{position:fixed;inset:0;background:rgba(15,31,55,.78);z-index:1000;display:flex;align-items:center;justify-content:center;padding:18px}
+.login-box{background:white;width:min(100%,480px);border-radius:16px;padding:26px;box-shadow:0 18px 60px #0004}
+.login-box h2{margin-top:0}.login-box p{color:var(--muted)}
+.login-box input{width:100%;max-width:none}.login-box .action{width:100%;margin-top:16px;padding:12px}
+.login-error{color:var(--red);font-weight:700;min-height:1.4em}
+.student-strip{display:none;background:#eaf1fc;border:1px solid #cbd9ee;padding:9px 13px;border-radius:9px;margin-bottom:14px;font-size:.95rem}
+
+@media print{header{background:white;color:black;padding:10px}header p{color:black}.tabs,button{display:none!important}.panel{display:block!important}.card,.task{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+
+<div class="login-overlay" id="login-overlay">
+  <form class="login-box" id="login-form">
+    <h2>Пријава ученика</h2>
+    <p>Унеси тражене податке. Након пријаве отвориће се интерактивни материјал.</p>
+    <label for="student-name">Име и презиме</label>
+    <input id="student-name" type="text" required minlength="3" maxlength="80" autocomplete="name" placeholder="Унеси име и презиме">
+    <label for="student-class">Одељење</label>
+    <input id="student-class" type="text" required maxlength="20" placeholder="нпр. III-1">
+    <p class="login-error" id="login-error" aria-live="polite"></p>
+    <button class="action" type="submit">Приступи материјалу</button>
+    <p class="small">Подаци се користе за наставну евиденцију приступа и резултата тестова.</p>
+  </form>
+</div>
+
+<header><div class="hero">
+<h1>Дељивост у скупу целих бројева и НЗД</h1>
+<p>Изабрана поглавља математике · 3. разред средње школе</p>
+</div></header>
+<main>
+<div class="student-strip" id="student-strip"></div>
+<nav class="tabs" aria-label="Избор картице">
+<button class="tab" data-tab="short" aria-selected="true">Укратко</button>
+<button class="tab" data-tab="practice" aria-selected="false">Вежбај</button>
+<button class="tab" data-tab="test1" aria-selected="false">Тест 1</button>
+<button class="tab" data-tab="test2" aria-selected="false">Тест 2</button>
+</nav>
+
+<section id="short" class="panel active">
+<div class="card">
+<h2>Основни појмови</h2>
+<p>За целе бројеве a и b, где је a ≠ 0, кажемо да <strong>a дели b</strong> ако постоји цео број k такав да је <span class="formula">b = a · k</span>. Пишемо <span class="formula">a | b</span>. Ако такав цео број не постоји, онда a не дели b.</p>
+<p>Сваки цео број различит од нуле дели нулу. Број 1 и број −1 деле сваки цео број. Ако a | b и b | c, онда a | c.</p>
+</div>
+<div class="card">
+<h2>Правила дељивости</h2>
+<div class="grid">
+<div class="rule"><strong>Са 2</strong><br>Последња цифра је 0, 2, 4, 6 или 8.</div>
+<div class="rule"><strong>Са 3</strong><br>Збир цифара броја дељив је са 3.</div>
+<div class="rule"><strong>Са 4</strong><br>Број који образују последње две цифре дељив је са 4.</div>
+<div class="rule"><strong>Са 5</strong><br>Последња цифра је 0 или 5.</div>
+<div class="rule"><strong>Са 8</strong><br>Број који образују последње три цифре дељив је са 8.</div>
+<div class="rule"><strong>Са 9</strong><br>Збир цифара броја дељив је са 9.</div>
+<div class="rule"><strong>Са 10</strong><br>Последња цифра је 0.</div>
+<div class="rule"><strong>Са 11</strong><br>Разлика збира цифара на наизменичним позицијама дељива је са 11 (или је 0).</div>
+</div>
+<p class="small">Правила важе и за негативне целе бројеве: посматра се апсолутна вредност броја.</p>
+</div>
+<div class="card">
+<h2>Дељење са остатком</h2>
+<p>За сваки цео број a и природан број b постоје јединствени цели бројеви q и r такви да је:</p>
+<p class="formula">a = b · q + r, при чему је 0 ≤ r &lt; b.</p>
+<p>Број q је количник, а r остатак. Ако је r = 0, број a је дељив са b.</p>
+</div>
+<div class="card">
+<h2>Највећи заједнички делилац (НЗД)</h2>
+<p>НЗД два или више целих бројева је највећи позитиван број који дели сваки од тих бројева. За рачунање је довољно посматрати апсолутне вредности.</p>
+<p>Пример: делиоци броја 18 су 1, 2, 3, 6, 9, 18, а делиоци броја 24 су 1, 2, 3, 4, 6, 8, 12, 24. Зато је <span class="formula">НЗД(18, 24) = 6</span>.</p>
+</div>
+<div class="card">
+<h2>Еуклидов алгоритам</h2>
+<p>Већи број делимо мањим, а затим делилац делимо добијеним остатком. Поступак понављамо док остатак не буде 0. Последњи остатак различит од нуле је НЗД.</p>
+<p><strong>Пример:</strong></p>
+<p class="formula">252 = 2 · 105 + 42<br>105 = 2 · 42 + 21<br>42 = 2 · 21 + 0</p>
+<p>Последњи остатак различит од нуле је 21, па је <span class="formula">НЗД(252, 105) = 21</span>.</p>
+</div>
+</section>
+
+<section id="practice" class="panel">
+<div class="card"><h2>Вежбај</h2><p class="small">У сваком задатку покушај самостално да решиш проблем. Унеси резултат, притисни „Провери“, а затим отвори поступак.</p></div>
+<div id="practice-list"></div>
+</section>
+
+<section id="test1" class="panel">
+<div class="card"><h2>Тест 1</h2><div class="testintro">Тест садржи 5 задатака. Унеси одговор у предвиђено поље и притисни „Провери тест“. После провере можеш да погледаш поступак сваког задатка.</div><div id="test1-list"></div><button class="action" onclick="checkTest('test1')">Провери тест</button><p id="test1-total" class="feedback" aria-live="polite"></p></div>
+</section>
+<section id="test2" class="panel">
+<div class="card"><h2>Тест 2</h2><div class="testintro">Тест садржи 5 задатака. Унеси одговор у предвиђено поље и притисни „Провери тест“. После провере можеш да погледаш поступак сваког задатка.</div><div id="test2-list"></div><button class="action" onclick="checkTest('test2')">Провери тест</button><p id="test2-total" class="feedback" aria-live="polite"></p></div>
+</section>
+<footer>Интерактивни материјал за учење и самопроверу · Математика</footer>
+</main>
+<script>
+// ПАЖЊА: овде налепи URL Google Apps Script веб-апликације након њеног објављивања.
+const GOOGLE_SCRIPT_URL = "OVDE_NALEPI_GOOGLE_APPS_SCRIPT_URL";
+let student = null;
+let testResultsSent = {test1:false, test2:false};
+
+function sendToTeacher(payload){
+  if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("OVDE_NALEPI")){
+    console.warn("Евиденција није повезана: недостаје URL Google Apps Script-а.", payload);
+    return;
+  }
+  const body = "data=" + encodeURIComponent(JSON.stringify(payload));
+  fetch(GOOGLE_SCRIPT_URL, {
+    method:"POST",
+    mode:"no-cors",
+    headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+    body
+  }).catch(err=>console.error("Слање евиденције није успело:",err));
+}
+
+document.getElementById("login-form").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  const name = document.getElementById("student-name").value.trim().replace(/\s+/g," ");
+  const classroom = document.getElementById("student-class").value.trim().replace(/\s+/g," ");
+  if(name.split(" ").length < 2){
+    document.getElementById("login-error").textContent = "Унеси и име и презиме.";
+    return;
+  }
+  if(!classroom){
+    document.getElementById("login-error").textContent = "Унеси одељење.";
+    return;
+  }
+  student = {name, classroom};
+  document.getElementById("login-overlay").style.display = "none";
+  document.getElementById("student-strip").style.display = "block";
+  document.getElementById("student-strip").textContent = "Пријављен ученик: " + name + " · Одељење: " + classroom;
+  sendToTeacher({event:"Приступ материјалу", name, classroom, page:document.title, timestamp:new Date().toISOString()});
+});
+
+const practice = [
+{area:"Правила дељивости",items:[
+["Основни","Одреди да ли је 438 дељив са 2, 3 и 9. Унеси три одговора редом, раздвојена зарезом (ДА/НЕ).","ДА,ДА,НЕ","Последња цифра је 8, па је дељив са 2. Збир цифара је 4 + 3 + 8 = 15, па је дељив са 3, али није са 9."],
+["Основни","Које од бројева 124, 135, 208 и 310 је дељиво са 5? Унеси све такве бројеве редом, раздвојене зарезом.","135,310","Број је дељив са 5 ако се завршава цифром 0 или 5. То су 135 и 310."],
+["Средњи","Одреди да ли је 7 316 дељив са 4 и 8. Унеси ДА/НЕ редом, раздвојено зарезом.","ДА,НЕ","Последње две цифре су 16, а 16 је дељиво са 4. Последње три цифре су 316; 316 није дељиво са 8."],
+["Средњи","Одреди да ли је 5 832 дељив са 3 и 9. Унеси ДА/НЕ редом.","ДА,ДА","Збир цифара је 5 + 8 + 3 + 2 = 18. Број 18 је дељив и са 3 и са 9."],
+["Напредни","Одреди цифру x тако да број 53x46 буде дељив са 11. Унеси цифру.","7","За дељивост са 11 разлика наизменичних збировa мора бити вишекратник броја 11. (5 + x + 6) − (3 + 4) = x + 4. Пошто x мора бити цифра, једино решење је x = 7, јер је x + 4 = 11."]
+]},
+{area:"Дељење са остатком",items:[
+["Основни","При дељењу броја 47 са 6 одреди остатак. Унеси само остатак.","5","47 = 6 · 7 + 5, па је остатак 5."],
+["Основни","Запиши количник при дељењу 83 са 9. Унеси само количник.","9","83 = 9 · 9 + 2, па је количник 9, а остатак 2."],
+["Средњи","Одреди остатак при дељењу броја −29 са 6, уз услов 0 ≤ r &lt; 6.","1","Тражимо −29 = 6q + r. Важи −29 = 6 · (−5) + 1, па је остатак 1."],
+["Средњи","Који је најмањи ненегативан број који треба додати броју 257 да би добијени збир био дељив са 8?","7","257 при дељењу са 8 даје остатак 1. До следећег вишекратника 8 недостаје 8 − 1 = 7."],
+["Напредни","Број n при дељењу са 7 даје количник 12 и остатак 5. Одреди n.","89","По формули n = 7 · 12 + 5 = 84 + 5 = 89."]
+]},
+{area:"НЗД",items:[
+["Основни","Одреди НЗД(18, 30).","6","Делиоци броја 18 су 1, 2, 3, 6, 9, 18. Заједнички делиоци са 30 су 1, 2, 3 и 6. Највећи је 6."],
+["Основни","Одреди НЗД(24, 40).","8","24 = 2³ · 3, а 40 = 2³ · 5. Заједнички прост чинилац је 2³, па је НЗД = 8."],
+["Средњи","Одреди НЗД(48, 72, 120).","24","НЗД(48,72) = 24, а 120 је дељиво са 24. Зато је НЗД сва три броја 24."],
+["Средњи","Од 36 црвених и 48 плавих перлица праве се једнаки комплети без остатка. Колико највише комплета може да се направи?","12","Највећи број једнаких комплета је НЗД(36,48) = 12."],
+["Напредни","Одреди највећи број којим се могу поделити 144 и 210 тако да остаци буду 0.","6","Тражени број је НЗД(144,210). Пошто је 210 − 144 = 66, а Еуклидовим алгоритмом добијамо 144 = 2·66 + 12; 66 = 5·12 + 6; 12 = 2·6, НЗД је 6."]
+]},
+{area:"Еуклидов алгоритам",items:[
+["Основни","Применом Еуклидовог алгоритма одреди НЗД(42, 30).","6","42 = 1·30 + 12; 30 = 2·12 + 6; 12 = 2·6 + 0. Последњи ненулти остатак је 6."],
+["Основни","Одреди НЗД(56, 35) Еуклидовим алгоритмом.","7","56 = 1·35 + 21; 35 = 1·21 + 14; 21 = 1·14 + 7; 14 = 2·7 + 0. НЗД је 7."],
+["Средњи","Одреди НЗД(252, 105).","21","252 = 2·105 + 42; 105 = 2·42 + 21; 42 = 2·21 + 0. НЗД је 21."],
+["Средњи","Одреди НЗД(391, 299).","23","391 = 1·299 + 92; 299 = 3·92 + 23; 92 = 4·23 + 0. НЗД је 23."],
+["Напредни","Одреди НЗД(1001, ант)".replace("ант","728"),"91","1001 = 1·728 + 273; 728 = 2·273 + 182; 273 = 1·182 + 91; 182 = 2·91 + 0. НЗД је 91."]
+]}
+];
+
+const tests = {
+test1:[
+["Одреди да ли је 4 536 дељив са 2, 3, 4, 8 и 9. Унеси ДА/НЕ редом, раздвојено зарезима.","ДА,ДА,ДА,ДА,ДА","Последња цифра је 6 (дељив са 2). Збир цифара је 18 (са 3 и 9). Последње две цифре 36 дељиве су са 4. Последње три цифре 536 = 8·67, па је дељив са 8."],
+["Одреди цифру x тако да 72x5 буде дељив са 3. Унеси најмању могућу цифру.","0","Збир цифара је 7 + 2 + x + 5 = 14 + x. Да би био дељив са 3, најмања цифра x која одговара је 1? 14+1=15, па је x=1."],
+["При дељењу броја 125 са 9 одреди количник и остатак. Унеси као количник,остатак.","13,8","125 = 9·13 + 8."],
+["Одреди НЗД(84, 126).","42","126 = 1·84 + 42; 84 = 2·42 + 0. НЗД је 42."],
+["Еуклидовим алгоритмом одреди НЗД(221, 143).","13","221 = 1·143 + 78; 143 = 1·78 + 65; 78 = 1·65 + 13; 65 = 5·13 + 0. НЗД је 13."]
+],
+test2:[
+["Одреди који је од бројева 1 242, 1 353 и 1 417 дељив са 11. Унеси број.","1353","За 1353: (1+5)−(3+3)=0, па је број дељив са 11. За 1242 је 1+4−(2+2)=1, а за 1417 је 1+1−(4+7)=−9."]
+,["Одреди остатак при дељењу броја −41 са 8, уз услов 0 ≤ r &lt; 8.","7","−41 = 8·(−6) + 7, па је остатак 7."],
+["Број n при дељењу са 12 даје количник 15 и остатак 7. Одреди n.","187","n = 12·15 + 7 = 180 + 7 = 187."],
+["Одреди НЗД(96, 144, 216).","24","НЗД(96,144)=48, а НЗД(48,216)=24. Зато је НЗД сва три броја 24."],
+["Еуклидовим алгоритмом одреди НЗД(867, 255).","51","867 = 3·255 + 102; 255 = 2·102 + 51; 102 = 2·51 + 0. НЗД је 51."]
+]
+};
+
+function norm(s){return s.trim().toLocaleUpperCase('sr-RS').replace(/\s+/g,'').replace(/[;|]/g,',').replace(/，/g,',');}
+function taskHTML(item,id,isTest=false){
+ const [level,question,answer,solution]=isTest?["Задатак",item[0],item[1],item[2]]:item;
+ return `<article class="task" data-id="${id}" data-answer="${answer}" data-solution="${solution.replace(/"/g,'&quot;')}">
+ <div class="task-top"><span class="level">${level}</span></div><div>${question}</div>
+ <label for="ans-${id}">Твој одговор</label><input id="ans-${id}" type="text" autocomplete="off" placeholder="Унеси одговор">
+ ${isTest?'':`<button class="action" onclick="checkOne('${id}')">Провери</button>`}
+ <button class="action secondary" onclick="showSolution('${id}')">Погледај поступак</button>
+ <div id="fb-${id}" class="feedback" aria-live="polite"></div><div id="sol-${id}" class="solution"></div>
+ </article>`;
+}
+function render(){
+ let p=document.getElementById('practice-list'),n=0;
+ practice.forEach(group=>{
+  p.innerHTML+=`<div class="card"><h2>${group.area}</h2>`;
+  group.items.forEach(item=>{p.innerHTML+=taskHTML(item,'p'+(++n));});
+  p.innerHTML+='</div>';
+ });
+ ['test1','test2'].forEach(t=>{
+  document.getElementById(t+'-list').innerHTML=tests[t].map((x,i)=>taskHTML(x,t+'-'+(i+1),true)).join('');
+ });
+}
+function checkOne(id){
+ const el=document.querySelector(`[data-id="${id}"]`),given=norm(document.getElementById('ans-'+id).value),correct=norm(el.dataset.answer);
+ const ok=given===correct,fb=document.getElementById('fb-'+id);
+ fb.className='feedback '+(ok?'correct':'incorrect');
+ fb.textContent=ok?'Тачно! Одлично урађено.':'Одговор није тачан. Покушај поново или отвори поступак.';
+}
+function showSolution(id){
+ const el=document.querySelector(`[data-id="${id}"]`),box=document.getElementById('sol-'+id);
+ box.innerHTML='<strong>Поступак:</strong><p>'+el.dataset.solution+'</p><p><strong>Тачан одговор:</strong> '+el.dataset.answer+'</p>';
+ box.classList.toggle('open');
+}
+function checkTest(test){
+ let score=0;
+ tests[test].forEach((x,i)=>{
+  const id=test+'-'+(i+1),given=norm(document.getElementById('ans-'+id).value),correct=norm(x[1]),ok=given===correct;
+  const fb=document.getElementById('fb-'+id);fb.className='feedback '+(ok?'correct':'incorrect');
+  fb.textContent=ok?'Тачно.':'Није тачно.';
+  if(ok)score++;
+  const sol=document.getElementById('sol-'+id);
+  sol.innerHTML='<strong>Поступак:</strong><p>'+x[2]+'</p><p><strong>Тачан одговор:</strong> '+x[1]+'</p>';
+  sol.classList.add('open');
+ });
+ document.getElementById(test+'-total').textContent=`Резултат: ${score} / 5 тачних одговора.`;
+ if(student && !testResultsSent[test]){
+   const answers = tests[test].map((x,i)=>({
+     task:i+1,
+     answer:document.getElementById('ans-'+test+'-'+(i+1)).value.trim(),
+     correct:norm(document.getElementById('ans-'+test+'-'+(i+1)).value)===norm(x[1])
+   }));
+   sendToTeacher({
+     event:"Завршен "+(test==="test1"?"Тест 1":"Тест 2"),
+     name:student.name, classroom:student.classroom,
+     score, maxScore:5, answers,
+     timestamp:new Date().toISOString()
+   });
+   testResultsSent[test]=true;
+ }
+}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected','false'));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+ btn.setAttribute('aria-selected','true');document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+render();
+</script>
+</body></html>
