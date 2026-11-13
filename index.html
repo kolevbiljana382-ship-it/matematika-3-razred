@@ -1449,36 +1449,6 @@ render();
 <div class="task"><b>3. (Средњи)</b> Одреди НЗД(252,198).<details><summary>Погледај поступак</summary>252=198+54; 198=54·3+36; 54=36+18; 36=18·2. НЗД=18.</details></div>
 <div class="task"><b>4. (Средњи)</b> Одреди НЗД(391,299).<details><summary>Погледај поступак</summary>391=299+92; 299=92·3+23; 92=23·4. НЗД=23.</details></div>
 <div class="task"><b>5. (Напредни)</b> Одреди НЗД(1001,637).<details><summary>Погледај поступак</summary>1001=637+364; 637=364+273; 364=273+91; 273=91·3. НЗД=91.</details></div>
-</section>
-<section class="panel" id="t1"><h2>Тест 1</h2><p>Унеси одговоре, па кликни „Провери тест“. Након провере добијаш повратну информацију и поступак решавања.</p><div id="q1"></div><button class="action" onclick="check('t1')">Провери тест</button><div id="r1" class="feedback"></div></section>
-<section class="panel" id="t2"><h2>Тест 2</h2><p>Унеси одговоре, па кликни „Провери тест“.</p><div id="q2"></div><button class="action" onclick="check('t2')">Провери тест</button><div id="r2" class="feedback"></div></section>
-<footer>Наставни материјал · Изабрана поглавља математике · III разред</footer></main></div>
-<script>
-/* За евиденцију у Google табели поставити Apps Script као веб-апликацију и унети њен URL. */
-const GOOGLE_SCRIPT_URL="";
-let pupil=null;
-function report(data){if(!GOOGLE_SCRIPT_URL)return;try{fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});}catch(e){console.warn(e);}}
-document.getElementById("loginForm").addEventListener("submit",e=>{e.preventDefault();let name=document.getElementById("nm").value.trim().replace(/\s+/g," "),cl=document.getElementById("cl").value.trim();if(name.split(" ").length<2){document.getElementById("err").textContent="Унеси име и презиме.";return;}if(!cl){document.getElementById("err").textContent="Унеси одељење.";return;}pupil={name,cl};document.getElementById("gate").style.display="none";document.getElementById("app").style.display="block";document.getElementById("student").style.display="block";document.getElementById("student").textContent="Пријављен ученик: "+name+" · Одељење: "+cl;report({event:"Приступ материјалу",name,cl,page:document.title,time:new Date().toISOString()});});
-document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.id).classList.add("active");}));
-const tests={
-t1:[
-["Да ли је 18 432 дељив са 8? (ДА/НЕ)","да","Последње три цифре су 432=8·54, па је број дељив са 8."],
-["Одреди све цифре x за које је 6x3 дељив са 3 (раздвоји зарезима).","0,3,6,9","Збир цифара је 6+x+3=x+9. Цифре x су 0,3,6,9."],
-["Одреди количник при дељењу 157 са 12.","13","157=12·13+1, па је количник 13, остатак 1."],
-["Одреди НЗД(84,126).","42","126=84·1+42; 84=42·2+0. НЗД=42."],
-["Одреди НЗД(221,143) Еуклидовим алгоритмом.","13","221=143+78; 143=78+65; 78=65+13; 65=13·5+0. НЗД=13."]
-],
-t2:[
-["Да ли је 53 724 дељив са 9? (ДА/НЕ)","не","Збир цифара је 5+3+7+2+4=21, који није дељив са 9."],
-["Одреди цифру x тако да је 42x5 дељив са 11.","3","(5+2)−(x+4)=3−x. Разлика је 0 за x=3."],
-["Запиши 203 у облику 15q+r и одреди остатак r.","8","203=15·13+8, па је остатак 8."],
-["Одреди НЗД(360,252).","36","360=252+108; 252=108·2+36; 108=36·3+0. НЗД=36."],
-["Одреди НЗД(1001,637).","91","1001=637+364; 637=364+273; 364=273+91; 273=91·3+0. НЗД=91."]
-]};
-function norm(s){return s.toLowerCase().trim().replace(/\s+/g,"").replace(/[.;]/g,",");}
-function render(){for(let id of ["t1","t2"]){let n=id==="t1"?1:2;document.getElementById("q"+n).innerHTML=tests[id].map((t,i)=>`<div class="task"><b>${i+1}. ${t[0]}</b><input class="answer" id="${id}a${i}" placeholder="Унеси одговор"><div class="feedback" id="${id}f${i}"></div><details id="${id}s${i}" style="display:none"><summary>Погледај поступак</summary>${t[2]}</details></div>`).join("");}}
-function check(id){let n=id==="t1"?1:2,score=0;tests[id].forEach((t,i)=>{let v=norm(document.getElementById(id+"a"+i).value),ok=v===norm(t[1]);if(ok)score++;let f=document.getElementById(id+"f"+i);f.className="feedback "+(ok?"good":"bad");f.textContent=ok?"Тачно!":"Није тачно. Отвори поступак и провери решење.";let d=document.getElementById(id+"s"+i);d.style.display="block";if(!ok)d.open=true;});let r=document.getElementById("r"+n);r.className="feedback "+(score>=3?"good":"bad");r.textContent="Резултат: "+score+"/5 поена. "+(score===5?"Одлично!":score>=3?"Добро, прегледај грешке.":"Понови градиво и покушај поново.");report({event:"Резултат теста",test:"Тест "+n,name:pupil.name,classroom:pupil.cl,score,maxScore:5,answers:tests[id].map((t,i)=>document.getElementById(id+"a"+i).value),time:new Date().toISOString()});}
-render();
-</script></body></html>
+
 </body>
 </html>
