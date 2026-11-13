@@ -1396,59 +1396,5 @@ document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>
 render();
 </script>
 </body></html>
-  <!doctype html>
-<html lang="sr-Cyrl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Дељивост у скупу целих бројева и НЗД</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#202b38;font:16px/1.6 Arial,sans-serif}header{background:#1d456f;color:white;text-align:center;padding:25px 14px}header h1{margin:0;font-size:clamp(1.4rem,4vw,2.2rem)}main{max-width:1000px;margin:22px auto;padding:0 14px 40px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.tab{border:0;border-radius:8px 8px 0 0;padding:12px 17px;background:#dce7f1;color:#1d456f;font-weight:bold;cursor:pointer}.tab.active{background:#1d456f;color:white}.panel{display:none;background:white;padding:18px;border-radius:0 10px 10px 10px;box-shadow:0 3px 14px #1232}.panel.active{display:block}h2,h3{color:#1d456f}.card,.task{border:1px solid #dce4ed;border-radius:9px;padding:13px;margin:12px 0}.task{border-width:0 0 1px;border-radius:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}.rule{background:#eef4fa;padding:10px;border-radius:8px}.formula{font-family:Consolas,monospace;background:#eef2f6;padding:3px 6px;border-radius:4px}.action{background:#326da5;color:white;border:0;border-radius:7px;padding:10px 16px;font-weight:bold;cursor:pointer}.answer{display:block;width:min(100%,350px);padding:10px;border:1px solid #aebdcd;border-radius:7px;margin:7px 0;font-size:1rem}.feedback{display:none;padding:9px;border-radius:7px;margin:7px 0}.good{display:block;background:#e8f5ed;color:#175b35}.bad{display:block;background:#fff0ef;color:#8c2525}details{background:#f3f6f9;padding:8px 11px;border-radius:7px;margin-top:7px}summary{cursor:pointer;color:#244a78;font-weight:bold}.login{position:fixed;inset:0;background:#102b49ed;display:flex;align-items:center;justify-content:center;padding:16px;z-index:9}.login form{background:white;padding:24px;border-radius:13px;width:min(100%,430px)}.login label{display:block;font-weight:bold;margin:10px 0 4px}.login input{width:100%;padding:11px;border:1px solid #aebdcd;border-radius:7px;font-size:1rem}.err{color:#a12e2e;min-height:1.4em}.small{font-size:.9rem;color:#607080}#student{display:none;background:#e8f5ed;border-left:5px solid #278052;padding:9px 12px;border-radius:7px}footer{text-align:center;color:#607080;font-size:.9rem;margin-top:25px}
-</style></head><body>
-<div class="login" id="gate"><form id="loginForm"><h2>Пријава ученика</h2><p>Унеси име и презиме и одељење да би приступио/приступила материјалу.</p>
-<label for="nm">Име и презиме</label><input id="nm" required minlength="3" maxlength="80" placeholder="нпр. Петар Петровић">
-<label for="cl">Одељење</label><input id="cl" required maxlength="20" placeholder="нпр. III-2"><p class="err" id="err"></p>
-<button class="action" style="width:100%" type="submit">Приступи материјалу</button><p class="small">Пријава је обавезна пре приказа наставног садржаја.</p></form></div>
-<div id="app" style="display:none"><header><h1>Дељивост у скупу целих бројева и НЗД</h1><p>Изабрана поглавља математике · III разред средње школе</p></header>
-<main><p id="student"></p><nav class="tabs"><button class="tab active" data-id="ukratko">Укратко</button><button class="tab" data-id="vezbaj">Вежбај</button><button class="tab" data-id="t1">Тест 1</button><button class="tab" data-id="t2">Тест 2</button></nav>
-<section class="panel active" id="ukratko"><h2>Подсетник – основни појмови и правила</h2>
-<div class="card"><h3>1. Дељивост у скупу целих бројева</h3><p>За целе бројеве a и b, где је a ≠ 0, кажемо да a дели b (пишемо a | b) ако постоји цео број k такав да је b = a · k. Сваки ненулти цео број дели 0, јер је 0 = a · 0.</p><p>Ако a | b и a | c, онда a | (b+c) и a | (b−c). Ако a | b, онда a | (b·m) за сваки цео број m.</p></div>
-<div class="card"><h3>2. Правила дељивости</h3><div class="grid">
-<div class="rule"><b>Са 2:</b> последња цифра је 0, 2, 4, 6 или 8.</div><div class="rule"><b>Са 3:</b> збир цифара је дељив са 3.</div>
-<div class="rule"><b>Са 4:</b> број од последње две цифре дељив је са 4.</div><div class="rule"><b>Са 5:</b> последња цифра је 0 или 5.</div>
-<div class="rule"><b>Са 8:</b> број од последње три цифре дељив је са 8.</div><div class="rule"><b>Са 9:</b> збир цифара је дељив са 9.</div>
-<div class="rule"><b>Са 10:</b> последња цифра је 0.</div><div class="rule"><b>Са 11:</b> разлика наизменичних збировa цифара дељива је са 11 (може бити 0).</div></div><p class="small">Правила важе и за апсолутну вредност негативног броја.</p></div>
-<div class="card"><h3>3. Дељење са остатком</h3><p>За цео број a и природан број b постоје јединствени цели бројеви q и r такви да је:</p><p class="formula">a = b · q + r, при чему је 0 ≤ r &lt; b.</p><p>q је количник, r је остатак. Број a је дељив са b тачно када је r=0. Пример: 47=6·7+5.</p></div>
-<div class="card"><h3>4. Највећи заједнички делилац (НЗД)</h3><p>НЗД два или више целих бројева, не свих нула, јесте највећи позитиван цео број који дели сваки од њих.</p><p class="formula">НЗД(a,b)=НЗД(|a|,|b|)</p><p>За узајамно просте бројеве НЗД(a,b)=1.</p></div>
-<div class="card"><h3>5. Еуклидов алгоритам</h3><p>За a≥b&gt;0 узастопно делимо са остатком: <span class="formula">a=bq₁+r₁</span>, <span class="formula">b=r₁q₂+r₂</span>, ... Поступак се завршава када остатак постане 0. Последњи ненулти остатак је НЗД(a,b).</p><p><b>Пример:</b><br>252=198·1+54<br>198=54·3+36<br>54=36·1+18<br>36=18·2+0<br>НЗД(252,198)=18.</p></div></section>
-<section class="panel" id="vezbaj"><h2>Вежбај – 5 задатака из сваке области</h2><p class="small">Задаци су различите тежине. Отвори „Погледај поступак“ након самосталног покушаја.</p>
-<h3>А. Појам дељивости</h3>
-<div class="task"><b>1. (Основни)</b> Провери да ли 7|84.<details><summary>Погледај поступак</summary>84=7·12, па 7|84.</details></div>
-<div class="task"><b>2. (Основни)</b> Наведи позитивне делиоце броја 18.<details><summary>Погледај поступак</summary>1, 2, 3, 6, 9 и 18.</details></div>
-<div class="task"><b>3. (Средњи)</b> Одреди најмањи позитиван k ако 5|(3k+1).<details><summary>Погледај поступак</summary>За k=3 је 3k+1=10, дељиво са 5. Најмањи позитиван k је 3.</details></div>
-<div class="task"><b>4. (Средњи)</b> Докажи: ако 4|a и 4|b, онда 4|(3a−2b).<details><summary>Погледај поступак</summary>a=4m, b=4n. Тада 3a−2b=12m−8n=4(3m−2n), па је дељиво са 4.</details></div>
-<div class="task"><b>5. (Напредни)</b> Одреди цифре x тако да је 4x2 дељив са 3.<details><summary>Погледај поступак</summary>4+x+2=x+6 мора бити дељиво са 3. x=0,3,6,9.</details></div>
-<h3>Б. Правила дељивости</h3>
-<div class="task"><b>1. (Основни)</b> Да ли је 7248 дељив са 2, 3 и 4?<details><summary>Погледај поступак</summary>Последња цифра 8: дељив са 2. Збир цифара 21: дељив са 3. Последње две цифре 48: дељив са 4. Сва три одговора су ДА.</details></div>
-<div class="task"><b>2. (Основни)</b> Који од бројева 135, 248, 560 и 729 је дељив са 5, а који са 10?<details><summary>Погледај поступак</summary>Са 5 су дељиви 135 и 560. Са 10 је дељив само 560.</details></div>
-<div class="task"><b>3. (Средњи)</b> Одреди цифре x за које је 53x2 дељив са 4.<details><summary>Погледај поступак</summary>Последње две цифре x2 морају бити дељиве са 4. То важи за x=0,2,4,6,8.</details></div>
-<div class="task"><b>4. (Средњи)</b> Провери да ли је 81576 дељив са 8 и 9.<details><summary>Погледај поступак</summary>576=8·72, па је дељив са 8. Збир цифара је 27, па је дељив са 9.</details></div>
-<div class="task"><b>5. (Напредни)</b> Одреди x тако да је 7x26 дељив са 11.<details><summary>Погледај поступак</summary>(6+x)−(2+7)=x−3. За цифру x услов је x−3=0, па је x=3.</details></div>
-<h3>В. Дељење са остатком</h3>
-<div class="task"><b>1. (Основни)</b> Одреди количник и остатак при дељењу 53 са 7.<details><summary>Погледај поступак</summary>53=7·7+4. q=7, r=4.</details></div>
-<div class="task"><b>2. (Основни)</b> Запиши 86 у облику 9q+r, 0≤r&lt;9.<details><summary>Погледај поступак</summary>86=9·9+5. q=9, r=5.</details></div>
-<div class="task"><b>3. (Средњи)</b> Одреди остатак при дељењу 2026 са 6.<details><summary>Погледај поступак</summary>2026=6·337+4. Остатак је 4.</details></div>
-<div class="task"><b>4. (Средњи)</b> Нађи најмањи природан број већи од 50 који при дељењу са 8 даје остатак 5.<details><summary>Погледај поступак</summary>Бројеви су 8q+5. За q=6 добијамо 53.</details></div>
-<div class="task"><b>5. (Напредни)</b> При дељењу n са 5 остатак је 3. Који остатак даје 3n+1 при дељењу са 5?<details><summary>Погледај поступак</summary>n=5q+3, па је 3n+1=15q+10=5(3q+2). Остатак је 0.</details></div>
-<h3>Г. НЗД</h3>
-<div class="task"><b>1. (Основни)</b> Одреди НЗД(12,18).<details><summary>Погледај поступак</summary>Заједнички делиоци су 1,2,3,6. НЗД=6.</details></div>
-<div class="task"><b>2. (Основни)</b> Одреди НЗД(24,36).<details><summary>Погледај поступак</summary>24=2³·3, 36=2²·3². НЗД=2²·3=12.</details></div>
-<div class="task"><b>3. (Средњи)</b> Одреди НЗД(45,75,105).<details><summary>Погледај поступак</summary>НЗД(45,75)=15, а НЗД(15,105)=15.</details></div>
-<div class="task"><b>4. (Средњи)</b> Правоугаоник има странице 84 cm и 60 cm. На колико највећих једнаких квадрата се дели без остатка?<details><summary>Погледај поступак</summary>Страница квадрата је НЗД(84,60)=12 cm. Број квадрата је (84/12)·(60/12)=35.</details></div>
-<div class="task"><b>5. (Напредни)</b> Одреди НЗД(2⁴·3²·5, 2²·3·5³).<details><summary>Погледај поступак</summary>Узимају се мањи степени заједничких простих чинилаца: 2²·3·5=60.</details></div>
-<h3>Д. Еуклидов алгоритам</h3>
-<div class="task"><b>1. (Основни)</b> Одреди НЗД(48,18).<details><summary>Погледај поступак</summary>48=18·2+12; 18=12·1+6; 12=6·2+0. НЗД=6.</details></div>
-<div class="task"><b>2. (Основни)</b> Одреди НЗД(91,35).<details><summary>Погледај поступак</summary>91=35·2+21; 35=21+14; 21=14+7; 14=7·2. НЗД=7.</details></div>
-<div class="task"><b>3. (Средњи)</b> Одреди НЗД(252,198).<details><summary>Погледај поступак</summary>252=198+54; 198=54·3+36; 54=36+18; 36=18·2. НЗД=18.</details></div>
-<div class="task"><b>4. (Средњи)</b> Одреди НЗД(391,299).<details><summary>Погледај поступак</summary>391=299+92; 299=92·3+23; 92=23·4. НЗД=23.</details></div>
-<div class="task"><b>5. (Напредни)</b> Одреди НЗД(1001,637).<details><summary>Погледај поступак</summary>1001=637+364; 637=364+273; 364=273+91; 273=91·3. НЗД=91.</details></div>
-
 </body>
 </html>
