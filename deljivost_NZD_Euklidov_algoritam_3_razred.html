@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дељивост бројева, НЗД и Еуклидов алгоритам</title>
+<style>
+:root{--blue:#2457a7;--light:#eef4ff;--ink:#172033;--green:#18794e;--red:#b42318;--gold:#9a6700}
+*{box-sizing:border-box}body{margin:0;background:#f4f6fa;color:var(--ink);font:16px/1.55 Arial,sans-serif}
+header{background:linear-gradient(120deg,#183b73,#3273bd);color:white;padding:28px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(24px,4vw,36px)}header p{margin:0;opacity:.95}
+main{max-width:1050px;margin:22px auto;padding:0 14px 40px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+nav button,.action{border:0;border-radius:9px;padding:11px 16px;background:var(--blue);color:white;font-weight:700;cursor:pointer}
+nav button{background:#dce7f8;color:#183b73}nav button.active{background:var(--blue);color:#fff}
+section.panel{display:none;background:white;border-radius:14px;padding:22px;box-shadow:0 3px 14px #17203312}
+section.panel.active{display:block}h2{color:#183b73;margin-top:0}h3{margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.rule{background:#f5f8fe;border-left:4px solid #4b79c4;padding:12px;border-radius:8px}
+.note{background:#fff8e6;border-left:4px solid #e0a126;padding:12px;border-radius:8px;margin:14px 0}
+.task{border:1px solid #dce2ec;border-radius:12px;padding:16px;margin:14px 0}
+.task p{margin:7px 0}.meta{font-size:13px;color:#536176;font-weight:bold}
+input.answer{width:min(100%,320px);padding:10px;border:1px solid #aeb9ca;border-radius:8px;font-size:16px;margin:7px 8px 7px 0}
+.feedback{font-weight:bold;margin:8px 0;min-height:24px}.correct{color:var(--green)}.wrong{color:var(--red)}
+.solution{display:none;background:#f0f7f3;border-radius:8px;padding:12px;margin-top:10px;white-space:pre-line}
+button:disabled{opacity:.45;cursor:not-allowed}.small{font-size:14px;color:#536176}
+.score{font-weight:bold;background:#eef4ff;padding:12px;border-radius:8px;margin:12px 0}
+footer{text-align:center;color:#657187;font-size:13px;margin-top:24px}
+@media(max-width:600px){section.panel{padding:15px}.task{padding:12px}nav button{flex:1}}
+</style>
+</head>
+<body>
+<header>
+<h1>Дељивост бројева, НЗД и Еуклидов алгоритам</h1>
+<p>Интерактивни материјал за групни рад · III разред · Изабрана поглавља математике</p>
+</header>
+<main>
+<nav aria-label="Садржај">
+<button class="active" data-tab="kratko">Укратко</button>
+<button data-tab="vezbaj">Вежбај</button>
+<button data-tab="test1">Тест 1</button>
+<button data-tab="test2">Тест 2</button>
+</nav>
+
+<section id="kratko" class="panel active">
+<h2>1. Укратко – подсетник</h2>
+<p><b>Дељивост:</b> Кажемо да је цео број <i>a</i> дељив бројем <i>b</i> (b ≠ 0) ако постоји цео број <i>k</i> такав да је a = b · k. Тада је <i>b</i> делилац броја <i>a</i>.</p>
+<div class="grid">
+<div class="rule"><b>Са 2:</b> Последња цифра је 0, 2, 4, 6 или 8.</div>
+<div class="rule"><b>Са 3:</b> Збир цифара је дељив са 3.</div>
+<div class="rule"><b>Са 4:</b> Број који образују последње две цифре дељив је са 4.</div>
+<div class="rule"><b>Са 5:</b> Последња цифра је 0 или 5.</div>
+<div class="rule"><b>Са 8:</b> Број који образују последње три цифре дељив је са 8.</div>
+<div class="rule"><b>Са 9:</b> Збир цифара је дељив са 9.</div>
+<div class="rule"><b>Са 10:</b> Последња цифра је 0.</div>
+<div class="rule"><b>Са 11:</b> Разлика збира цифара на наизменичним позицијама дељива је са 11 (може бити и 0).</div>
+</div>
+<h3>Највећи заједнички делилац (НЗД)</h3>
+<p>НЗД два или више целих бројева који нису сви нула јесте највећи позитиван број који дели сваки од њих. НЗД(a,b) означавамо са (a,b).</p>
+<h3>Еуклидов алгоритам</h3>
+<p>За a ≥ b &gt; 0 важи: a = bq + r, где је 0 ≤ r &lt; b. Тада је НЗД(a,b) = НЗД(b,r). Поступак понављамо док не добијемо остатак 0. Последњи ненулти остатак је НЗД.</p>
+<div class="note"><b>Пример:</b> Одредимо НЗД(252, 105).<br>
+252 = 2 · 105 + 42<br>105 = 2 · 42 + 21<br>42 = 2 · 21 + 0<br><b>Зато је НЗД(252,105) = 21.</b></div>
+<h3>Предлог организације групног рада</h3>
+<ul><li>Поделите се у групе од 3–4 ученика и изаберите улоге: читач задатка, решавач, контролор и известилац.</li><li>Пре уноса одговора договорите се о поступку и проверите резултат.</li><li>У делу „Вежбај“ свака група решава задатке редом. Поступак се откључава тек након провере одговора.</li><li>На крају групе самостално раде тестове и упоређују резултате.</li></ul>
+</section>
+
+<section id="vezbaj" class="panel">
+<h2>2. Вежбај – 10 задатака различите тежине</h2>
+<p class="small">Унесите тражени резултат. Код задатака у којима се тражи више бројева, раздвојте их зарезом. Након клика на „Потврди одговор“ добијате повратну информацију. Дугме за поступак постаје доступно тек после провере.</p>
+<div id="practice"></div>
+</section>
+
+<section id="test1" class="panel">
+<h2>3. Тест 1 – правила дељивости и НЗД</h2>
+<p>Решите свих пет задатака. За сваки задатак унесите одговор и потврдите га. На крају кликните на „Израчунај резултат“.</p>
+<div id="test1tasks"></div><button class="action" onclick="scoreTest('test1tasks','score1')">Израчунај резултат</button><div id="score1" class="score" aria-live="polite"></div>
+</section>
+
+<section id="test2" class="panel">
+<h2>4. Тест 2 – примена Еуклидовог алгоритма</h2>
+<p>Решите свих пет задатака. Прикажите поступак на папиру, а у поље унесите тражени резултат.</p>
+<div id="test2tasks"></div><button class="action" onclick="scoreTest('test2tasks','score2')">Израчунај резултат</button><div id="score2" class="score" aria-live="polite"></div>
+</section>
+<footer>Математика је лакша када размишљамо заједно.</footer>
+</main>
+<script>
+const practice = [
+{level:"Основни",q:"Одреди да ли је број 738 дељив са 2, 3, 4, 5, 8, 9 и 10. Упиши само делиоце из овог низа, редом, раздвојене зарезима.",a:"2,3,9",s:"738 се завршава цифром 8, па је дељив са 2. Збир цифара је 7 + 3 + 8 = 18, па је дељив са 3 и 9. Последње две цифре су 38 (нису дељиве са 4), последње три цифре 738 (нису дељиве са 8). Не завршава се са 0 или 5, па није дељив са 5 ни са 10."},
+{level:"Основни",q:"Која цифра може да стоји уместо * у броју 47* тако да број буде дељив са 3? Упиши све могуће цифре редом.",a:"1,4,7",s:"Збир познатих цифара је 4 + 7 = 11. Потребно је да 11 + * буде дељиво са 3. То важи за цифре 1, 4 и 7, јер су збирови 12, 15 и 18."},
+{level:"Основни",q:"Одреди да ли је 5830 дељив са 11. Упиши ДА или НЕ.",a:"да",s:"Наизменични збирови цифара су 5 + 3 = 8 и 8 + 0 = 8. Њихова разлика је 0, а 0 је дељиво са 11. Зато је 5830 дељив са 11."},
+{level:"Средњи",q:"Одреди НЗД(84, 126). Упиши само број.",a:"42",s:"126 = 1 · 84 + 42; 84 = 2 · 42 + 0. Последњи ненулти остатак је 42, па је НЗД(84,126) = 42."},
+{level:"Средњи",q:"Колико највише једнаких пакетића може да се направи од 48 црвених и 60 плавих перлица, тако да се све перлице распореде и сваки пакетић има исти број перлица сваке боје?",a:"12",s:"Број пакетића мора делити и 48 и 60, па тражимо НЗД(48,60). 60 = 1 · 48 + 12; 48 = 4 · 12 + 0. НЗД је 12, дакле може се направити највише 12 пакетића. У сваком је 4 црвене и 5 плавих перлица."},
+{level:"Средњи",q:"Одреди НЗД(391, 299) применом Еуклидовог алгоритма. Упиши само резултат.",a:"23",s:"391 = 1 · 299 + 92; 299 = 3 · 92 + 23; 92 = 4 · 23 + 0. Последњи ненулти остатак је 23."},
+{level:"Средњи",q:"Одреди највећи природан број којим се могу поделити 144 и 216 без остатка. Упиши број.",a:"72",s:"216 = 1 · 144 + 72; 144 = 2 · 72 + 0. Зато је НЗД(144,216) = 72."},
+{level:"Напредни",q:"Одреди цифру x тако да број 5x32 буде дељив са 11. Упиши цифру.",a:"6",s:"За дељивост са 11 разлика наизменичних збира мора бити дељива са 11. (5 + 3) − (x + 2) = 6 − x. За цифру x од 0 до 9, вредност 6 − x је између −3 и 6, па једино може бити 0. Дакле x = 6. Напомена: правилан распоред цифара даје (5+3) − (x+2) = 6−x, па је x=6."},
+{level:"Напредни",q:"Одреди НЗД(1001, 1430). Упиши само број.",a:"143",s:"1430 = 1 · 1001 + 429; 1001 = 2 · 429 + 143; 429 = 3 · 143 + 0. Последњи ненулти остатак је 143."},
+{level:"Напредни",q:"Два броја имају НЗД 18. Један број је 126. Наведи најмањи позитиван број који може бити други број.",a:"18",s:"Ако је НЗД(126,n) = 18, онда n мора бити дељив са 18. Најмањи позитиван такав број је 18, а НЗД(126,18) = 18."}
+];
+const tests = {
+test1tasks:[
+{q:"Који од бројева 1248, 1245, 1240 је дељив са 8? Упиши их редом, раздвојене зарезима.",a:"1248,1240",s:"Проверавамо последње три цифре: 248 је дељиво са 8, 245 није, а 240 јесте."},
+{q:"Одреди све цифре x за које је број 63x дељив са 9. Упиши цифру или цифре.",a:"0,9",s:"6 + 3 + x = 9 + x мора бити дељиво са 9. Цифре које то испуњавају су 0 и 9."},
+{q:"Одреди НЗД(96, 144).",a:"48",s:"144 = 1 · 96 + 48; 96 = 2 · 48 + 0. НЗД је 48."},
+{q:"Да ли је број 72831 дељив са 11? Упиши ДА или НЕ.",a:"да",s:"(7 + 8 + 1) − (2 + 3) = 16 − 5 = 11. Разлика је дељива са 11, па јесте."},
+{q:"Од 90 белих и 126 црних жетона треба направити највећи могући број истоветних комплета без остатка. Колико комплета?",a:"18",s:"НЗД(90,126): 126 = 1 · 90 + 36; 90 = 2 · 36 + 18; 36 = 2 · 18 + 0. Може се направити 18 комплета."}
+],
+test2tasks:[
+{q:"Применом Еуклидовог алгоритма одреди НЗД(252, 198).",a:"18",s:"252 = 1 · 198 + 54; 198 = 3 · 54 + 36; 54 = 1 · 36 + 18; 36 = 2 · 18 + 0. НЗД је 18."},
+{q:"Одреди НЗД(414, 276).",a:"138",s:"414 = 1 · 276 + 138; 276 = 2 · 138 + 0. НЗД је 138."},
+{q:"Одреди НЗД(805, 345).",a:"115",s:"805 = 2 · 345 + 115; 345 = 3 · 115 + 0. НЗД је 115."},
+{q:"Траке дужине 168 cm и 252 cm треба исећи на најдуже једнаке делове без остатка. Колика је дужина једног дела?",a:"84",s:"Тражи се НЗД(168,252). 252 = 1 · 168 + 84; 168 = 2 · 84 + 0. Најдужи део има 84 cm."},
+{q:"Одреди НЗД(1071, 462).",a:"21",s:"1071 = 2 · 462 + 147; 462 = 3 · 147 + 21; 147 = 7 · 21 + 0. НЗД је 21."}
+]
+};
+function norm(v){return v.trim().toLowerCase().replace(/\s+/g,"").replace(/;/g,",").replace(/，/g,",");}
+function makeTask(t,i,prefix){
+ const id=prefix+"_"+i;
+ return `<article class="task" data-answer="${encodeURIComponent(t.a)}" data-id="${id}">
+ <div class="meta">${t.level||"Задатак"} · Задатак ${i+1}</div><p><b>${t.q}</b></p>
+ <input class="answer" id="${id}_input" aria-label="Одговор за задатак ${i+1}" placeholder="Унесите одговор">
+ <button class="action" onclick="check('${id}')">Потврди одговор</button>
+ <div class="feedback" id="${id}_feedback" aria-live="polite"></div>
+ <button class="action" id="${id}_solutionBtn" disabled onclick="showSolution('${id}')">Прикажи поступак</button>
+ <div class="solution" id="${id}_solution">${t.s}</div></article>`;
+}
+document.getElementById("practice").innerHTML=practice.map((t,i)=>makeTask(t,i,"p")).join("");
+document.getElementById("test1tasks").innerHTML=tests.test1tasks.map((t,i)=>makeTask(t,i,"t1")).join("");
+document.getElementById("test2tasks").innerHTML=tests.test2tasks.map((t,i)=>makeTask(t,i,"t2")).join("");
+function check(id){
+ const el=document.querySelector(`[data-id="${id}"]`),input=document.getElementById(id+"_input");
+ const expected=decodeURIComponent(el.dataset.answer),fb=document.getElementById(id+"_feedback");
+ if(!input.value.trim()){fb.textContent="Унесите одговор пре потврде.";fb.className="feedback wrong";return}
+ const ok=norm(input.value)===norm(expected);
+ fb.textContent=ok?"Тачно! Одлично урађено. Сада можете да прикажете поступак.":"Одговор није тачан. Проверите рачун и покушајте поново.";
+ fb.className="feedback "+(ok?"correct":"wrong");
+ document.getElementById(id+"_solutionBtn").disabled=false;
+ el.dataset.checked=ok?"1":"0";
+}
+function showSolution(id){const el=document.getElementById(id+"_solution");el.style.display="block";}
+function scoreTest(containerId,outId){
+ const tasks=[...document.querySelectorAll("#"+containerId+" .task")];
+ let correct=0,checked=0;
+ tasks.forEach(t=>{if(t.dataset.checked!==undefined){checked++;if(t.dataset.checked==="1")correct++;}});
+ document.getElementById(outId).textContent=`Резултат: ${correct} / ${tasks.length} тачних одговора. Потврђено: ${checked} / ${tasks.length}.`;
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x===b));
+ document.querySelectorAll("section.panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab));
+}));
+</script>
+</body></html>
