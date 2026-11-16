@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Линеарне Диофантове једначине</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#202b3c;font:16px/1.55 Arial,sans-serif}
+header{background:#204d8e;color:white;text-align:center;padding:26px 16px}header h1{margin:0 0 7px;font-size:clamp(24px,4vw,36px)}
+main{max-width:980px;margin:20px auto;padding:0 14px 36px}nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+button{border:0;border-radius:8px;padding:10px 14px;background:#2459a6;color:white;font-weight:bold;cursor:pointer}
+nav button{background:#dce8f8;color:#204d8e}nav button.active{background:#2459a6;color:white}
+.panel{display:none}.panel.active{display:block}.card,.task{background:white;border:1px solid #d8e0ec;border-radius:12px;padding:17px;margin:13px 0}
+h2,h3{color:#204d8e;margin-top:0}.formula{background:#edf4ff;padding:12px;text-align:center;border-radius:8px;font-weight:bold;margin:10px 0}
+.example{background:#f7faff;border-left:4px solid #3977c9;padding:12px;margin:10px 0}
+input{display:block;width:min(100%,340px);padding:10px;border:1px solid #aebbd0;border-radius:8px;font-size:16px;margin:8px 0}
+.feedback{font-weight:bold;margin:8px 0}.good{color:#18794e}.bad{color:#b42318}
+.solution{display:none;background:#f0f8f2;border-left:4px solid #26834f;padding:12px;margin-top:10px;border-radius:6px}
+button:disabled{opacity:.45;cursor:not-allowed}.hint{font-size:14px;color:#596779}.score{font-weight:bold;color:#204d8e}
+</style></head>
+<body>
+<header><h1>Линеарне Диофантове једначине</h1><div>Математика – III разред · Изабрана поглавља математике</div></header>
+<main>
+<nav>
+<button class="active" data-tab="ukratko">Укратко</button>
+<button data-tab="vezbaj">Вежбај</button>
+<button data-tab="test1">Тест 1</button>
+<button data-tab="test2">Тест 2</button>
+</nav>
+<section id="ukratko" class="panel active">
+<div class="card"><h2>Појам и услов решивости</h2>
+Линеарна Диофантова једначина је једначина облика:
+<div class="formula">ax + by = c, где су a, b, c цели бројеви</div>
+Тражимо решења x и y која су цели бројеви. Означимо d = НЗД(a,b). Једначина има целобројних решења ако и само ако d дели c:
+<div class="formula">НЗД(a,b) | c</div>
+Ако услов није испуњен, једначина нема целобројних решења.
+</div>
+<div class="card"><h2>Поступак решавања</h2>
+<ol><li>Израчунамо d = НЗД(a,b).</li><li>Проверимо да ли d дели c.</li><li>Еуклидовим алгоритмом и враћањем уназад нађемо x₁ и y₁ тако да ax₁ + by₁ = d.</li><li>Помножимо добијену једнакост са c/d и добијамо једно решење (x₀,y₀).</li><li>Запишемо сва целобројна решења:</li></ol>
+<div class="formula">x = x₀ + (b/d)k, &nbsp; y = y₀ − (a/d)k, &nbsp; k ∈ ℤ</div>
+</div>
+<div class="card"><h2>Детаљно решен пример</h2>
+<div class="example"><b>Решити:</b> 15x + 25y = 5.
+<p><b>1. НЗД:</b> НЗД(15,25)=5. Пошто 5 дели 5, решења постоје.</p>
+<p><b>2. Еуклидов алгоритам:</b><br>25 = 1·15 + 10<br>15 = 1·10 + 5<br>10 = 2·5 + 0</p>
+<p><b>3. Враћање уназад:</b><br>5 = 15 − 10<br>5 = 15 − (25 − 15)<br>5 = 2·15 − 25</p>
+<p>Дакле, 15·2 + 25·(−1)=5, па је једно решење x₀=2, y₀=−1.</p>
+<p><b>4. Опште решење:</b><br>x = 2 + (25/5)k = 2 + 5k<br>y = −1 − (15/5)k = −1 − 3k</p>
+<p><b>Сва решења:</b> x=2+5k, y=−1−3k, k∈ℤ.</p></div>
+</div>
+<div class="card"><h2>Запамти</h2><ul><li>Решења морају бити цели бројеви.</li><li>Најпре проверавамо услов НЗД(a,b)|c.</li><li>Једно партикуларно решење није једино решење.</li><li>Параметар k у општем решењу узима све целобројне вредности.</li></ul></div>
+</section>
+<section id="vezbaj" class="panel">
+<div class="card"><h2>Вежбај – 10 задатака</h2><p class="hint">Унеси одговор и притисни „Потврди одговор“. После потврде можеш да отвориш поступак. Код задатака са паром (x,y) прихвата се сваки целобројни пар који задовољава једначину, а не само један унапред задат пар.</p></div><div id="practice"></div>
+</section>
+<section id="test1" class="panel"><div class="card"><h2>Тест 1</h2><p class="hint">Унеси одговоре, потврди их, па израчунај резултат.</p></div><div id="test-one"></div><button onclick="scoreTest('test-one','score-one')">Израчунај резултат</button><p id="score-one" class="score"></p></section>
+<section id="test2" class="panel"><div class="card"><h2>Тест 2</h2><p class="hint">Унеси одговоре, потврди их, па израчунај резултат.</p></div><div id="test-two"></div><button onclick="scoreTest('test-two','score-two')">Израчунај резултат</button><p id="score-two" class="score"></p></section>
+</main>
+<script>
+const practice=[
+{q:"1. Да ли 6x + 9y = 3 има целобројних решења? Одговори ДА или НЕ.",a:"ДА",s:"НЗД(6,9)=3, а 3 дели 3. Услов решивости је испуњен, па решења постоје."},
+{q:"2. Да ли 4x + 6y = 5 има целобројних решења? Одговори ДА или НЕ.",a:"НЕ",s:"НЗД(4,6)=2, а 2 не дели 5. Једначина нема целобројних решења."},
+{q:"3. Одреди НЗД(15,25).",a:"5",s:"25=1·15+10; 15=1·10+5; 10=2·5+0. Последњи ненулти остатак је 5."},
+{q:"4. Наведи једно целобројно решење 15x + 25y = 5 у облику x,y.",pair:[15,25,5],s:"5=2·15−25, па је једно решење (2,−1). Опште решење: x=2+5k, y=−1−3k."},
+{q:"5. Наведи једно целобројно решење 18x + 30y = 6 у облику x,y.",pair:[18,30,6],s:"18·2+30·(−1)=36−30=6, па је (2,−1) решење."},
+{q:"6. Наведи једно целобројно решење 7x + 5y = 1 у облику x,y.",pair:[7,5,1],s:"7·3+5·(−4)=21−20=1, па је (3,−4) решење."},
+{q:"7. Наведи једно целобројно решење 14x + 21y = 35 у облику x,y.",pair:[14,21,35],s:"14·1+21·1=35, па је (1,1) решење."},
+{q:"8. Наведи једно целобројно решење 26x + 15y = 1 у облику x,y.",pair:[26,15,1],s:"Еуклидов алгоритам: 26=15+11; 15=11+4; 11=2·4+3; 4=3+1. Враћањем уназад: 1=7·15−4·26, па је (−4,7) решење."},
+{q:"9. Наведи једно целобројно решење 35x + 22y = 1 у облику x,y.",pair:[35,22,1],s:"35·17+22·(−27)=595−594=1, па је (17,−27) решење."},
+{q:"10. Наведи једно целобројно решење 12x + 18y = 6 у облику x,y.",pair:[12,18,6],s:"12·2+18·(−1)=24−18=6, па је (2,−1) решење."}
+];
+const tests={
+"test-one":[
+{q:"1. Да ли 9x + 12y = 3 има целобројних решења? ДА/НЕ",a:"ДА",s:"НЗД(9,12)=3 и 3 дели 3, па решења постоје."},
+{q:"2. Да ли 10x + 15y = 7 има целобројних решења? ДА/НЕ",a:"НЕ",s:"НЗД(10,15)=5, а 5 не дели 7. Нема целобројних решења."},
+{q:"3. Наведи једно решење 16x + 24y = 8 у облику x,y.",pair:[16,24,8],s:"16·2+24·(−1)=32−24=8, па је (2,−1) решење."},
+{q:"4. Наведи једно решење 21x + 14y = 7 у облику x,y.",pair:[21,14,7],s:"21·1+14·(−1)=7, па је (1,−1) решење."},
+{q:"5. Наведи једно решење 18x + 30y = 12 у облику x,y.",pair:[18,30,12],s:"18·4+30·(−2)=72−60=12, па је (4,−2) решење."}
+],
+"test-two":[
+{q:"1. Наведи једно решење 35x + 14y = 7 у облику x,y.",pair:[35,14,7],s:"35·1+14·(−2)=35−28=7, па је (1,−2) решење."},
+{q:"2. Наведи једно решење 27x + 36y = 9 у облику x,y.",pair:[27,36,9],s:"27·3+36·(−2)=81−72=9, па је (3,−2) решење."},
+{q:"3. Наведи једно решење 44x + 28y = 4 у облику x,y.",pair:[44,28,4],s:"44·2+28·(−3)=88−84=4, па је (2,−3) решење."},
+{q:"4. Наведи једно решење 48x + 30y = 6 у облику x,y.",pair:[48,30,6],s:"48·2+30·(−3)=96−90=6, па је (2,−3) решење."},
+{q:"5. Наведи једно решење 65x + 40y = 5 у облику x,y.",pair:[65,40,5],s:"65·5+40·(−8)=325−320=5, па је (5,−8) решење."}
+]};
+function normalize(v){return v.trim().toUpperCase().replace(/[−–]/g,"-").replace(/\s/g,"").replace(/[()]/g,"").replace(/;/g,",")}
+function pairFrom(v){const m=normalize(v).match(/^(-?\d+),(-?\d+)$/);return m?[Number(m[1]),Number(m[2])]:null}
+function correct(t,v){if(t.pair){const p=pairFrom(v);return !!p&&p[0]*t.pair[0]+p[1]*t.pair[1]===t.pair[2]}return normalize(v)===normalize(t.a)}
+function listFor(id){return id==="practice"?practice:tests[id]}
+function render(arr,id){const root=document.getElementById(id);arr.forEach((t,i)=>{const d=document.createElement("div");d.className="task";d.innerHTML=`<b>${t.q}</b><input id="${id}-in-${i}" placeholder="${t.pair?"нпр. 2,-1":"Унеси одговор"}"><button onclick="check('${id}',${i})">Потврди одговор</button><div class="feedback" id="${id}-fb-${i}"></div><button id="${id}-solbtn-${i}" disabled onclick="reveal('${id}',${i})">Погледај поступак</button><div class="solution" id="${id}-sol-${i}">${t.s}</div>`;root.appendChild(d)})}
+function check(id,i){const t=listFor(id)[i],v=document.getElementById(`${id}-in-${i}`).value,fb=document.getElementById(`${id}-fb-${i}`);if(!v.trim()){fb.textContent="Прво унеси одговор.";fb.className="feedback bad";return}const ok=correct(t,v);fb.textContent=ok?"Тачно! Одговор је прихваћен.":"Одговор није тачан. Покушај поново или погледај поступак.";fb.className="feedback "+(ok?"good":"bad");document.getElementById(`${id}-solbtn-${i}`).disabled=false}
+function reveal(id,i){document.getElementById(`${id}-sol-${i}`).style.display="block"}
+function scoreTest(id,out){let n=0,entered=0;tests[id].forEach((t,i)=>{const v=document.getElementById(`${id}-in-${i}`).value;if(v.trim()){entered++;if(correct(t,v))n++}});document.getElementById(out).textContent=`Резултат: ${n}/5 тачних. Унето одговора: ${entered}/5.`}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.tab).classList.add("active")}));
+render(practice,"practice");render(tests["test-one"],"test-one");render(tests["test-two"],"test-two");
+</script></body></html>
