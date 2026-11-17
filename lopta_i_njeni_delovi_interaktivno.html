@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="sr-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лопта и њени делови – интерактивни материјал</title>
+<style>
+:root{--blue:#2459a6;--ink:#203047;--muted:#64748b;--line:#dce4ef;--pale:#edf4ff;--green:#147a45;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.58 system-ui,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#183d73,#3275bd);color:#fff;padding:28px 16px}
+.wrap,main{max-width:1080px;margin:auto}h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.2;margin:0 0 8px}header p{margin:0}
+main{padding:20px 14px 50px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:white;color:var(--ink);padding:10px 17px;border-radius:11px;font-weight:700;cursor:pointer}
+.tab.active{background:var(--blue);color:white;border-color:var(--blue)}.panel{display:none}.panel.active{display:block}
+.card{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;margin-bottom:15px;box-shadow:0 3px 14px #1b35500a}
+h2{font-size:1.3rem;margin:0 0 10px}h3{font-size:1.05rem;color:#214c83;margin:15px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.formula{background:var(--pale);border-left:4px solid #4b83c5;padding:10px 12px;border-radius:8px;margin:8px 0}
+.small{color:var(--muted);font-size:.92rem}.diagram{display:flex;justify-content:center;background:#f8fafd;border-radius:12px;padding:8px}
+.task{padding:13px 0;border-top:1px solid var(--line)}.task:first-child{border-top:0}
+.task p{margin:5px 0 9px}.task input{width:min(260px,100%);padding:10px;border:1px solid #b9c7d8;border-radius:8px;font:inherit}
+button.action{background:var(--blue);color:white;border:0;border-radius:8px;padding:9px 13px;font-weight:700;cursor:pointer;margin:5px 5px 5px 0}
+button.secondary{background:#e9eff8;color:#214c83}.level{font-size:.78rem;font-weight:700;color:#6b5a19;background:#fff4d6;padding:3px 8px;border-radius:20px}
+.feedback{font-weight:700;margin:5px 0}.correct{color:var(--green)}.wrong{color:var(--red)}
+.solution{display:none;background:#f5f8fc;border:1px dashed #a9bad0;border-radius:9px;padding:11px;margin-top:8px}.solution.show{display:block}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:8px;text-align:left}th{background:#f0f4f9}
+footer{text-align:center;color:var(--muted);font-size:.88rem;padding:18px}
+@media(max-width:560px){.card{padding:14px}.tab{flex:1}.task input{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Површина и запремина лопте и њених делова</h1>
+<p>Интерактивни материјал за 3. разред средње школе</p>
+</div></header>
+<main>
+<nav class="tabs">
+<button class="tab active" data-tab="kratko">Укратко</button>
+<button class="tab" data-tab="vezbaj">Вежбај</button>
+<button class="tab" data-tab="testovi">Тестови</button>
+</nav>
+<section id="kratko" class="panel active">
+<div class="card">
+<h2>Основни појмови и формуле</h2>
+<p><b>Сфера</b> је површ чије су све тачке на истом растојању од центра. <b>Лопта</b> је тело ограничено сфером. Пресек лопте равни је круг, а пресек сфере равни је кружница.</p>
+<div class="grid">
+<div class="formula"><b>Ознаке:</b><br>R – полупречник лопте<br>d – растојање центра лопте од равни; код појаса растојање између две паралелне равни<br>r – полупречник кружног пресека<br>h – висина калоте, односно лоптиног одсечка<br>r₁ и r₂ – полупречници кругова пресека код сферног појаса</div>
+<div class="diagram"><svg viewBox="0 0 330 190" role="img" aria-label="Скица лопте и кружног пресека"><ellipse cx="160" cy="94" rx="112" ry="76" fill="#dbeafe" stroke="#3974b8" stroke-width="2"/><path d="M48 94 Q160 49 272 94 Q160 139 48 94Z" fill="#b8d6f5" stroke="#3974b8"/><ellipse cx="160" cy="94" rx="112" ry="26" fill="none" stroke="#3974b8" stroke-dasharray="5 4"/><circle cx="160" cy="94" r="3.5" fill="#173f78"/><path d="M160 94 L251 94" stroke="#173f78" stroke-width="2"/><path d="M160 94 L160 19" stroke="#173f78" stroke-dasharray="4 3"/><text x="205" y="85" font-size="13" fill="#173f78">R</text><text x="167" y="109" font-size="12" fill="#173f78">O</text><text x="166" y="25" font-size="12" fill="#173f78">раван</text></svg></div>
+</div>
+<h3>1. Лопта</h3>
+<div class="formula">P<sub>L</sub> = 4πR²<br>V<sub>L</sub> = (4/3)πR³</div>
+<h3>2. Раван и кружни пресек</h3>
+<div class="formula">r² + d² = R² &nbsp; ⇒ &nbsp; r = √(R² − d²)<br>d = √(R² − r²) &nbsp; ; &nbsp; R = √(r² + d²)</div>
+<p class="small">Када раван пролази кроз центар, d = 0 и r = R.</p>
+<h3>3. Сферни појас</h3>
+<p>Сферни појас је део сфере између две паралелне равни. Кругови пресека имају полупречнике r₁ и r₂, а растојање равни је d.</p>
+<div class="formula">P<sub>sp</sub> = 2πR · d</div>
+<h3>4. Калота и лоптин одсечак</h3>
+<p>Калота је закривљени део сфере одсечен једном равни. Лоптин одсечак је тело ограничено калотом и кружном основом.</p>
+<div class="formula">P<sub>k</sub> = 2πRh &nbsp; (површина калоте)<br>P<sub>Lo</sub> = 2πRh + πr² &nbsp; (укупна површина одсечка)<br>V<sub>Lo</sub> = πh²(R − h/3) = (πh²/3)(3R − h)<br>r² = R² − (R − h)² = 2Rh − h²</div>
+<h3>5. Лоптин исечак</h3>
+<p>Лоптин исечак је тело ограничено калотом и омотачем купе чији је врх у центру лопте.</p>
+<div class="formula">P<sub>Li</sub> = 2πRh + πRr &nbsp; (укупна површина исечка)<br>V<sub>Li</sub> = (2/3)πR²h</div>
+<p class="small">У формули за P<sub>Li</sub>, коса висина купе једнака је R, па је површина његовог омотача πRr. У овом материјалу P<sub>k</sub> означава само закривљену површину калоте.</p>
+</div>
+<div class="card"><h2>Упутство за рад</h2>
+<ul><li>Уноси бројчани резултат. Користи π = 3,14.</li><li>Децимални број можеш унети са зарезом или тачком.</li><li>Кликни на „Провери“ да добијеш повратну информацију.</li><li>Кликом на „Погледај поступак“ отвараш детаљно решење.</li></ul>
+</div>
+</section>
+<section id="vezbaj" class="panel">
+<div class="card"><h2>Вежбај</h2><p class="small">Шест области, по пет задатака различите тежине. Резултати су бројчани; користи π = 3,14.</p></div>
+<div id="practice"></div>
+</section>
+<section id="testovi" class="panel">
+<div class="card"><h2>Провери знање – четири теста</h2><p>Сваки тест има пет задатака из различитих делова теме. Унеси резултат сваког задатка и притисни „Провери“.</p></div>
+<div id="tests"></div>
+</section>
+<footer>Интерактивна математика · 3. разред средње школе</footer>
+</main>
+<script>
+const topics=[
+{title:"1. Површина и запремина лопте",tasks:[
+["Основни","Израчунати површину лопте полупречника R = 3 cm.","113.04","P_L = 4πR² = 4·3,14·3² = 113,04 cm²."],
+["Основни","Израчунати запремину лопте полупречника R = 3 cm.","113.04","V_L = (4/3)πR³ = (4/3)·3,14·27 = 113,04 cm³."],
+["Средњи","Површина лопте је 200,96 cm². Одредити R.","4","200,96 = 4·3,14·R²; R² = 16, па је R = 4 cm."],
+["Средњи","Запремина лопте је 36π cm³. Одредити полупречник.","3","(4/3)πR³ = 36π ⇒ R³ = 27 ⇒ R = 3 cm."],
+["Напредни","Полупречник лопте повећан је 2 пута. Колико пута се повећа запремина?","8","Запремина је сразмерна R³. Однос запремина је 2³ = 8."]
+]},
+{title:"2. Раван и кружни пресек лопте",tasks:[
+["Основни","R = 5 cm, d = 3 cm. Одредити r.","4","r = √(R² − d²) = √(25 − 9) = 4 cm."],
+["Основни","R = 13 cm, d = 5 cm. Одредити полупречник пресека.","12","r = √(169 − 25) = 12 cm."],
+["Средњи","r = 8 cm, R = 10 cm. Одредити d.","6","d = √(R² − r²) = √(100 − 64) = 6 cm."],
+["Средњи","r = 6 cm, d = 8 cm. Одредити R.","10","R = √(r² + d²) = √(36 + 64) = 10 cm."],
+["Напредни","R = 10 cm, d = 6 cm. Израчунај обим кружног пресека.","50.24","r = √(100 − 36) = 8 cm. O = 2πr = 2·3,14·8 = 50,24 cm."]
+]},
+{title:"3. Сферни појас",tasks:[
+["Основни","R = 5 cm, d = 4 cm. Израчунај P_sp.","125.6","P_sp = 2πR·d = 2·3,14·5·4 = 125,6 cm²."],
+["Основни","R = 7 cm, d = 2 cm. Израчунај површину појаса.","87.92","P_sp = 2·3,14·7·2 = 87,92 cm²."],
+["Средњи","P_sp = 94,2 cm², R = 5 cm. Одреди d.","3","d = P_sp/(2πR) = 94,2/(2·3,14·5) = 3 cm."],
+["Средњи","R = 10 cm, d = 6 cm. Одреди P_sp. Дати су и r₁ = 8 cm и r₂ = 6 cm.","376.8","P_sp = 2πR·d = 2·3,14·10·6 = 376,8 cm². Полупречници r₁ и r₂ су полупречници кругова пресека."],
+["Напредни","d = 3 cm, P_sp = 150,72 cm². Одреди R.","8","R = P_sp/(2πd) = 150,72/(2·3,14·3) = 8 cm."]
+]},
+{title:"4. Калота и лоптин одсечак",tasks:[
+["Основни","R = 5 cm, h = 2 cm. Израчунај P_k.","62.8","P_k = 2πRh = 2·3,14·5·2 = 62,8 cm²."],
+["Основни","R = 5 cm, h = 2 cm, r = 4 cm. Израчунај P_Lo.","113.04","P_Lo = 2πRh + πr² = 62,8 + 50,24 = 113,04 cm²."],
+["Средњи","R = 5 cm, h = 3 cm. Израчунај V_Lo.","113.04","V_Lo = πh²(R − h/3) = 3,14·9·(5−1) = 113,04 cm³."],
+["Средњи","R = 10 cm, h = 3 cm. Израчунај P_k.","188.4","P_k = 2π·10·3 = 188,4 cm²."],
+["Напредни","R = 5 cm, h = 2 cm. Одреди r, па израчунај V_Lo.","54.45","r = √(2Rh−h²) = √(20−4) = 4 cm. V_Lo = 3,14·4·(5−2/3) = 54,45 cm³."]
+]},
+{title:"5. Лоптин исечак",tasks:[
+["Основни","R = 3 cm, h = 1 cm. Израчунај V_Li.","18.84","V_Li = (2/3)πR²h = (2/3)·3,14·9·1 = 18,84 cm³."],
+["Основни","R = 5 cm, h = 2 cm. Израчунај V_Li.","104.67","V_Li = (2/3)·3,14·25·2 ≈ 104,67 cm³."],
+["Средњи","R = 5 cm, h = 2 cm, r = 4 cm. Израчунај P_Li.","125.6","P_Li = 2πRh + πRr = 62,8 + 62,8 = 125,6 cm²."],
+["Средњи","R = 4 cm, h = 2 cm. Израчунај V_Li.","66.99","V_Li = (2/3)·3,14·16·2 ≈ 66,99 cm³."],
+["Напредни","R = 6 cm, h = 3 cm, r = 3√3 cm. Израчунај P_Li.","211.56","P_Li = 2πRh + πRr = 36π + 18√3π ≈ 211,56 cm²."]
+]},
+{title:"6. Комбиновани задаци",tasks:[
+["Основни","R = 2 cm. Израчунај P_L.","50.24","P_L = 4πR² = 4·3,14·4 = 50,24 cm²."],
+["Основни","R = 5 cm, d = 4 cm. Одреди r.","3","r = √(25−16) = 3 cm."],
+["Средњи","R = 4 cm, h = 2 cm. Израчунај P_k.","50.24","P_k = 2πRh = 2·3,14·4·2 = 50,24 cm²."],
+["Средњи","R = 3 cm, h = 1 cm. Израчунај V_Lo.","8.37","V_Lo = π·1²·(3−1/3) ≈ 8,37 cm³."],
+["Напредни","R = 5 cm, h = 2 cm, r = 4 cm. Израчунај P_Lo.","113.04","P_Lo = 2πRh + πr² = 62,8 + 50,24 = 113,04 cm²."]
+]}
+];
+const tests=[
+{title:"Тест 1",tasks:[
+["R = 4 cm. Израчунај P_L.","200.96","P_L = 4π·4² = 200,96 cm²."],
+["R = 10 cm, d = 8 cm. Одреди r.","6","r = √(100−64) = 6 cm."],
+["R = 5 cm, d = 3 cm. Израчунај P_sp.","94.2","P_sp = 2π·5·3 = 94,2 cm²."],
+["R = 5 cm, h = 1 cm. Израчунај P_k.","31.4","P_k = 2π·5·1 = 31,4 cm²."],
+["R = 3 cm, h = 2 cm. Израчунај V_Li.","37.68","V_Li = (2/3)π·9·2 = 37,68 cm³."]
+]},
+{title:"Тест 2",tasks:[
+["R = 3 cm. Израчунај V_L.","113.04","V_L = (4/3)π·27 = 113,04 cm³."],
+["r = 12 cm, d = 5 cm. Одреди R.","13","R = √(144+25) = 13 cm."],
+["R = 8 cm, d = 2 cm. Израчунај P_sp.","100.48","P_sp = 2π·8·2 = 100,48 cm²."],
+["R = 5 cm, h = 2 cm, r = 4 cm. Израчунај P_Lo.","113.04","P_Lo = 2π·5·2 + π·4² = 62,8+50,24 = 113,04 cm²."],
+["R = 3 cm, h = 1 cm. Израчунај V_Lo.","8.37","V_Lo = π·1²·(3−1/3) ≈ 8,37 cm³."]
+]},
+{title:"Тест 3",tasks:[
+["P_L = 314 cm². Одреди R.","5","314 = 4·3,14·R² ⇒ R² = 25 ⇒ R = 5 cm."],
+["R = 17 cm, d = 8 cm. Одреди r.","15","r = √(289−64) = 15 cm."],
+["P_sp = 188,4 cm², R = 5 cm. Одреди d.","6","d = 188,4/(2·3,14·5) = 6 cm."],
+["R = 4 cm, h = 3 cm. Израчунај P_k.","75.36","P_k = 2·3,14·4·3 = 75,36 cm²."],
+["R = 5 cm, h = 2 cm. Израчунај V_Li.","104.67","V_Li = (2/3)·3,14·25·2 ≈ 104,67 cm³."]
+]},
+{title:"Тест 4",tasks:[
+["R = 6 cm. Израчунај P_L.","452.16","P_L = 4·3,14·36 = 452,16 cm²."],
+["r = 9 cm, d = 12 cm. Одреди R.","15","R = √(81+144) = 15 cm."],
+["R = 4 cm, d = 5 cm. Израчунај P_sp.","125.6","P_sp = 2·3,14·4·5 = 125,6 cm²."],
+["R = 5 cm, h = 2 cm, r = 4 cm. Израчунај P_Li.","125.6","P_Li = 2πRh + πRr = 62,8 + 62,8 = 125,6 cm²."],
+["R = 4 cm, h = 2 cm. Израчунај V_Lo.","41.89","V_Lo = π·2²·(4−2/3) ≈ 41,89 cm³."]
+]}
+];
+function makeTask(t,i,prefix,isTest=false){
+ const id=prefix+'_'+i, level=t[0]||'Задатак', question=t[1]||t[0], answer=t[2], solution=t[3];
+ return `<div class="task"><span class="level">${level}</span><p><b>${i+1}.</b> ${question}</p><label for="${id}">Твој резултат:</label><br><input id="${id}" inputmode="decimal" placeholder="Унеси бројчани резултат"><button class="action" onclick="checkAnswer('${id}','${answer}')">Провери</button><button class="action secondary" onclick="toggleSolution('${id}_sol')">Погледај поступак</button><div id="${id}_fb" class="feedback" aria-live="polite"></div><div id="${id}_sol" class="solution">${solution}</div></div>`;
+}
+function render(){
+ document.getElementById('practice').innerHTML=topics.map((tp,j)=>`<div class="card"><h2>${tp.title}</h2>${tp.tasks.map((t,i)=>makeTask(t,i,'p'+j)).join('')}</div>`).join('');
+ document.getElementById('tests').innerHTML=tests.map((tp,j)=>`<div class="card"><h2>${tp.title}</h2><p class="small">Пет задатака · пет поена</p>${tp.tasks.map((t,i)=>makeTask(['Задатак',t[0],t[1],t[2]],i,'t'+j,true)).join('')}</div>`).join('');
+}
+function checkAnswer(id,answer){
+ const raw=document.getElementById(id).value.trim().replace(',','.').replace(/\s/g,'');
+ const fb=document.getElementById(id+'_fb');
+ if(!raw){fb.textContent='Прво унеси резултат.';fb.className='feedback wrong';return}
+ const a=Number(raw),b=Number(answer);
+ if(Number.isFinite(a)&&Math.abs(a-b)<=Math.max(.03,Math.abs(b)*.003)){fb.textContent='Тачно! Одлично урађено.';fb.className='feedback correct'}
+ else{fb.textContent='Одговор није тачан. Покушај поново или погледај поступак.';fb.className='feedback wrong'}
+}
+function toggleSolution(id){document.getElementById(id).classList.toggle('show')}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));
+}));
+render();
+</script>
+</body></html>
