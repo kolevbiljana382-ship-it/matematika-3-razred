@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="sr-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прост и сложен каматни рачун</title>
+<style>
+:root{--blue:#2457a6;--blue2:#eaf1ff;--ink:#202938;--muted:#5c6878;--green:#16794b;--red:#b42318;--line:#dce3ed}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f7fb;color:var(--ink);font:16px/1.6 Arial,sans-serif}
+header{background:#183b70;color:white;padding:28px 18px}
+header .wrap,main{max-width:1050px;margin:auto}
+h1{font-size:clamp(25px,4vw,36px);line-height:1.2;margin:0 0 8px}
+header p{margin:0;color:#e4edff}
+main{padding:20px 14px 48px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+nav button,.check,.solution-btn{border:0;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer}
+nav button{background:#e5ebf4;color:#24364e}
+nav button.active{background:var(--blue);color:white}
+.panel{display:none}
+.panel.active{display:block}
+.card{background:white;border:1px solid var(--line);border-radius:14px;padding:19px;margin:0 0 16px;box-shadow:0 3px 12px #1c35500b}
+h2{font-size:23px;margin:0 0 12px;color:#173d76}
+h3{font-size:18px;margin:17px 0 7px}
+.formula{background:#f0f5ff;border-left:4px solid var(--blue);padding:10px 13px;border-radius:7px;margin:9px 0;font-weight:700;overflow-wrap:anywhere}
+.note{color:var(--muted);font-size:14px}
+.example{background:#f8fafc;border:1px solid var(--line);padding:13px;border-radius:9px;margin:10px 0}
+.task{border:1px solid var(--line);border-radius:12px;padding:15px;margin:12px 0;background:white}
+.task p{margin:0 0 9px}
+.task input{width:min(100%,250px);padding:10px;border:1px solid #aeb9c8;border-radius:8px;font-size:16px}
+.check{background:var(--blue);color:white;margin:8px 6px 0 0}
+.solution-btn{background:#e9eef6;color:#26384e;margin-top:8px}
+.feedback{font-weight:700;margin-top:8px}
+.good{color:var(--green)}.bad{color:var(--red)}
+.solution{display:none;background:#f7f9fc;border-radius:8px;padding:12px;margin-top:9px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:12px}
+ul{padding-left:22px}
+@media(max-width:600px){.card{padding:14px}nav button{flex:1 1 42%}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Прост и сложен каматни рачун</h1>
+<p>Интерактивни материјал за први разред средње школе</p>
+</div></header>
+<main>
+<nav aria-label="Садржај">
+<button class="active" data-tab="kratko">Укратко</button>
+<button data-tab="vezbanje">Вежбај</button>
+<button data-tab="testovi">Тестови</button>
+</nav>
+
+<section id="kratko" class="panel active">
+<div class="card">
+<h2>1. Прост каматни рачун</h2>
+<p>Код простог каматног рачуна камата се у сваком обрачунском периоду рачуна на почетну главницу.</p>
+<h3>Ознаке</h3>
+<ul>
+<li><b>G</b> – главница</li><li><b>p</b> – годишња каматна стопа (у процентима)</li>
+<li><b>K</b> – камата</li><li><b>g</b> – број година</li>
+<li><b>m</b> – број месеци</li><li><b>d</b> – број дана</li>
+<li><b>Gu</b> – увећана главница</li>
+</ul>
+<h3>Обрасци простог каматног рачуна</h3>
+<div class="formula">Gu = G + K</div>
+<div class="formula">K = G · p · g / 100</div>
+<div class="formula">K = G · p · m / 1200</div>
+<div class="formula">K = G · p · d / 36000</div>
+<p class="note">За обрачун камате по данима користи се комерцијална година од 360 дана, односно 12 месеци од по 30 дана.</p>
+<div class="example"><b>Пример.</b> Главница је G = 50.000 динара, годишња каматна стопа p = 6%, а време орочења g = 2 године.<br>
+K = 50.000 · 6 · 2 / 100 = 6.000 динара.<br>
+Gu = G + K = 50.000 + 6.000 = <b>56.000 динара.</b></div>
+</div>
+
+<div class="card">
+<h2>2. Сложен каматни рачун</h2>
+<p>Код сложеног каматног рачуна камата се на крају сваког обрачунског периода приписује главници. У наредном периоду камата се обрачунава на увећану главницу.</p>
+<h3>Ознаке</h3>
+<ul>
+<li><b>G</b> – почетна главница</li><li><b>p</b> – годишња каматна стопа</li>
+<li><b>n</b> – број обрачунских периода</li><li><b>m</b> – број обрачуна камате у току једне године</li>
+<li><b>K</b> – укупна сложена камата</li><li><b>r</b> – декурзивни каматни фактор</li>
+<li><b>Gn</b> – крајња, односно увећана главница после n периода</li>
+</ul>
+<h3>Обрасци сложеног каматног рачуна</h3>
+<div class="formula">r = 1 + p / 100</div>
+<div class="formula">Gn = G · (1 + p / 100)<sup>n</sup></div>
+<div class="formula">K = Gn − G</div>
+<p>Када се камата обрачунава више пута у току године:</p>
+<div class="formula">r = 1 + p / (100 · m)</div>
+<div class="formula">Gn = G · (1 + p / (100 · m))<sup>g · m</sup></div>
+<p class="note">У последњем обрасцу g је број година, m број обрачуна камате годишње, па је g · m укупан број обрачунских периода.</p>
+<div class="example"><b>Пример.</b> Почетна главница је G = 10.000 динара, годишња каматна стопа p = 10%, а време орочења n = 2 године.<br>
+Gn = 10.000 · (1 + 10 / 100)<sup>2</sup> = 10.000 · 1,1<sup>2</sup> = 12.100 динара.<br>
+K = Gn − G = 12.100 − 10.000 = <b>2.100 динара.</b></div>
+</div>
+<div class="card">
+<h2>Како да решаваш задатке?</h2>
+<ol>
+<li>Прочитај услов и издвој познате величине.</li>
+<li>Одреди да ли је у питању прост или сложен каматни рачун.</li>
+<li>Провери да ли је време изражено у годинама, месецима или данима.</li>
+<li>Изабери одговарајући образац и замени величине познатим вредностима.</li>
+<li>Израчунај камату или увећану главницу и напиши јединицу мере.</li>
+</ol>
+</div>
+</section>
+
+<section id="vezbanje" class="panel">
+<div class="card"><h2>Вежбање</h2><p>Унеси бројчани резултат. Децимални број можеш унети са зарезом или тачком. За новчане износе заокружи на две децимале ако је потребно.</p></div>
+<div id="practice"></div>
+</section>
+
+<section id="testovi" class="panel">
+<div class="card"><h2>Провера знања</h2><p>Реши задатке без гледања у решења, а затим провери одговоре.</p></div>
+<div id="tests"></div>
+</section>
+<footer>Интерактивни материјал – прост и сложен каматни рачун</footer>
+</main>
+<script>
+const practice = [
+{title:"А. Прост каматни рачун – основни задаци",items:[
+["Израчунај камату ако је G = 20.000 динара, p = 5% и g = 2 године.",2000,"K = G · p · g / 100 = 20.000 · 5 · 2 / 100 = 2.000 динара."],
+["Израчунај увећану главницу ако је G = 30.000 динара, p = 4% и g = 3 године.",33600,"K = 30.000 · 4 · 3 / 100 = 3.600. Затим Gu = G + K = 30.000 + 3.600 = 33.600 динара."],
+["Израчунај камату за G = 12.000 динара, p = 6% и m = 5 месеци.",300,"K = G · p · m / 1200 = 12.000 · 6 · 5 / 1200 = 300 динара."],
+["Израчунај камату за G = 40.000 динара, p = 9% и d = 60 дана.",600,"K = G · p · d / 36000 = 40.000 · 9 · 60 / 36000 = 600 динара."],
+["Главница од 15.000 динара орочена је на годину дана по стопи 8%. Одреди Gu.",16200,"K = 15.000 · 8 · 1 / 100 = 1.200. Gu = 15.000 + 1.200 = 16.200 динара."]
+]},
+{title:"Б. Прост каматни рачун – одређивање непознате величине",items:[
+["Камата је 1.200 динара, p = 6%, g = 2 године. Одреди G.",10000,"Из K = G · p · g / 100 добијамо G = 100 · K / (p · g) = 100 · 1.200 / (6 · 2) = 10.000 динара."],
+["G = 25.000 динара, K = 1.500 динара, g = 2 године. Одреди p.",3,"p = 100 · K / (G · g) = 100 · 1.500 / (25.000 · 2) = 3%."],
+["G = 18.000 динара, p = 5%, K = 900 динара. Одреди g.",1,"g = 100 · K / (G · p) = 100 · 900 / (18.000 · 5) = 1 година."],
+["G = 24.000 динара, p = 10%, m = 3 месеца. Одреди K.",600,"K = G · p · m / 1200 = 24.000 · 10 · 3 / 1200 = 600 динара."],
+["G = 36.000 динара, p = 5%, d = 40 дана. Одреди K.",200,"K = G · p · d / 36000 = 36.000 · 5 · 40 / 36000 = 200 динара."]
+]},
+{title:"В. Сложен каматни рачун – основни задаци",items:[
+["G = 10.000 динара, p = 10%, n = 2 године. Одреди Gn.",12100,"Gn = G · (1 + p / 100)^n = 10.000 · 1,1^2 = 12.100 динара."],
+["G = 20.000 динара, p = 5%, n = 2 године. Одреди укупну камату K.",2050,"Gn = 20.000 · 1,05^2 = 22.050. K = Gn − G = 22.050 − 20.000 = 2.050 динара."],
+["Одреди декурзивни каматни фактор ако је p = 8%.",1.08,"r = 1 + p / 100 = 1 + 8 / 100 = 1,08."],
+["G = 5.000 динара, p = 20%, n = 2 године. Одреди Gn.",7200,"Gn = 5.000 · (1 + 20 / 100)^2 = 5.000 · 1,2^2 = 7.200 динара."],
+["G = 40.000 динара, p = 10%, n = 1 година. Одреди K.",4000,"Gn = 40.000 · 1,1 = 44.000. K = 44.000 − 40.000 = 4.000 динара."]
+]},
+{title:"Г. Сложен каматни рачун – више обрачуна годишње",items:[
+["G = 10.000 динара, p = 12%, m = 2, g = 1 година. Одреди Gn.",11236,"Gn = 10.000 · (1 + 12 / (100 · 2))^(1 · 2) = 10.000 · 1,06^2 = 11.236 динара."],
+["G = 20.000 динара, p = 8%, m = 4, g = 1 година. Одреди Gn.",21648.64,"Gn = 20.000 · (1 + 8 / 400)^4 = 20.000 · 1,02^4 = 21.648,64 динара."],
+["G = 5.000 динара, p = 10%, m = 2, g = 2 године. Одреди укупан број обрачунских периода.",4,"Број периода је g · m = 2 · 2 = 4."],
+["G = 10.000 динара, p = 10%, m = 2, g = 1 година. Одреди K.",1025,"Gn = 10.000 · 1,05^2 = 11.025. K = 11.025 − 10.000 = 1.025 динара."],
+["G = 8.000 динара, p = 4%, m = 4. Одреди каматни фактор за један обрачунски период.",1.01,"r = 1 + p / (100 · m) = 1 + 4 / 400 = 1,01."]
+]}
+];
+const tests = [
+{title:"Тест 1",items:[
+["G = 16.000, p = 5%, g = 3. Израчунај K код простог каматног рачуна.",2400,"K = 16.000 · 5 · 3 / 100 = 2.400."],
+["G = 25.000, p = 4%, m = 6. Израчунај K.",500,"K = 25.000 · 4 · 6 / 1200 = 500."],
+["G = 12.000, p = 10%, n = 2. Израчунај Gn код сложеног рачуна.",14520,"Gn = 12.000 · 1,1^2 = 14.520."],
+["p = 7%. Израчунај r за годишњи обрачун.",1.07,"r = 1 + 7 / 100 = 1,07."],
+["G = 10.000, p = 10%, n = 2. Израчунај K.",2100,"Gn = 10.000 · 1,1^2 = 12.100. K = 12.100 − 10.000 = 2.100."]
+]},
+{title:"Тест 2",items:[
+["G = 50.000, p = 6%, d = 30. Израчунај K.",250,"K = 50.000 · 6 · 30 / 36000 = 250."],
+["G = 40.000, p = 5%, g = 2. Израчунај Gu.",44000,"K = 40.000 · 5 · 2 / 100 = 4.000. Gu = 44.000."],
+["G = 10.000, p = 5%, n = 2. Израчунај Gn.",11025,"Gn = 10.000 · 1,05^2 = 11.025."],
+["G = 10.000, p = 8%, m = 4, g = 1. Израчунај Gn.",10824.32,"Gn = 10.000 · (1 + 8 / 400)^4 = 10.000 · 1,02^4 = 10.824,32."],
+["G = 30.000, K = 1.800, g = 2. Одреди p код простог рачуна.",3,"p = 100 · 1.800 / (30.000 · 2) = 3%."]
+]},
+{title:"Тест 3",items:[
+["K = 900, p = 6%, g = 1. Одреди G.",15000,"G = 100 · 900 / (6 · 1) = 15.000."],
+["G = 24.000, p = 5%, m = 3. Израчунај K.",300,"K = 24.000 · 5 · 3 / 1200 = 300."],
+["G = 8.000, p = 25%, n = 2. Израчунај Gn.",12500,"Gn = 8.000 · 1,25^2 = 12.500."],
+["p = 12%, m = 2. Одреди r за један обрачунски период.",1.06,"r = 1 + 12 / (100 · 2) = 1,06."],
+["G = 10.000, p = 12%, m = 2, g = 1. Израчунај K.",1236,"Gn = 10.000 · 1,06^2 = 11.236. K = 11.236 − 10.000 = 1.236."]
+]},
+{title:"Тест 4",items:[
+["G = 18.000, p = 4%, g = 2. Израчунај K.",1440,"K = 18.000 · 4 · 2 / 100 = 1.440."],
+["G = 32.000, p = 5%, g = 1. Израчунај Gu.",33600,"K = 32.000 · 5 / 100 = 1.600. Gu = 33.600."],
+["G = 20.000, p = 10%, n = 3. Израчунај Gn.",26620,"Gn = 20.000 · 1,1^3 = 26.620."],
+["G = 10.000, p = 4%, m = 4, g = 1. Израчунај Gn.",10406.04,"Gn = 10.000 · (1 + 4 / 400)^4 = 10.000 · 1,01^4 = 10.406,04."],
+["G = 15.000, p = 8%, n = 2. Израчунај укупну сложену камату K.",2496,"Gn = 15.000 · 1,08^2 = 17.496. K = 17.496 − 15.000 = 2.496."]
+]}
+];
+function num(x){return Number(String(x).trim().replace(',','.'))}
+function renderGroups(groups,target){
+ const root=document.getElementById(target);
+ groups.forEach((group,gi)=>{
+  const section=document.createElement('div');section.className='card';
+  const h=document.createElement('h2');h.textContent=group.title;section.appendChild(h);
+  group.items.forEach((item,i)=>{
+   const task=document.createElement('div');task.className='task';
+   const p=document.createElement('p');p.innerHTML='<b>Задатак '+(i+1)+'.</b> '+item[0];task.appendChild(p);
+   const input=document.createElement('input');input.type='text';input.inputMode='decimal';input.placeholder='Унеси резултат';input.setAttribute('aria-label','Одговор');task.appendChild(input);
+   const check=document.createElement('button');check.className='check';check.textContent='Провери';task.appendChild(check);
+   const solBtn=document.createElement('button');solBtn.className='solution-btn';solBtn.textContent='Погледај поступак';task.appendChild(solBtn);
+   const feedback=document.createElement('div');feedback.className='feedback';task.appendChild(feedback);
+   const solution=document.createElement('div');solution.className='solution';solution.textContent=item[2];task.appendChild(solution);
+   check.addEventListener('click',()=>{
+    const v=num(input.value);
+    if(input.value.trim()===''||!Number.isFinite(v)){feedback.textContent='Унеси бројчани одговор.';feedback.className='feedback bad';return}
+    const ok=Math.abs(v-item[1])<Math.max(0.011,Math.abs(item[1])*0.0001);
+    feedback.textContent=ok?'Тачно! Браво.':'Одговор није тачан. Покушај поново или погледај поступак.';
+    feedback.className='feedback '+(ok?'good':'bad');
+   });
+   solBtn.addEventListener('click',()=>{solution.style.display=solution.style.display==='block'?'none':'block';solBtn.textContent=solution.style.display==='block'?'Сакриј поступак':'Погледај поступак'});
+   section.appendChild(task);
+  });
+  root.appendChild(section);
+ });
+}
+renderGroups(practice,'practice');renderGroups(tests,'tests');
+document.querySelectorAll('nav button').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));
+ window.scrollTo({top:0,behavior:'smooth'});
+}));
+</script>
+</body></html>
