@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="sr-Cyrl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Интерактивна вежба – дељивост и Диофантове једначине</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5f9;color:#202b38;font:16px/1.55 Arial,sans-serif}
+header{background:#183b5b;color:white;padding:24px 16px;text-align:center}main{max-width:900px;margin:20px auto;padding:0 14px}
+.card{background:white;border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 3px 14px #1b355014}
+h2{margin:0 0 8px;color:#183b5b}.tag{color:#526579;font-size:14px}input{width:100%;padding:12px;border:1px solid #aab8c5;border-radius:8px;font-size:16px;margin:8px 0}
+button{border:0;border-radius:8px;padding:10px 15px;background:#1769aa;color:white;font-size:15px;cursor:pointer;margin:4px 4px 4px 0}button.secondary{background:#536779}button:disabled{opacity:.45;cursor:not-allowed}
+.feedback{font-weight:bold;margin-top:8px}.ok{color:#16723a}.no{color:#a33}.solution{display:none;background:#eef7f0;border-left:4px solid #299653;padding:12px;margin-top:12px;border-radius:6px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}nav button{background:#536779}nav button.active{background:#1769aa}
+.small{font-size:13px;color:#586879}.progress{font-weight:bold;color:#183b5b}
+</style></head><body>
+<header><h1>Дељивост, НЗД и Диофантове једначине</h1><p>Кратко понови, реши задатке и провери знање.</p></header>
+<main>
+<div class="card"><h2>Како се ради?</h2>
+<p>Изабери групу задатака. Унеси резултат и притисни <b>Провери</b>. Поступак решавања постаје доступан тек када унесеш тачан резултат.</p>
+<p class="small">Код задатака који траже доказ, унеси кључни закључак (на пример „дељив са 6“). Код Диофантових једначина унеси опште решење.</p>
+<div class="progress" id="progress">Тачно решених: 0 од 20</div></div>
+<nav id="tabs"></nav><section id="tasks"></section>
+<div class="card"><h2>Подсетник – укратко</h2>
+<ul>
+<li><b>Дељење са остатком:</b> a = bq + r, где је 0 ≤ r < b.</li>
+<li><b>Еуклидов алгоритам:</b> НЗД(a,b) се добија као последњи ненулти остатак.</li>
+<li><b>НЗС:</b> НЗС(a,b) = (a · b) / НЗД(a,b), за позитивне целе бројеве.</li>
+<li><b>Безуова теорема:</b> НЗД(a,b) = ax + by за неке целе x и y.</li>
+<li><b>Линеарна Диофантова једначина:</b> ax + by = c има целобројна решења ако и само ако НЗД(a,b) дели c.</li>
+<li><b>Прост број:</b> има тачно два позитивна делиоца, 1 и самог себе.</li>
+</ul></div>
+</main>
+<script>
+const data=[{"group": "A", "num": 1, "q": "Докажи да је за свако n ∈ ℕ број 7ⁿ − 1 дељив са 6.", "a": "7ⁿ − 1 = (7 − 1)(7ⁿ⁻¹ + 7ⁿ⁻² + … + 7 + 1) = 6(7ⁿ⁻¹ + 7ⁿ⁻² + … + 1). Израз у загради је цео број, па је 7ⁿ − 1 дељив са 6.", "keys": ["6", "делив са 6", "дељив са 6"]}, {"group": "A", "num": 2, "q": "Одреди количник q и остатак r при дељењу броја −157 са 12.", "a": "−157 = 12 · (−14) + 11. Пошто је 0 ≤ 11 < 12, количник је q = −14, а остатак r = 11.", "keys": ["q=-14; r=11", "q = -14, r = 11", "-14, 11"]}, {"group": "A", "num": 3, "q": "Еуклидовим алгоритмом одреди НЗД(252, 198), а затим НЗС(252, 198).", "a": "252 = 1 · 198 + 54; 198 = 3 · 54 + 36; 54 = 1 · 36 + 18; 36 = 2 · 18. Зато је НЗД = 18. НЗС = (252 · 198) / 18 = 2772.", "keys": ["нзд=18; нзс=2772", "18; 2772", "18 и 2772"]}, {"group": "A", "num": 4, "q": "Одреди сва целобројна решења једначине 35x + 22y = 5.", "a": "Еуклидовим алгоритмом: 35 = 1·22 + 13; 22 = 1·13 + 9; 13 = 1·9 + 4; 9 = 2·4 + 1. Повратно: 1 = 5·22 − 3·35. Множењем са 5 добијамо 5 = 25·22 − 15·35, па је једно решење (x₀,y₀) = (−15,25). Опште решење: x = −15 + 22t, y = 25 − 35t, t ∈ ℤ.", "keys": ["x=-15+22t; y=25-35t", "-15+22t; 25-35t", "x=-15+22k; y=25-35k"]}, {"group": "A", "num": 5, "q": "Одреди све просте бројеве p за које је 10 ≤ p ≤ 30 и број p + 10 је такође прост.", "a": "Прости бројеви у датом интервалу су 11, 13, 17, 19, 23 и 29. Проверавамо p + 10: добијамо 21, 23, 27, 29, 33 и 39. Прости су 23 и 29, па су решења p = 13 и p = 19.", "keys": ["13 и 19", "13, 19", "p=13; p=19"]}, {"group": "B", "num": 1, "q": "Докажи да је за свако n ∈ ℕ број 5ⁿ − 1 дељив са 4.", "a": "5ⁿ − 1 = (5 − 1)(5ⁿ⁻¹ + 5ⁿ⁻² + … + 5 + 1) = 4(5ⁿ⁻¹ + … + 1). Израз у загради је цео број, па је број дељив са 4.", "keys": ["4", "делив са 4", "дељив са 4"]}, {"group": "B", "num": 2, "q": "Ако n при дељењу са 8 даје остатак 5, одреди остатак који при дељењу са 8 даје 3n + 7.", "a": "Нека је n = 8k + 5. Тада је 3n + 7 = 3(8k + 5) + 7 = 24k + 22 = 8(3k + 2) + 6. Остатак је 6.", "keys": ["6", "остатак 6"]}, {"group": "B", "num": 3, "q": "Еуклидовим алгоритмом одреди НЗД(414, 276) и запиши га као Безуову комбинацију.", "a": "414 = 1·276 + 138; 276 = 2·138. Последњи ненулти остатак је 138, па је НЗД = 138. Из прве једнакости: 138 = 414 − 276.", "keys": ["138", "414-276", "414 − 276"]}, {"group": "B", "num": 4, "q": "Одреди сва целобројна решења једначине 18x + 30y = 12.", "a": "Дељењем једначине са 6 добијамо 3x + 5y = 2. Једно решење је x = −1, y = 1. Опште решење је x = −1 + 5t, y = 1 − 3t, t ∈ ℤ.", "keys": ["x=-1+5t; y=1-3t", "-1+5t; 1-3t", "x=-1+5k; y=1-3k"]}, {"group": "B", "num": 5, "q": "Испитај да ли је број 221 прост.", "a": "Пошто је √221 ≈ 14,9, довољно је проверити дељивост простим бројевима не већим од 14: 2, 3, 5, 7, 11 и 13. Важи 221 = 13 · 17, па 221 није прост број.", "keys": ["није прост", "221=13*17", "221=13·17"]}, {"group": "C", "num": 1, "q": "Докажи да је за свако n ∈ ℤ број n³ − n дељив са 6.", "a": "n³ − n = n(n² − 1) = n(n − 1)(n + 1). То су три узастопна цела броја. Међу њима је један паран, а један дељив са 3, па је њихов производ дељив са 2·3 = 6.", "keys": ["6", "делив са 6", "дељив са 6"]}, {"group": "C", "num": 2, "q": "При дељењу броја n са 7 количник је једнак остатку. Одреди све могуће вредности n ако је 0 ≤ r < 7.", "a": "По теореми о дељењу са остатком n = 7q + r, где је 0 ≤ r < 7. Услов q = r даје n = 8r. За r = 0,1,2,3,4,5,6 добијамо n ∈ {0, 8, 16, 24, 32, 40, 48}.", "keys": ["0,8,16,24,32,40,48", "0 8 16 24 32 40 48"]}, {"group": "C", "num": 3, "q": "Еуклидовим алгоритмом одреди НЗД(867, 255) и представи га као комбинацију бројева 867 и 255.", "a": "867 = 3·255 + 102; 255 = 2·102 + 51; 102 = 2·51. Зато је НЗД = 51. Повратно: 51 = 255 − 2(867 − 3·255) = 7·255 − 2·867.", "keys": ["51", "7*255-2*867", "7·255−2·867"]}, {"group": "C", "num": 4, "q": "Одреди сва целобројна решења једначине 26x + 39y = 13.", "a": "Дељењем са 13 добијамо 2x + 3y = 1. Једно решење је (−1,1). Опште решење: x = −1 + 3t, y = 1 − 2t, t ∈ ℤ.", "keys": ["x=-1+3t; y=1-2t", "-1+3t; 1-2t", "x=-1+3k; y=1-2k"]}, {"group": "C", "num": 5, "q": "Докажи да прост број p > 3 при дељењу са 6 даје остатак 1 или 5.", "a": "Могући остаци при дељењу са 6 су 0, 1, 2, 3, 4 и 5. Остатак 0 значи да је p дељив са 6; остаци 2 и 4 значе да је паран; остатак 3 значи да је дељив са 3. Све то је немогуће за прост број већи од 3. Зато остају само остаци 1 и 5.", "keys": ["1 или 5", "1,5", "остатак 1 или 5"]}, {"group": "D", "num": 1, "q": "Докажи да је за свако непарно природно n број 2ⁿ + 3ⁿ дељив са 5.", "a": "Пошто је 2 ≡ −3 (mod 5), за непарно n важи 2ⁿ + 3ⁿ ≡ (−3)ⁿ + 3ⁿ = 0 (mod 5). Дакле, број је дељив са 5.", "keys": ["5", "делив са 5", "дељив са 5"]}, {"group": "D", "num": 2, "q": "Одреди остатак при дељењу броја 2²⁰²⁶ + 3²⁰²⁶ са 7.", "a": "Степени броја 2 по модулу 7 имају период 3, а 2026 = 3·675 + 1, па је 2²⁰²⁶ ≡ 2 (mod 7). За број 3 период је 6, а 2026 = 6·337 + 4, па је 3²⁰²⁶ ≡ 3⁴ = 81 ≡ 4 (mod 7). Збир је конгруентан са 2 + 4 = 6, па је остатак 6.", "keys": ["6", "остатак 6"]}, {"group": "D", "num": 3, "q": "За a = 7·11·13 и b = 7·11·17 одреди НЗД(a,b) и НЗС(a,b).", "a": "Заједнички прости чиниоци су 7 и 11, па је НЗД = 7·11 = 77. НЗС садржи све просте чиниоце: 7·11·13·17 = 17017.", "keys": ["нзд=77; нзс=17017", "77;17017", "77 и 17017"]}, {"group": "D", "num": 4, "q": "Испитај да ли једначина 17x + 29y = 100 има решења у ненегативним целим бројевима.", "a": "Ако су x,y ≥ 0, онда 29y ≤ 100, па је y ∈ {0,1,2,3}. Из једначине по модулу 17 добијамо 12y ≡ 15 (mod 17). Множењем са 10 (инверз броја 12 по модулу 17) добијамо y ≡ 14 (mod 17). Ниједан од бројева 0,1,2,3 није конгруентан са 14 по модулу 17, па нема ненегативних целобројних решења.", "keys": ["нема решења", "нема ненегативних решења", "не постоји"]}, {"group": "D", "num": 5, "q": "Докажи: ако је p прост број и p | a², онда p | a.", "a": "Ако p не дели a, онда је НЗД(p,a)=1. По Безуовој теореми постоје цели бројеви u и v такви да је up + va = 1. Множењем са a добијамо upa + va² = a. Лева страна је дељива са p јер p дели оба сабирка (p|a²), па p|a. То је у супротности са претпоставком p∤a. Зато мора важити p|a.", "keys": ["p дели a", "p|a", "p је делилац броја a"]}];
+let current='A', solved=new Set();
+const tabs=document.getElementById('tabs'), area=document.getElementById('tasks');
+['A','B','C','D'].forEach(g=>{let b=document.createElement('button');b.textContent='Група '+g;b.onclick=()=>showGroup(g);tabs.appendChild(b)});
+function norm(s){return s.toLowerCase().replace(/[\s.,;:()]/g,'').replace(/−/g,'-').replace(/·/g,'*').replace(/²/g,'^2')}
+function showGroup(g){current=g;[...tabs.children].forEach((b,i)=>b.classList.toggle('active','ABCD'[i]===g));area.innerHTML='';
+data.filter(x=>x.group===g).forEach(x=>{
+let card=document.createElement('div');card.className='card';
+let title=document.createElement('div');title.className='tag';title.textContent='Група '+x.group+' • Задатак '+x.num+' • 10 бодова';
+let q=document.createElement('h2');q.textContent=x.q;
+let inp=document.createElement('input');inp.placeholder='Унеси резултат / кључни закључак';
+let check=document.createElement('button');check.textContent='Провери';
+let fb=document.createElement('div');fb.className='feedback';
+let reveal=document.createElement('button');reveal.textContent='Погледај поступак';reveal.className='secondary';reveal.disabled=true;
+let sol=document.createElement('div');sol.className='solution';sol.textContent=x.a;
+check.onclick=()=>{let val=norm(inp.value);let good=x.keys.some(k=>norm(k)===val || (val.length>3 && norm(k).includes(val)));
+if(good){fb.textContent='Тачно! Сада можеш да погледаш поступак.';fb.className='feedback ok';reveal.disabled=false;solved.add(x.group+x.num);document.getElementById('progress').textContent='Тачно решених: '+solved.size+' од 20';}
+else{fb.textContent='Одговор није препознат као тачан. Покушај поново.';fb.className='feedback no';reveal.disabled=true;sol.style.display='none';}
+};
+reveal.onclick=()=>{sol.style.display=sol.style.display==='block'?'none':'block'};
+card.append(title,q,inp,check,reveal,fb,sol);area.appendChild(card);
+});
+}
+showGroup('A');
+</script></body></html>
