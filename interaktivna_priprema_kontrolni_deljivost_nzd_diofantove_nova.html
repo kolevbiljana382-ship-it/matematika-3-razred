@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="sr-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Припрема за контролни – дељивост, НЗД и Диофантове једначине</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#202b38;font:16px/1.55 Arial,sans-serif}
+header{background:#183b63;color:white;padding:24px 16px;text-align:center}
+header h1{font-size:24px;margin:0 0 8px}header p{margin:0}
+main{max-width:1000px;margin:20px auto;padding:0 14px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+nav button,.action{border:0;border-radius:9px;padding:11px 16px;background:#245b91;color:#fff;font-weight:700;cursor:pointer}
+nav button.active{background:#142f4d}.panel{display:none}.panel.active{display:block}
+.card{background:white;border:1px solid #dce4ee;border-radius:13px;padding:17px;margin:12px 0;box-shadow:0 2px 7px #1d355710}
+h2{color:#183b63;margin-top:0}h3{margin:0 0 8px;color:#244e78}
+.formula{background:#eef4fb;padding:10px 13px;border-radius:8px;font-weight:700;display:inline-block;margin:4px 0}
+.task{border-left:4px solid #4b83b5;padding:12px 14px;margin:12px 0;background:#f8fafc;border-radius:7px}
+input{width:100%;max-width:460px;padding:10px;border:1px solid #aebdce;border-radius:8px;font-size:16px;margin:7px 0}
+.feedback{font-weight:700;margin:8px 0}.good{color:#167344}.bad{color:#a33}
+.solution{display:none;background:#edf7f0;border-radius:8px;padding:12px;margin-top:10px}
+small{color:#5c6876}.muted{color:#596777}
+@media(max-width:600px){header h1{font-size:20px}nav button{flex:1}}
+</style>
+</head>
+<body>
+<header><h1>Припрема за контролни задатак</h1><p>Дељивост • дељење са остатком • НЗД и НЗС • Диофантове једначине • прости бројеви</p></header>
+<main>
+<nav>
+<button class="active" data-tab="ukratko">Укратко</button>
+<button data-tab="vezbaj">Вежбај</button>
+<button data-tab="testovi">Тестови</button>
+</nav>
+<section id="ukratko" class="panel active">
+<div class="card"><h2>1. Дељивост и остатак</h2>
+<p>Број a је дељив бројем b ако постоји цео број k такав да је a=b·k.</p>
+<p>При дељењу целог броја a позитивним бројем b важи:</p><div class="formula">a = b·q + r,  0 ≤ r &lt; b</div>
+<p>q је количник, а r остатак. Остатак увек мора бити ненегативан и мањи од делиоца.</p>
+</div>
+<div class="card"><h2>2. Правила дељивости и степени</h2>
+<ul><li>Број је дељив са 2 ако му је последња цифра 0, 2, 4, 6 или 8.</li><li>Број је дељив са 3 ако му је збир цифара дељив са 3.</li><li>Број је дељив са 5 ако се завршава цифром 0 или 5.</li><li>Ако a при дељењу са m даје остатак 1, онда и aⁿ при дељењу са m даје остатак 1.</li></ul>
+</div>
+<div class="card"><h2>3. Еуклидов алгоритам, НЗД и НЗС</h2>
+<p>Узастопно делимо већи број мањим. Последњи ненулти остатак је НЗД.</p>
+<div class="formula">НЗС(a,b) = (a·b) / НЗД(a,b)</div>
+<p>Пример: 48=36·1+12; 36=12·3+0. Зато је НЗД(48,36)=12, а НЗС=48·36/12=144.</p>
+</div>
+<div class="card"><h2>4. Линеарне Диофантове једначине</h2>
+<p>Једначина ax+by=c има целобројна решења ако и само ако НЗД(a,b) дели c.</p>
+<p>Када нађемо једно решење (x₀,y₀), опште решење је:</p>
+<div class="formula">x = x₀ + (b/d)k,  y = y₀ − (a/d)k</div>
+<p>где је d=НЗД(a,b), а k∈ℤ.</p>
+</div>
+<div class="card"><h2>5. Прости бројеви</h2>
+<p>Прост број је природан број већи од 1 који има тачно два позитивна делиоца: 1 и самог себе. Ако број има делиоце осим 1 и њега самог, сложен је.</p></div>
+</section>
+
+<section id="vezbaj" class="panel">
+<h2>Вежбај – реши задатак, па провери одговор</h2>
+<div id="practice"></div>
+</section>
+
+<section id="testovi" class="panel">
+<h2>Тест 1</h2><p class="muted">Унеси одговор у поље и притисни „Потврди“. Код задатака доказивања, доказ напиши у свесци, а у поље унеси „да“. Поступак се приказује тек након потврде тачног одговора.</p>
+<div id="test1"></div>
+<h2>Тест 2</h2>
+<div id="test2"></div>
+</section>
+</main>
+<script>
+const practice = [
+{q:"1. Одреди остатак при дељењу броја 238 са 7.",a:["0"],s:"238 = 7·34 + 0. Остатак је 0."},
+{q:"2. Еуклидовим алгоритмом одреди НЗД(72,48).",a:["24"],s:"72=48·1+24; 48=24·2+0. Последњи ненулти остатак је 24."},
+{q:"3. Одреди НЗД и НЗС бројева 30 и 45. Унеси: НЗД, НЗС.",a:["15,90","15 90","15;90"],s:"45=30·1+15; 30=15·2+0, па је НЗД=15. НЗС=30·45/15=90."},
+{q:"4. Да ли једначина 8x+12y=7 има целобројних решења? Унеси да или не.",a:["не"],s:"НЗД(8,12)=4, а 4 не дели 7. Зато једначина нема целобројних решења."},
+{q:"5. Испитај да ли је 77 прост број. Унеси да или не.",a:["не"],s:"77=7·11, па 77 има делиоце различите од 1 и 77. Није прост број."}
+];
+const tests = {
+test1:[
+{q:"1. Докажи да је за свако n∈ℕ број 4ⁿ−1 дељив са 3. После доказа унеси „да“.",a:["да"],s:"Пошто је 4≡1 (mod 3), степеновањем је 4ⁿ≡1ⁿ≡1 (mod 3). Зато је 4ⁿ−1≡0 (mod 3), па је дељив са 3."},
+{q:"2. Одреди количник q и остатак r при дељењу броја −83 са 9. Унеси q,r.",a:["-10,7","-10 7","-10;7"],s:"−83=9·(−10)+7, при чему је 0≤7<9. Зато је q=−10, r=7."},
+{q:"3. Одреди НЗД(90,66) и НЗС(90,66). Унеси: НЗД, НЗС.",a:["6,990","6 990","6;990"],s:"90=66·1+24; 66=24·2+18; 24=18·1+6; 18=6·3+0. НЗД=6, а НЗС=90·66/6=990."},
+{q:"4. Наведи једно целобројно решење једначине 5x+8y=1. Унеси x,y.",a:["-3,2","-3 2","-3;2"],s:"5·(−3)+8·2=−15+16=1. Једно решење је x=−3, y=2."},
+{q:"5. Испитај да ли је 87 прост број. Унеси да или не.",a:["не"],s:"Збир цифара је 8+7=15, што је дељиво са 3. Зато је 87=3·29 и није прост."}
+],
+test2:[
+{q:"1. Докажи да је за свако n∈ℕ број 6ⁿ−1 дељив са 5. После доказа унеси „да“.",a:["да"],s:"Пошто је 6≡1 (mod 5), важи 6ⁿ≡1ⁿ≡1 (mod 5). Отуда је 6ⁿ−1 дељив са 5."},
+{q:"2. Ако n при дељењу са 7 даје остатак 3, одреди остатак који при дељењу са 7 даје 2n+5.",a:["4"],s:"Пишемо n=7k+3. Тада је 2n+5=2(7k+3)+5=14k+11=7(2k+1)+4. Остатак је 4."},
+{q:"3. Одреди НЗД(56,40) и НЗС(56,40). Унеси: НЗД, НЗС.",a:["8,280","8 280","8;280"],s:"56=40·1+16; 40=16·2+8; 16=8·2+0. НЗД=8, а НЗС=56·40/8=280."},
+{q:"4. Наведи једно целобројно решење једначине 7x+10y=1. Унеси x,y.",a:["3,-2","3 -2","3;-2"],s:"7·3+10·(−2)=21−20=1. Једно решење је x=3, y=−2."},
+{q:"5. Испитај да ли је 119 прост број. Унеси да или не.",a:["не"],s:"119=7·17, па није прост број."}
+]
+};
+function norm(v){return v.toLowerCase().replace(/\s+/g,"").replace(/[;；]/g,",").replace(/，/g,",");}
+function renderTasks(target, arr, prefix){
+ const root=document.getElementById(target);
+ arr.forEach((t,i)=>{
+  const id=prefix+"_"+i;
+  const div=document.createElement("div");div.className="card";
+  div.innerHTML=`<div class="task"><strong>${t.q}</strong></div><input id="${id}" aria-label="Одговор" placeholder="Унеси одговор"><br><button class="action" id="${id}_btn">Потврди</button><div class="feedback" id="${id}_fb"></div><div class="solution" id="${id}_sol"><strong>Поступак:</strong> ${t.s}</div>`;
+  root.appendChild(div);
+  document.getElementById(id+"_btn").addEventListener("click",()=>{
+   const val=norm(document.getElementById(id).value);
+   const accepted=t.a.map(norm);
+   const fb=document.getElementById(id+"_fb"), sol=document.getElementById(id+"_sol");
+   if(accepted.includes(val)){fb.textContent="Тачно! Сада можеш да погледаш поступак.";fb.className="feedback good";sol.style.display="block";}
+   else{fb.textContent="Одговор није тачан. Покушај поново.";fb.className="feedback bad";sol.style.display="none";}
+  });
+ });
+}
+renderTasks("practice",practice,"p");
+renderTasks("test1",tests.test1,"t1");
+renderTasks("test2",tests.test2,"t2");
+document.querySelectorAll("nav button").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+ btn.classList.add("active");document.getElementById(btn.dataset.tab).classList.add("active");
+}));
+</script>
+</body></html>
