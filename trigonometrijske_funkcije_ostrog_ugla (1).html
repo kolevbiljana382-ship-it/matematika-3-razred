@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="sr-Cyrl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тригонометријске функције оштрог угла</title>
+<style>
+:root{--navy:#183153;--blue:#2463a6;--pale:#edf4fb;--green:#e8f6ed;--ink:#202b38;--muted:#617084}
+*{box-sizing:border-box}
+body{margin:0;background:#f3f6fa;color:var(--ink);font:16px/1.55 Arial,sans-serif}
+header{background:linear-gradient(120deg,#183153,#2866a5);color:white;padding:25px 16px;text-align:center}
+header h1{font-size:clamp(23px,4vw,34px);margin:0 0 6px}
+header p{margin:0;opacity:.94}
+main{max-width:1050px;margin:20px auto;padding:0 13px 35px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tab{border:0;border-radius:10px;padding:12px 17px;background:#dce7f2;color:#183153;font-weight:bold;font-size:15px;cursor:pointer}
+.tab.active{background:#183153;color:white}
+.panel{display:none;background:white;border-radius:14px;padding:19px;box-shadow:0 3px 14px #18315312}
+.panel.active{display:block}
+h2{color:#183153;margin:5px 0 12px;font-size:23px}
+h3{color:#244d78;margin:18px 0 7px}
+.note{background:#fff7df;border-left:4px solid #e5ad35;padding:11px 13px;border-radius:7px}
+.formula{background:#edf4fb;border-radius:9px;padding:10px 13px;margin:8px 0;font-weight:bold;overflow-wrap:anywhere}.frac{display:inline-flex;vertical-align:middle;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center;margin:0 .12em;font-weight:inherit}.frac .num{border-bottom:1.4px solid currentColor;padding:0 .18em .12em}.frac .den{padding:.12em .18em 0}.mathline{display:flex;align-items:center;gap:.18em;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{border:1px solid #dce5ee;border-radius:12px;padding:13px;background:#fff}
+svg{max-width:100%;height:auto;display:block;margin:auto}
+.task{border:1px solid #dce5ee;border-radius:12px;padding:15px;margin:13px 0}
+.task p{margin:5px 0 10px}
+.task input{width:100%;max-width:420px;padding:12px;border:1px solid #9aabba;border-radius:8px;font-size:17px}
+.task button,.action{border:0;background:#2463a6;color:white;border-radius:8px;padding:10px 14px;font-size:15px;font-weight:bold;margin:8px 7px 0 0;cursor:pointer}
+.task button.secondary{background:#52677e}
+.task button:disabled{opacity:.45;cursor:not-allowed}
+.solution{display:none;background:#f0f7f2;border-left:4px solid #39965a;padding:12px;margin-top:12px;border-radius:7px}
+.solution.show{display:block}
+.feedback{margin-top:9px;font-weight:bold}
+.good{color:#18723b}.bad{color:#a42b27}
+.progress{background:#edf4fb;border-radius:9px;padding:12px;margin:12px 0}
+.small{font-size:14px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:15px}
+table{width:100%;border-collapse:collapse;text-align:center}
+th,td{padding:8px;border:1px solid #ccd8e5}
+th{background:#edf4fb}
+@media(max-width:560px){.tab{flex:1 1 42%;padding:11px 8px}.panel{padding:13px}.task{padding:12px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Тригонометријске функције оштрог угла</h1>
+<p>Математика · први разред средње школе</p>
+</header>
+<main>
+<div class="tabs" role="tablist" aria-label="Наставне целине">
+<button class="tab active" data-tab="ukratko">Укратко</button>
+<button class="tab" data-tab="vezbaj">Вежбај</button>
+<button class="tab" data-tab="test1">Тест 1</button>
+<button class="tab" data-tab="test2">Тест 2</button>
+</div>
+
+<section class="panel active" id="ukratko">
+<h2>1. Тригонометријске функције оштрог угла</h2>
+<p>Посматрамо правоугли троугао ABC са правим углом код темена C. За оштар угао α важи: наспрамна катета је a, налегла катета је b, а хипотенуза је c.</p>
+<div class="grid">
+<div class="card">
+<h3>Правоугли троугао</h3>
+<svg viewBox="0 0 360 245" role="img" aria-label="Правоугли троугао са означеним угловима и страницама">
+<polygon points="55,190 300,190 300,45" fill="#eaf3ff" stroke="#245b91" stroke-width="3"/>
+<path d="M282 190 L282 172 L300 172" fill="none" stroke="#202b38" stroke-width="2"/>
+<path d="M91 190 A36 36 0 0 0 88 169" fill="none" stroke="#d47a20" stroke-width="3"/>
+<path d="M300 78 A33 33 0 0 1 276 69" fill="none" stroke="#d47a20" stroke-width="3"/>
+<g font-size="17" fill="#202b38" font-weight="bold">
+<text x="38" y="207">A</text><text x="306" y="207">C</text><text x="306" y="37">B</text>
+<text x="88" y="174" fill="#bd6818">α</text><text x="266" y="64" fill="#bd6818">β</text>
+<text x="167" y="213">b — налегла катета</text><text x="307" y="125">a</text>
+<text x="158" y="105" transform="rotate(-31 158 105)">c — хипотенуза</text>
+</g>
+</svg>
+<p class="small">Углови α и β су оштри и њихов збир је 90°.</p>
+</div>
+<div class="card">
+<h3>Тригонометријски круг</h3>
+<svg viewBox="0 0 360 290" role="img" aria-label="Јединични тригонометријски круг са углом алфа">
+<circle cx="165" cy="145" r="105" fill="#f8fbff" stroke="#245b91" stroke-width="2.5"/>
+<path d="M42 145 H300 M165 265 V20" stroke="#64758a" stroke-width="1.5"/>
+<path d="M165 145 L265 72" stroke="#d47a20" stroke-width="3"/>
+<path d="M205 145 A40 40 0 0 0 198 121" fill="none" stroke="#d47a20" stroke-width="2.5"/>
+<path d="M265 72 V145 H165" fill="none" stroke="#27804b" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="265" cy="72" r="4.5" fill="#d47a20"/>
+<g fill="#202b38" font-size="14"><text x="305" y="150">x</text><text x="171" y="17">y</text><text x="150" y="160">O</text><text x="205" y="135">α</text><text x="269" y="65">P(cos α, sin α)</text><text x="208" y="164">cos α</text><text x="270" y="111">sin α</text><text x="270" y="260">r = 1</text></g>
+</svg>
+<p class="small">На јединичном кругу тачка која одговара углу α има координате (cos α, sin α).</p>
+</div>
+</div>
+
+<h3>Основне дефиниције у правоуглом троуглу</h3>
+<div class="formula">sin α = <span class="frac"><span class="num">наспрамна катета</span><span class="den">хипотенуза</span></span> = <span class="frac"><span class="num">a</span><span class="den">c</span></span></div>
+<div class="formula">cos α = <span class="frac"><span class="num">налегла катета</span><span class="den">хипотенуза</span></span> = <span class="frac"><span class="num">b</span><span class="den">c</span></span></div>
+<div class="formula">tg α = <span class="frac"><span class="num">наспрамна катета</span><span class="den">налегла катета</span></span> = <span class="frac"><span class="num">a</span><span class="den">b</span></span></div>
+<div class="formula">ctg α = <span class="frac"><span class="num">налегла катета</span><span class="den">наспрамна катета</span></span> = <span class="frac"><span class="num">b</span><span class="den">a</span></span></div>
+
+<h3>Важне везе и формуле</h3>
+<div class="grid">
+<div class="card">
+<div class="formula">sin² α + cos² α = 1</div>
+<div class="formula">tg α = <span class="frac"><span class="num">sin α</span><span class="den">cos α</span></span></div>
+<div class="formula">ctg α = <span class="frac"><span class="num">cos α</span><span class="den">sin α</span></span></div>
+<div class="formula">tg α · ctg α = 1</div>
+</div>
+<div class="card">
+<div class="formula">sin (90° − α) = cos α</div>
+<div class="formula">cos (90° − α) = sin α</div>
+<div class="formula">tg (90° − α) = ctg α</div>
+<div class="formula">ctg (90° − α) = tg α</div>
+</div>
+</div>
+<h3>Посебне вредности</h3>
+<table>
+<tr><th>Угао</th><th>sin</th><th>cos</th><th>tg</th><th>ctg</th></tr>
+<tr><td>30°</td><td><span class="frac"><span class="num">1</span><span class="den">2</span></span></td><td><span class="frac"><span class="num">√3</span><span class="den">2</span></span></td><td><span class="frac"><span class="num">√3</span><span class="den">3</span></span></td><td>√3</td></tr>
+<tr><td>45°</td><td><span class="frac"><span class="num">√2</span><span class="den">2</span></span></td><td><span class="frac"><span class="num">√2</span><span class="den">2</span></span></td><td>1</td><td>1</td></tr>
+<tr><td>60°</td><td><span class="frac"><span class="num">√3</span><span class="den">2</span></span></td><td><span class="frac"><span class="num">1</span><span class="den">2</span></span></td><td>√3</td><td><span class="frac"><span class="num">√3</span><span class="den">3</span></span></td></tr>
+</table>
+<div class="note"><b>Подсетник за унос на телефону:</b> разломак упиши са косом цртом, нпр. <b>3/5</b>; корен као <b>sqrt(3)</b>; децимални број као <b>0.5</b> или <b>0,5</b>; угао само бројем у степенима, нпр. <b>30</b>. Не уписуј мерне јединице. За приближне резултате наведи две децимале.</div>
+<h3>Како решавамо задатке?</h3>
+<ol>
+<li>Одреди у односу на који угао посматраш троугао.</li>
+<li>Означи наспрамну катету, налеглу катету и хипотенузу.</li>
+<li>Изабери одговарајућу функцију и уврсти познате величине.</li>
+<li>Ако треба, примени Питагорину теорему: a² + b² = c².</li>
+</ol>
+</section>
+
+<section class="panel" id="vezbaj">
+<h2>2. Вежбај</h2>
+<p>Уради задатак, упиши резултат и притисни <b>Потврди одговор</b>. Тек након потврде постаје доступан поступак решавања.</p>
+<div class="note">У поље за одговор на телефону разломак уноси текстуално, нпр. <b>3/5</b>; корен као <b>sqrt(2)</b>, децимални број као <b>0.6</b>, а угао само бројем, нпр. <b>45</b>. Користи тачку или зарез за децимални број. Не уписуј мерне јединице.</div>
+<div id="practiceTasks"></div>
+</section>
+
+<section class="panel" id="test1">
+<h2>3. Тест 1</h2>
+<p>Пет задатака различите тежине. По завршетку добијаш број тачних одговора и проценат успешности. Поступак сваког задатка открива се тек после потврде одговора.</p>
+<div id="test1Tasks"></div><div id="test1Result" class="progress" aria-live="polite">Још ниси завршио/ла тест.</div>
+</section>
+
+<section class="panel" id="test2">
+<h2>4. Тест 2</h2>
+<p>Други тест за самопроверу. Уноси одговоре редом и потврди сваки одговор.</p>
+<div id="test2Tasks"></div><div id="test2Result" class="progress" aria-live="polite">Још ниси завршио/ла тест.</div>
+</section>
+</main>
+<footer>Интерактивни материјал за учење и самопроверу</footer>
+<script>
+const practice=[
+{q:"У правоуглом троуглу је хипотенуза 10 cm, а катета наспрам угла α је 6 cm. Одреди sin α.",a:["3/5","0.6"],s:"sin α = наспрамна катета / хипотенуза = 6/10 = 3/5 = 0,6."},
+{q:"Ако је cos α = 4/5, одреди tg α, знајући да је α оштар угао.",a:["3/4","0.75"],s:"Из sin² α + cos² α = 1 добијамо sin² α = 1 − 16/25 = 9/25, па је sin α = 3/5. Зато је tg α = (3/5)/(4/5) = 3/4."},
+{q:"Израчунај sin 30° + cos 60°.",a:["1","1.0"],s:"sin 30° = 1/2 и cos 60° = 1/2. Збир је 1."},
+{q:"У правоуглом троуглу катете су 9 cm и 12 cm. За угао α наспрам катете 9 cm одреди cos α.",a:["4/5","0.8"],s:"Хипотенуза је c = √(9² + 12²) = √225 = 15. Налегла катета на угао α је 12, па је cos α = 12/15 = 4/5."},
+{q:"Ако је tg α = 1, колики је оштар угао α?",a:["45","45°"],s:"tg 45° = 1, па је α = 45°."},
+{q:"Израчунај 2sin 30° + 3cos 60°.",a:["2.5","5/2"],s:"2 · 1/2 + 3 · 1/2 = 1 + 1,5 = 2,5."},
+{q:"Ако је sin α = 5/13, одреди cos α за оштар угао α.",a:["12/13"],s:"cos² α = 1 − 25/169 = 144/169. Пошто је α оштар, cos α је позитиван, па је cos α = 12/13."},
+{q:"У правоуглом троуглу хипотенуза је 17 cm, а једна катета 8 cm. Одреди tg угла α коме је наспрамна катета дужине 8 cm.",a:["8/15"],s:"Друга катета је √(17² − 8²) = √225 = 15. Зато је tg α = 8/15."},
+{q:"Ако је cos α = 0,6, одреди sin(90° − α).",a:["0.6","3/5"],s:"По кофункционалној вези sin(90° − α) = cos α = 0,6."},
+{q:"Израчунај вредност израза (sin 30° · cos 60°) / tg 45°.",a:["1/4","0.25"],s:"(1/2 · 1/2) / 1 = 1/4 = 0,25."}
+];
+const test1=[
+{q:"У правоуглом троуглу је наспрамна катета 5 cm, а хипотенуза 13 cm. Одреди sin α.",a:["5/13"],s:"sin α = 5/13."},
+{q:"Израчунај 2 · cos 30°.",a:["sqrt(3)","√3"],s:"cos 30° = √3/2, па је 2 · √3/2 = √3."},
+{q:"Ако је sin α = 3/5, одреди cos α за оштар угао.",a:["4/5"],s:"cos² α = 1 − 9/25 = 16/25. Пошто је угао оштар, cos α = 4/5."},
+{q:"Катете правоуглог троугла су 5 cm и 12 cm. За угао α наспрам катете 5 cm одреди tg α.",a:["5/12"],s:"tg α = наспрамна катета / налегла катета = 5/12."},
+{q:"Израчунај sin 60° + cos 60°.",a:["(sqrt(3)+1)/2","(1+sqrt(3))/2"],s:"sin 60° = √3/2, cos 60° = 1/2. Збир је (√3 + 1)/2."}
+];
+const test2=[
+{q:"Хипотенуза је 10 cm, а налегла катета на угао α је 8 cm. Одреди cos α.",a:["4/5","0.8"],s:"cos α = 8/10 = 4/5 = 0,8."},
+{q:"Израчунај tg 45° + sin 30°.",a:["1.5","3/2"],s:"tg 45° = 1, sin 30° = 1/2, па је збир 3/2 = 1,5."},
+{q:"Ако је cos α = 12/13, одреди sin α за оштар угао.",a:["5/13"],s:"sin² α = 1 − 144/169 = 25/169. Пошто је угао оштар, sin α = 5/13."},
+{q:"У правоуглом троуглу катете су 7 cm и 24 cm. За угао α наспрам катете 7 cm одреди sin α.",a:["7/25"],s:"Хипотенуза је √(7² + 24²) = √625 = 25. Зато је sin α = 7/25."},
+{q:"Израчунај (sin 60°)² + (cos 60°)².",a:["1"],s:"По основној тригонометријској идентичности sin² α + cos² α = 1, па је резултат 1."}
+];
+function norm(v){return v.trim().toLowerCase().replace(/\s+/g,"").replace(/,/g,".").replace(/°/g,"").replace(/√/g,"sqrt");}
+function renderTasks(targetId,items,isTest){
+ const root=document.getElementById(targetId);let correct=0,checked=0;
+ items.forEach((t,i)=>{
+  const box=document.createElement("div");box.className="task";
+  box.innerHTML=`<b>Задатак ${i+1}.</b><p>${t.q}</p><label for="${targetId}a${i}" class="small">Унеси одговор (разломак укуцај као 3/5, корен као sqrt(3), децимални број као 0.6 или угао као 45):</label><br><input id="${targetId}a${i}" type="text" inputmode="text" autocomplete="off" placeholder="Твој одговор"><br><button type="button" class="check">Потврди одговор</button><button type="button" class="secondary reveal" disabled>Прикажи поступак</button><div class="feedback" aria-live="polite"></div><div class="solution"></div>`;
+  root.appendChild(box);
+  const inp=box.querySelector("input"),check=box.querySelector(".check"),reveal=box.querySelector(".reveal"),fb=box.querySelector(".feedback"),sol=box.querySelector(".solution");
+  let done=false,ok=false;
+  check.addEventListener("click",()=>{
+   if(done)return;
+   if(!inp.value.trim()){fb.textContent="Прво унеси одговор.";fb.className="feedback bad";inp.focus();return;}
+   ok=t.a.some(x=>norm(x)===norm(inp.value));done=true;checked++;if(ok)correct++;
+   fb.textContent=ok?"Тачно! Одлично!":"Одговор није тачан. Погледај поступак и покушај да разумеш грешку.";
+   fb.className="feedback "+(ok?"good":"bad");reveal.disabled=false;check.disabled=true;inp.disabled=true;
+   if(isTest)updateResult(targetId,items.length,checked,correct);
+  });
+  reveal.addEventListener("click",()=>{sol.textContent=t.s;sol.classList.add("show");reveal.disabled=true;});
+ });
+ if(isTest)updateResult(targetId,items.length,0,0);
+}
+function updateResult(id,total,checked,correct){
+ const el=document.getElementById(id.replace("Tasks","Result"));
+ if(checked===total){const pct=Math.round(correct/total*100);el.innerHTML=`<b>Резултат теста: ${correct} од ${total} тачних одговора (${pct}%).</b><br>${pct>=80?"Одлично! Веома добро владаш градивом.":pct>=60?"Добар резултат. Понови задатке код којих си погрешио/ла.":pct>=40?"Потребно је још вежбања. Врати се на картицу „Укратко“.":"Поново проучи формуле и решене примере, па покушај поново."}`;}
+ else el.textContent=`Потврђено: ${checked} од ${total} · Тачно: ${correct}`;
+}
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b===btn));
+ document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id===btn.dataset.tab));
+}));
+renderTasks("practiceTasks",practice,false);
+renderTasks("test1Tasks",test1,true);
+renderTasks("test2Tasks",test2,true);
+</script>
+</body>
+</html>
